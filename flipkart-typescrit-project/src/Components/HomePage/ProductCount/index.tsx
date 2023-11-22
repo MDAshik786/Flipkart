@@ -2,7 +2,7 @@ import {useState} from 'react'
 import ButtonFiled from "../../../CommonUsedComponents/ButtonField";
 import InputFiled from "../../../CommonUsedComponents/InputFiled";
 import './index.css'
-import { Store } from '../../../MobxStore/ScrollingImageStore';
+import { Store } from '../../../MobxStore/Store';
 import { SingleProduct } from '../../../Types';
 
 type ProductCountProps = {

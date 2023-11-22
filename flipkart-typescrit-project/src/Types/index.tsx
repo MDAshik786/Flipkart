@@ -1,5 +1,5 @@
 import { ButtonHTMLAttributes } from "react";
-import { Store } from "../MobxStore/ScrollingImageStore";
+import { Store } from "../MobxStore/Store";
 
 export type InputFiledProps = {
   type: string;

@@ -32,3 +32,6 @@ img{
   object-fit: contain;
   margin: auto ;
 }
+input{
+  outline: none;
+}

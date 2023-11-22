@@ -1,34 +1,80 @@
+.main-div {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background-color: whitesmoke;
+  font-size: 1rem;
+}
 .login-main-container {
-    display: flex;
-    margin: 0 auto;
-    width: 60%;
+  margin: auto;
+  display: flex;
+  width: 55%;
+  height: 48rem;
+  background-color: white;
 }
 
 .login-left-container {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    width: 40%;
-    background-color: #2874f0;
-    color: #fff;
-    padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 40%;
+  background-color: #2874f0;
+  color: #fff;
+  padding: 2rem;
 }
 
 .login-right-container {
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 .login-heading {
-    padding-top: 2rem;
-    font-size: 2rem;
-    font-weight: 550;
+  padding-top: 2rem;
+  font-size: 2rem;
+  font-weight: 550;
 }
 
 .login-left-content {
-    font-size: 1.4rem;
-    line-height: 2rem;
-    color: rgb(233, 230, 230);
+  font-size: 1.4rem;
+  line-height: 2rem;
+  color: rgb(233, 230, 230);
+}
+.login-email-container,
+.login-password-container {
+  height: 2.5rem;
+  width: 80%;
+  padding: 0 0.5rem;
+  border-top: none;
+  border-right: none;
+  border-bottom: 1px solid black;
+  border-left: none;
+}
+.blue-color {
+  color: #2874f0;
+}
+.Login-button {
+  height: 2.5rem;
+  border-radius: 0.2rem;
+  width: 80%;
+  background: #fb641b;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+  border: none;
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+.login-email-div,
+.login-password-div {
+  position: relative;
+}
+.login-placeholder {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+}
+.agree-container{
+    font-size: 0.9rem;
 }

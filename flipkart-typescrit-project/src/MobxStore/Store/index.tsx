@@ -10,32 +10,39 @@ export class Store {
       scrollingImageIndex: observable,
       productCounts: observable,
       value: observable,
-      // increase: action,
-      // decrease: action,
+      increase: action,
+      decrease: action,
       increment: computed,
       decrement: computed,
+      scrollingImageValue: computed,
       autoIncrement: action,
       productCountIncrement: action,
       productCountDecrement: action,
     });
     //  this.autoIncrement();
   }
-  // increase = () => {
-  //   this.scrollingImageIndex++;
-  // };
-  // decrease = () => {
-  //   return this.scrollingImageIndex--;
-  // };
+  increase() {
+    debugger
+    console.log("hi",this.increase)
+    return this.scrollingImageIndex++;
+  };
+  decrease() {
+    console.log("first")
+    return this.scrollingImageIndex--;
+  };
+  get scrollingImageValue() {
+    return this.scrollingImageIndex;
+  }
   get increment() {
-    if (this.scrollingImageIndex === 5) return (this.scrollingImageIndex = 0);
+    // if (this.scrollingImageIndex === 5) return (this.scrollingImageIndex = 0);
     return this.scrollingImageIndex++;
   }
   get decrement() {
     if (this.scrollingImageIndex === 0) return (this.scrollingImageIndex = 5);
     return this.scrollingImageIndex--;
   }
-  handleChangeValue = (eventValue : any) => {
-   return this.value = eventValue 
+  handleChangeValue = (eventValue: any) => {
+    return this.value = eventValue
   };
   // handleChangeProductCounts = (eventValue : any, id : number | undefined) => {
   //   return this.productCounts = {

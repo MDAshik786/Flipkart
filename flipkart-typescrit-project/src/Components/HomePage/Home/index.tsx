@@ -27,6 +27,8 @@ const Home = observer(({ store }: HomeProps) => {
     queryFn: () => getAllTagImages(),
   });
 
+  console.log(store, 'store')
+
   const {
     data: scrollingImagesData,
     error: scrollingImagesError,
@@ -46,15 +48,15 @@ const Home = observer(({ store }: HomeProps) => {
 
   if (tagImagesLoading || scrollingImagesLoading || getAllProductLoading)
     return <p>Loading...</p>;
-  if (tagImagesError || scrollingImagesError || getAllProductError)
-    return (
-      <p>
-        Error:{" "}
-        {tagImagesError?.message ||
-          scrollingImagesError?.message ||
-          getAllProductError?.message}
-      </p>
-    );
+  // if (tagImagesError || scrollingImagesError || getAllProductError)
+  //   return (
+  //     <p>
+  //       Error:{" "}
+  //       {tagImagesError?.message ||
+  //         scrollingImagesError?.message ||
+  //         getAllProductError?.message}
+  //     </p>
+  //   );
   return (
     <>
       <HomeHeader />
@@ -63,7 +65,7 @@ const Home = observer(({ store }: HomeProps) => {
           <TopOfferTagsImage product={product} key={product.id} />
         ))}
       </div>
-      {store?.scrollingImageIndex}
+      {store?.scrollingImageValue}
       <div className="scrolling-offer-image-container">
         {scrollingImagesData?.map(
           (product: Product, index: number) =>
@@ -74,7 +76,7 @@ const Home = observer(({ store }: HomeProps) => {
         <ButtonFiled
           content={<BiSolidLeftArrow className={"arrow-icons"} />}
           className="left-arrow-button"
-          onClick={() => store?.decrement}
+          onClick={() => store?.decrease}
         />
         <ButtonFiled
           content={<BiSolidRightArrow className={"arrow-icons"} />}
