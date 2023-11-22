@@ -5,27 +5,9 @@ import { AiOutlineHeart } from "react-icons/ai";
 import { AiFillHeart } from "react-icons/ai";
 import { BiSolidStar } from "react-icons/bi";
 import "./index.css";
-import { Store } from "../../../MobxStore/ScrollingImageStore";
-type SingleProductProps = {
-  product: SingleProduct;
-  store: Store
-};
-type SingleProduct = {
-  id: number;
-  image: string;
-  name: string;
-  priceCents: number;
-  priceIndia: number;
-  ratingStar: number;
-  totalQuantity: number;
-  ratingCount: number;
-  description: string;
-  keywords: keywordTypes[];
-};
-type keywordTypes = {
-  id: number;
-  keyword: string;
-};
+import { SingleProductProps } from "../../../Types";
+
+
 export const SingleProduct = ({ product, store }: SingleProductProps) => {
   return (
     <div className="single-product-container">
@@ -49,7 +31,7 @@ export const SingleProduct = ({ product, store }: SingleProductProps) => {
       </div>
       <div className="single-quantity-conatiner">
         <span>Quantity:</span>
-        <ProductCount />
+        <ProductCount store={store} product={product} />
       </div>
       <ButtonFiled content="Add To Cart" className="single-addToCart-button" />
       <div className="single-absolute">

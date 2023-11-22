@@ -2,18 +2,36 @@ import {useState} from 'react'
 import ButtonFiled from "../../../CommonUsedComponents/ButtonField";
 import InputFiled from "../../../CommonUsedComponents/InputFiled";
 import './index.css'
-const ProductCount = () => {
-const handleProductCount = (e: React.ChangeEvent<HTMLInputElement>) => {
-  setProductQuantity(e.target.value);
-}
+import { Store } from '../../../MobxStore/ScrollingImageStore';
+import { SingleProduct } from '../../../Types';
 
-  const [productQuantity , setProductQuantity] = useState<string>('');
+type ProductCountProps = {
+  store : Store,
+  product: SingleProduct
+}
+const ProductCount = ({store, product} : ProductCountProps ) => {
+const id = product?.id
+ console.log(store?.productCounts, store.scrollingImageIndex)
   return (
     <div className="number-container">
-      <ButtonFiled className="symbol" content="-" />
-      <InputFiled type="number" className={"number"} value={productQuantity} onChange={handleProductCount}/>
-      <ButtonFiled className="symbol" content="+" />
- </div> 
+  <ButtonFiled
+    className="symbol"
+    content="-"
+    onClick={() => store?.productCountDecrement(id)}
+  />
+  <InputFiled
+    type="number"
+    className={"number"}
+    value={store?.productCounts[product?.id ?? 1] || 1}
+    // onChange={(e) => store?.handleChangeProductCounts(e.target.value, product.id)}
+    />
+  <ButtonFiled
+  className="symbol"
+  content="-"
+  onClick={() => store?.productCountIncrement(id)}
+/>
+</div>
+ 
   );
 };
 

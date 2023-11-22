@@ -15,6 +15,7 @@ import { observer } from "mobx-react";
 import offerCard from "../../../Asserts/Images/offerCard.jpg";
 import ImageField from "../../../CommonUsedComponents/ImageField";
 import SingleProduct from "../Product";
+import InputFiled from "../../../CommonUsedComponents/InputFiled";
 
 const Home = observer(({ store }: HomeProps) => {
   const {
@@ -84,9 +85,11 @@ const Home = observer(({ store }: HomeProps) => {
       <ImageField src={offerCard} alt="card Offer" className="offer-card-img" />
       <div className="product-container">
         {getAllProductData?.map((product: Product, index: number) => (
-          <SingleProduct product={product} key={index} store={store?.productCount} />
+          <SingleProduct product={product} store={store} key={index}  />
         ))}
       </div>
+      <InputFiled type="text" className="ashik" value={store?.value} onChange={(e) => store?.handleChangeValue(e.target.value)}
+      />
     </>
   );
 });

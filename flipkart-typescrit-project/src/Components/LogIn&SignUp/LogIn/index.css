@@ -1,0 +1,34 @@
+.login-main-container {
+    display: flex;
+    margin: 0 auto;
+    width: 60%;
+}
+
+.login-left-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 40%;
+    background-color: #2874f0;
+    color: #fff;
+    padding: 2rem;
+}
+
+.login-right-container {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.login-heading {
+    padding-top: 2rem;
+    font-size: 2rem;
+    font-weight: 550;
+}
+
+.login-left-content {
+    font-size: 1.4rem;
+    line-height: 2rem;
+    color: rgb(233, 230, 230);
+}
