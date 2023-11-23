@@ -6,18 +6,17 @@ import {
   getAllTagImages,
 } from "../../../API Functions/HomePageAPI";
 import { useQuery } from "@tanstack/react-query";
-import { HomeProps, Product } from "../../../Types";
+import { Product } from "../../../Types";
 import TopOfferTagsImage from "../TopOfferTagsImage";
-import ButtonFiled from "../../../CommonUsedComponents/ButtonField";
-import { BiSolidLeftArrow } from "react-icons/bi";
-import { BiSolidRightArrow } from "react-icons/bi";
 import { observer } from "mobx-react";
 import offerCard from "../../../Asserts/Images/offerCard.jpg";
 import ImageField from "../../../CommonUsedComponents/ImageField";
 import SingleProduct from "../Product";
-import InputFiled from "../../../CommonUsedComponents/InputFiled";
+import { useStore } from "../../../ContextHooks/UseStore";
+import ScrollingIamges from "../ScrollingImages";
 
-const Home = observer(({ store }: HomeProps) => {
+const Home = observer(() => {
+  const { rootStore: { counterStore } } = useStore()
   const {
     data: tagImagesData,
     error: tagImagesError,
@@ -27,16 +26,16 @@ const Home = observer(({ store }: HomeProps) => {
     queryFn: () => getAllTagImages(),
   });
 
-  console.log(store, 'store')
+  // const {
+  //   data: scrollingImagesData,
+  //   error: scrollingImagesError,
+  //   isLoading: scrollingImagesLoading,
+  // } = useQuery({
+  //   queryKey: ["getAllScrollingImages"],
+  //   queryFn: () => getAllScrollingImages(),
+  // });
 
-  const {
-    data: scrollingImagesData,
-    error: scrollingImagesError,
-    isLoading: scrollingImagesLoading,
-  } = useQuery({
-    queryKey: ["getAllScrollingImages"],
-    queryFn: () => getAllScrollingImages(),
-  });
+
   const {
     data: getAllProductData,
     error: getAllProductError,
@@ -46,17 +45,16 @@ const Home = observer(({ store }: HomeProps) => {
     queryFn: () => getAllProduct(),
   });
 
-  if (tagImagesLoading || scrollingImagesLoading || getAllProductLoading)
+  if (tagImagesLoading || getAllProductLoading)
     return <p>Loading...</p>;
-  // if (tagImagesError || scrollingImagesError || getAllProductError)
-  //   return (
-  //     <p>
-  //       Error:{" "}
-  //       {tagImagesError?.message ||
-  //         scrollingImagesError?.message ||
-  //         getAllProductError?.message}
-  //     </p>
-  //   );
+  if (tagImagesError && getAllProductError)
+    return (
+      <p>
+        Error:{" "}
+        {tagImagesError?.message ||
+          getAllProductError?.message}
+      </p>
+    );
   return (
     <>
       <HomeHeader />
@@ -65,33 +63,15 @@ const Home = observer(({ store }: HomeProps) => {
           <TopOfferTagsImage product={product} key={product.id} />
         ))}
       </div>
-      {store?.scrollingImageValue}
-      <div className="scrolling-offer-image-container">
-        {scrollingImagesData?.map(
-          (product: Product, index: number) =>
-            index === store?.scrollingImageIndex && (
-              <TopOfferTagsImage product={product} key={product.id} />
-            )
-        )}
-        <ButtonFiled
-          content={<BiSolidLeftArrow className={"arrow-icons"} />}
-          className="left-arrow-button"
-          onClick={() => store?.decrease}
-        />
-        <ButtonFiled
-          content={<BiSolidRightArrow className={"arrow-icons"} />}
-          className="right-arrow-button"
-          onClick={() => store?.increment}
-        />
-      </div>
+      {counterStore?.getCounterValue}
+      <ScrollingIamges />
       <ImageField src={offerCard} alt="card Offer" className="offer-card-img" />
       <div className="product-container">
         {getAllProductData?.map((product: Product, index: number) => (
-          <SingleProduct product={product} store={store} key={index}  />
+          <SingleProduct product={product} key={index} />
         ))}
       </div>
-      <InputFiled type="text" className="ashik" value={store?.value} onChange={(e) => store?.handleChangeValue(e.target.value)}
-      />
+
     </>
   );
 });

@@ -27,3 +27,6 @@ export const getAllProduct = async () => {
         console.log(error, "error on getAllTagImages")
     }
 }
+export const addAProductToCart = async () => {
+    
+}

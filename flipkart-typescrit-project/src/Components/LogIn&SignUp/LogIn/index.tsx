@@ -1,13 +1,13 @@
-import { HomeProps } from "../../../Types"
+
 import './index.css'
 import img from '../../../Asserts/Images/flipkart-login.png'
 import InputFiled from "../../../CommonUsedComponents/InputFiled"
 import ButtonFiled from "../../../CommonUsedComponents/ButtonField"
-const LogIn = ({ store }: HomeProps) => {
+const LogIn = () => {
   return (
     <div className="main-div">
       <div className="login-main-container">
-        <div className="login-left-container">
+        <div   className="login-left-container">
           <span className="login-heading">
             Login
           </span>

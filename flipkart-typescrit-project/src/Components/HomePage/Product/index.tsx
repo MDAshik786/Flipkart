@@ -8,20 +8,21 @@ import "./index.css";
 import { SingleProductProps } from "../../../Types";
 
 
-export const SingleProduct = ({ product, store }: SingleProductProps) => {
+export const SingleProduct = ({ product }: SingleProductProps) => {
+
   return (
     <div className="single-product-container">
       <div className="single-img-container">
-      <ImageField
-        src={`http://localhost:3000/${product?.image}`}
-        alt=""
-        className="single-product-img"
-      />
+        <ImageField
+          src={`http://localhost:3000/${product?.image}`}
+          alt=""
+          className="single-product-img"
+        />
       </div>
       <p className="single-product-name">{product?.name}</p>
       <div className="rating-container">
         <div className="single-rating-number">
-          {product?.ratingStar} <BiSolidStar className="bsStar-icon"/>
+          {product?.ratingStar} <BiSolidStar className="bsStar-icon" />
         </div>
         <span>{product?.ratingCount}</span>
       </div>
@@ -31,7 +32,7 @@ export const SingleProduct = ({ product, store }: SingleProductProps) => {
       </div>
       <div className="single-quantity-conatiner">
         <span>Quantity:</span>
-        <ProductCount store={store} product={product} />
+        <ProductCount product={product} />
       </div>
       <ButtonFiled content="Add To Cart" className="single-addToCart-button" />
       <div className="single-absolute">

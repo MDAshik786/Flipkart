@@ -1,5 +1,3 @@
-import { ButtonHTMLAttributes } from "react";
-import { Store } from "../MobxStore/Store";
 
 export type InputFiledProps = {
   type: string;
@@ -13,7 +11,7 @@ export type InputFiledProps = {
 export type ButtonFieldProps = {
   className: string;
   content: string | React.ReactNode;
-  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  onClick?:any;
 };
 
 export type Product = {
@@ -31,15 +29,12 @@ export type ImageFiledProps = {
   alt?: string;
   className?: string;
 };
-export type HomeProps = {
-  store: Store;
-};
+
 export type SingleProductProps = {
   product: SingleProduct;
-  store: Store;
 };
 export type SingleProduct = {
-  id?: number;
+  id: number ;
   image?: string;
   name?: string;
   priceCents?: number;
