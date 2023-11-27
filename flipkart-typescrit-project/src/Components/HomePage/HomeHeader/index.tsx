@@ -8,11 +8,15 @@ import profile from "../../../Asserts/Images/flipkartProfile.svg";
 import cart from "../../../Asserts/Images/flipkartCart.svg";
 import ButtonFiled from "../../../CommonUsedComponents/ButtonField";
 import { BiSearchAlt } from 'react-icons/bi';
+import ImageField from "../../../CommonUsedComponents/ImageField";
+import { handleNavigate } from "../../../CommonFunctions/Navigate";
+import { useNavigate } from "react-router-dom";
 const HomeHeader = () => {
   const [searchInput, setSearchInput] = useState<string>('')
   const handleSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchInput(e.target.value)
   } 
+  const navigate = useNavigate()
   return (
     <header>
       <div className="header-branding-container">
@@ -29,13 +33,13 @@ const HomeHeader = () => {
       </div>
       <div className="head-rightSide-container">
         <div className="head-nav-container">
-          <img src={seller} alt=""  /> <p>Become a Seller</p>
+          <ImageField src={seller} alt=""  /> <p>Become a Seller</p>
         </div>
-        <div className="head-nav-container">
-          <img src={profile} alt="" /> <p>Sign in</p>
+        <div className="head-nav-container" onClick={(e) => handleNavigate(e, navigate, "login")}>
+          <ImageField src={profile} alt=""/> <p>Sign in</p>
         </div>
-        <div className="head-nav-container">
-          <img src={cart} alt="" /> <p>Cart</p>
+        <div className="head-nav-container" onClick={(e) => handleNavigate(e, navigate, "cart")}>
+          <ImageField src={cart} alt="" /> <p>Cart</p>
         </div>
       </div>
     </header>

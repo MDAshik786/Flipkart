@@ -22,12 +22,9 @@ export class Store {
     //  this.autoIncrement();
   }
   increase() {
-    debugger
-    console.log("hi",this.increase)
     return this.scrollingImageIndex++;
   };
   decrease() {
-    console.log("first")
     return this.scrollingImageIndex--;
   };
   get scrollingImageValue() {

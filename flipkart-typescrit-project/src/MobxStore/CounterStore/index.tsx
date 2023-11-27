@@ -33,7 +33,7 @@ export class CounterStore {
             } else {
                 this.imageCounter++;
             }
-        }, 2500)
+        }, 3500)
     }
     get getCounterValue() {
         return this.imageCounter

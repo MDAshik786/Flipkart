@@ -1,6 +1,5 @@
 import { action, computed, makeObservable, observable } from "mobx";
 import { IRootStore } from "../RootStore";
-import { toJS } from "mobx";
 
 export class SingleProductCounters {
     productCounters: any = {};
@@ -17,15 +16,14 @@ export class SingleProductCounters {
         })
         this.rootStore = rootStore
     }
-
+    
     addAProductCounter(id: number, value: number) {
-
-        console.log(id, value, toJS(this.productCounters), "value")
+       console.log(id, value)
         id && (this.productCounters = { ...this.productCounters, [id]: value })
     }
 
     incrementAProductCounter = (id: number | undefined) => {
-        console.log("increment")
+
         id && (this.productCounters = {
             ...this.productCounters,
             [id]: this.productCounters[id] ? this.productCounters[id] + 1 : 2,
@@ -34,7 +32,6 @@ export class SingleProductCounters {
     };
 
     decrementAProductCounter = (id: number | undefined) => {
-        console.log(this.productCounters, id, "decrement")
         id && (this.productCounters = {
             ...this.productCounters,
             [id]: this.productCounters[id] ? this.productCounters[id] - 1 : 1

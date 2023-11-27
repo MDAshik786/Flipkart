@@ -25,7 +25,7 @@ const relatedTags = [
       },
       {
         "images": "TopRatedImages/bottle.jpg",
-        "name": 'Home & Kitchen'
+        "name": "Home & Kitchen"
       },
       {
         "images": "TopRatedImages/furniture.jpg",

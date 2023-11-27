@@ -87,7 +87,7 @@
 }
 .single-rating-number{
     display: flex;
-    align-items: start;
+    align-items: center;
     justify-content: center;
     gap: 0.3rem;
     height: 1.8rem;
@@ -96,6 +96,7 @@
     width: fit-content;
     padding: 0.2rem 0.7rem;
     border-radius: 0.8rem;
+    font-size: 1.1rem;
 }
 .bsStar-icon{
     color: white;

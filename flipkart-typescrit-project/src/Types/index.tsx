@@ -1,4 +1,3 @@
-
 export type InputFiledProps = {
   type: string;
   className: string;
@@ -11,7 +10,8 @@ export type InputFiledProps = {
 export type ButtonFieldProps = {
   className: string;
   content: string | React.ReactNode;
-  onClick?:any;
+  onClick?: any;
+  disabled?: boolean;
 };
 
 export type Product = {
@@ -33,8 +33,17 @@ export type ImageFiledProps = {
 export type SingleProductProps = {
   product: SingleProduct;
 };
+export type CartSingleProducts = {
+  id: number;
+  quantity: number;
+  defaultValue: number;
+  product: SingleProduct;
+};
+export type CartSingleProductProps = {
+  products: CartSingleProducts;
+};
 export type SingleProduct = {
-  id: number ;
+  id: number;
   image?: string;
   name?: string;
   priceCents?: number;
@@ -48,4 +57,8 @@ export type SingleProduct = {
 export type keywordTypes = {
   id: number;
   keyword: string;
+};
+export type ProductCountProps = {
+  product: SingleProduct;
+  quantity?: number;
 };

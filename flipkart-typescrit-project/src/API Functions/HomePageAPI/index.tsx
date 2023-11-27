@@ -1,32 +1,44 @@
 import axios from 'axios'
-import { getAllProductUrl, getAllScrollingIamgesUrl, getAllTopRelatedTagsUrl } from '../../Utils_/APIUrls'
+import { addAProductToCartUrl, getAllProductUrl, getAllScrollingIamgesUrl, getAllTopRelatedTagsUrl } from '../../Utils_/APIUrls'
 export const getAllTagImages = async () => {
-    try{
+    try {
         const response = await axios.get(getAllTopRelatedTagsUrl)
         return response.data
     }
-    catch(error){
+    catch (error) {
         console.log(error, "error on getAllTagImages")
     }
 }
 export const getAllScrollingImages = async () => {
-    try{
+    try {
         const response = await axios.get(getAllScrollingIamgesUrl)
         return response.data
     }
-    catch(error){
+    catch (error) {
         console.log(error, "error on getAllTagImages")
     }
 }
 export const getAllProduct = async () => {
-    try{
+    try {
         const response = await axios.get(getAllProductUrl)
         return response.data
     }
-    catch(error){
+    catch (error) {
         console.log(error, "error on getAllTagImages")
     }
 }
-export const addAProductToCart = async () => {
-    
+export const addAProductToCart = async (productId: number, productQuantity: number | undefined) => {
+    let quantity = 1
+    if(productQuantity)
+    quantity = productQuantity
+    try {
+        const response = await axios.post(addAProductToCartUrl, { productId, quantity }, {
+            headers: {
+                "content-Type" : "application/json"
+            }
+        })
+    }
+    catch (error) {
+        console.log(error, "addAProductToCart")
+    }
 }

@@ -2,20 +2,18 @@
 import ButtonFiled from "../../../CommonUsedComponents/ButtonField";
 import InputFiled from "../../../CommonUsedComponents/InputFiled";
 import './index.css'
-import { Store } from '../../../MobxStore/Store';
-import { SingleProduct } from '../../../Types';
+import { ProductCountProps } from '../../../Types';
 import { useStore } from "../../../ContextHooks/UseStore";
-import { toJS } from "mobx";
+
 import { observer } from "mobx-react-lite";
 
 
-type ProductCountProps = {
-  product: SingleProduct
-}
-const ProductCount = ({ product }: ProductCountProps) => {
-  const id: number = product.id
+
+
+const ProductCount = ({ product, quantity }: ProductCountProps) => {
+ 
   const { rootStore: { productCounterStore } } = useStore()
-  console.log(toJS(productCounterStore.getProductCounter), '1')
+  
 
 
   return (
@@ -28,7 +26,7 @@ const ProductCount = ({ product }: ProductCountProps) => {
       <InputFiled
         type="number"
         className={"number"}
-        value={productCounterStore.getProductCounter[id] ? productCounterStore.getProductCounter[id] : 1}
+        value={ productCounterStore.getProductCounter[product?.id] ? productCounterStore.getProductCounter[product?.id]  : quantity ? quantity : 1}
         onChange={(e) => productCounterStore?.addAProductCounter(product.id, Number(e.target.value))}
       />
       <ButtonFiled

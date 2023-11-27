@@ -1,0 +1,31 @@
+.cart-address{
+    font-size: 0.9rem;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 2rem;
+    background-color: white;
+    &-left{
+        display: flex;
+        flex-direction: column;
+        gap: 0.1rem;
+    }
+    &-delivery-details{
+        display: flex;
+        gap: 0.4rem;
+        align-items: center;
+
+    }
+    &-location{
+        background-color: lightgrey;
+        height: 1.4rem;
+        padding: 0 0.5rem;
+    }
+    &-name-pincode{
+        font-weight: 550;
+        line-height: 1rem;
+        text-align: end;
+    }
+    &-fully{
+        color: rgb(160, 160, 160);
+    }
+}

@@ -1,0 +1,13 @@
+.cart-main{
+    width: 80rem;
+    margin: 0 auto;
+    display: flex;
+    gap: 1rem;
+
+    &-left{
+        width: 50rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+}

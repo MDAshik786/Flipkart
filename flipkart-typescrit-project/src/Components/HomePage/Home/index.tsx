@@ -26,14 +26,14 @@ const Home = observer(() => {
     queryFn: () => getAllTagImages(),
   });
 
-  // const {
-  //   data: scrollingImagesData,
-  //   error: scrollingImagesError,
-  //   isLoading: scrollingImagesLoading,
-  // } = useQuery({
-  //   queryKey: ["getAllScrollingImages"],
-  //   queryFn: () => getAllScrollingImages(),
-  // });
+  const {
+    data: scrollingImagesData,
+    error: scrollingImagesError,
+    isLoading: scrollingImagesLoading,
+  } = useQuery({
+    queryKey: ["getAllScrollingImages"],
+    queryFn: () => getAllScrollingImages(),
+  });
 
 
   const {
