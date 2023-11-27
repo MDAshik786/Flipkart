@@ -1,12 +1,14 @@
 import { ButtonFieldProps } from "../../Types";
 import { BsFillCartCheckFill } from "react-icons/bs";
 import { AiFillThunderbolt } from "react-icons/ai";
+
 const ButtonFiled = ({
   content,
   className,
   onClick,
   disabled,
 }: ButtonFieldProps) => {
+
   let addToCart = false,
     buyNow = false;
 
@@ -19,7 +21,7 @@ const ButtonFiled = ({
     buyNow = true;
   }
   return (
-    <button className={className} onClick={onClick} disabled={disabled}>
+    <button className={className} onClick={onClick} disabled={disabled} style={disabled ? { backgroundColor: "gray" } : {}}>
       {addToCart && <BsFillCartCheckFill className="addToCart-icons" />}{" "}
       {buyNow && <AiFillThunderbolt />} {content}{" "}
     </button>

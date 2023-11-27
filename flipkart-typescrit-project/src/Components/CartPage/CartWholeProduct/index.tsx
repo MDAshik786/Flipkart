@@ -1,5 +1,5 @@
 import "./index.scss";
-import {  CartSingleProducts } from "../../../Types";
+import { CartSingleProducts } from "../../../Types";
 import CartSingleProduct from "../CartSingleProduct";
 import { useQuery } from "@tanstack/react-query";
 import { getAllCartData } from "../../../API Functions/CartPageAPI";
@@ -13,19 +13,16 @@ const CartwholeProduct = () => {
     queryKey: ["getAllCartData"],
     queryFn: () => getAllCartData(),
   });
- 
-  let cartItems : [] = [], totalCost : number = 0
-  getAllCartDatas && ({ cartItems , totalCost } = getAllCartDatas);
 
+  let cartItems: [] = [],
+    totalCost: number = 0;
+  getAllCartDatas && ({ cartItems, totalCost } = getAllCartDatas);
 
   return (
     <div className="cart-product">
-    
       {cartItems &&
         cartItems.map((product: CartSingleProducts, index: number) => {
-          return (
-            <CartSingleProduct products={product} key={index} />
-          );
+          return <CartSingleProduct products={product} key={index} />;
         })}
     </div>
   );

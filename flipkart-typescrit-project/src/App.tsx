@@ -1,5 +1,5 @@
 
-import "./App.css";
+import "./App.scss";
 import Router from "./Router";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";

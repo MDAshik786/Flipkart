@@ -1,0 +1,55 @@
+@import "../../../SCSSFile/ColorVariable/index.scss";
+@import "../../../SCSSFile/SCSSFunctions/index.scss";
+
+
+.top-offer-tags-images-container {
+  @include displayFlexProperty(center, space-evenly, 0);
+  width: 98%;
+  padding: 1.3rem 2rem;
+  background-color: $whiteColor;
+
+  & img {
+    width: 5rem;
+    aspect-ratio: 1;
+    object-fit: contain;
+  }
+}
+.scrolling-offer-image-container {
+  position: relative;
+  width: 98%;
+
+  & img {
+    width: 100%;
+  }
+}
+.left-arrow-button,
+.right-arrow-button {
+  @include absoluteProperty(31%, 0, 0, 0);
+  width: 2.8rem;
+  background-color: $whiteColor;
+  height: 7rem;
+}
+
+.left-arrow-button {
+  left: 0;
+  border-radius: 0 0.5rem 0.5rem 0;
+}
+.right-arrow-button {
+  right: 0;
+  border-radius: 0.5rem 0 0 0.5rem;
+}
+.arrow-icons {
+  width: 1rem;
+  height: 1rem;
+}
+.addToCart-icons {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+.offer-card-img {
+  width: 98%;
+}
+.product-container {
+  @include displayGridProperty(repeat(6, 1fr), 0.7rem);
+  width: 98%;
+}

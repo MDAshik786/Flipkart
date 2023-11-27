@@ -1,34 +1,33 @@
+@import "../../../SCSSFile/ColorVariable/index.scss";
+@import "../../../SCSSFile/SCSSFunctions/index.scss";
+
 .single-product-container {
-    display: flex;
-    flex-direction: column;
+    @include displayFlexColumnProperty(start, start, 1rem);
    border-radius: 0.5rem;
-    gap: 1rem;
     padding: 2rem 1.5rem;
-    background-color: white;
+    background-color: $whiteColor;
     position: relative;
+
+    & .single-product-img {
+        width: 80%;
+        aspect-ratio: 1;
+       
+    }
 }
 .single-img-container{
     max-width: 100%;
     max-height: 100%;
     aspect-ratio: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include displayFlexProperty(center, center, 0);
 }
-.single-product-container .single-product-img {
-    width: 80%;
-    aspect-ratio: 1;
-   
-}
+
 .single-product-name{
     line-height:1.5rem;
     height: 4rem;
 }
 
 .rating-container {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+    @include displayFlexProperty(center, start, 0.5rem);
 }
 
 .rating-image {
@@ -36,70 +35,58 @@
 }
 
 .single-price-container {
-    display: flex;
-    align-items: center;
+    @include displayFlexProperty(center, start, 0);
 }
 
 .single-quantity-conatiner {
-    display: flex;
-    gap: 0.5rem;
-    align-items: center;
-
+    @include displayFlexProperty(center, start, 0.5rem);
 }
 
 .single-addToCart-button {
     height: 2.1rem;
     border-radius: 0.5rem;
-    background: #FF9F00;
-    color: white;
+    background: $orangPeel;
+    color: $whiteColor;
     text-transform: uppercase;
     font-weight: 600;
     font-size: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    justify-content: center;
+    @include displayFlexProperty(center, center, 0.5rem);
+    width: 100%
 }
 
 .single-absolute {
-    position: absolute;
-    right: 0.4rem;
-    top: 0.4rem;
-    border: 1px solid rgb(194, 193, 193);
+    @include absoluteProperty(0.4rem, 0.4rem, 0, 0);
+    border: 1px solid $borderLightGray;
     padding: 0.5rem;
     border-radius: 1.9rem;
-    display: flex;
-   
+    display: flex; 
 }
 
 .wishlist-img-true,
 .single-wishlist-img-true {
     height: 2rem;
     width: 2rem;
-    color: red;
+    color: $redColor;
 }
 
 .wishlist-img,
 .single-wishlist-img {
     width: 2rem;
     height: 2rem;
-    color: gray;
+    color: $gray;
 }
 .single-rating-number{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.3rem;
+    @include displayFlexProperty(center, center, 0.3rem);
     height: 1.8rem;
-    background-color: green;
-    color: white;
+    background-color: $greenColor;
+    color: $whiteColor;
     width: fit-content;
     padding: 0.2rem 0.7rem;
     border-radius: 0.8rem;
     font-size: 1.1rem;
 }
 .bsStar-icon{
-    color: white;
+    color: $whiteColor;
     width: 1.2rem;
     height: 1.2rem;
 }

@@ -1,31 +1,42 @@
-.cart-address{
-    font-size: 0.9rem;
-    display: flex;
-    justify-content: space-between;
-    padding: 0.5rem 2rem;
-    background-color: white;
-    &-left{
-        display: flex;
-        flex-direction: column;
-        gap: 0.1rem;
-    }
-    &-delivery-details{
-        display: flex;
-        gap: 0.4rem;
-        align-items: center;
+@import "../../../SCSSFile/ColorVariable/index.scss";
+@import "../../../SCSSFile/SCSSFunctions/index.scss";
 
-    }
-    &-location{
-        background-color: lightgrey;
-        height: 1.4rem;
-        padding: 0 0.5rem;
-    }
-    &-name-pincode{
-        font-weight: 550;
-        line-height: 1rem;
-        text-align: end;
-    }
-    &-fully{
-        color: rgb(160, 160, 160);
-    }
+.cart-address {
+  font-size: 0.9rem;
+  @include displayFlexProperty(center, space-between, 0);
+  padding: 0.5rem 2rem;
+  background-color: $whiteColor;
+  width: 100%;
+
+  &-left {
+    @include displayFlexColumnProperty(start, start, 0.2rem);
+  }
+
+  &-delivery-details {
+    @include displayFlexProperty(center, start, 0.4rem);
+  }
+
+  &-location {
+    background-color: $lightGray94;
+    height: 1.4rem;
+    padding: 0 0.5rem;
+  }
+
+  &-name-pincode {
+    font-weight: 550;
+    line-height: 1rem;
+    text-align: end;
+  }
+
+  &-fully {
+    color: $mediumGray;
+  }
+
+  &-change-button {
+    height: 2.2rem;
+    padding: 0 0.5rem;
+    border: 1px solid $lightGray88;
+    color: $blueColor;
+    background-color: $whiteColor;
+  }
 }

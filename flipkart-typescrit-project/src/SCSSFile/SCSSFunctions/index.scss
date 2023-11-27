@@ -1,0 +1,37 @@
+@mixin buttonStyle() {
+}
+
+@mixin displayFlexProperty($ai, $jc, $gap) {
+  display: flex;
+  align-items: $ai;
+  justify-content: $jc;
+  gap: $gap;
+}
+@mixin displayFlexColumnProperty($ai, $jc, $gap) {
+  display: flex;
+  flex-direction: column;
+  align-items: $ai;
+  justify-content: $jc;
+  gap: $gap;
+}
+@mixin displayGridProperty($gtc, $gap) {
+  display: grid;
+  grid-template-columns: $gtc;
+  gap: $gap;
+}
+@mixin absoluteProperty($top, $right, $bottom, $left) {
+  position: absolute;
+
+  @if $top > 0 {
+    top: $top;
+  }
+  @if $right > 0 {
+    right: $right;
+  }
+  @if $bottom > 0 {
+    bottom: $bottom;
+  }
+  @if $left > 0 {
+    left: $left;
+  }
+}

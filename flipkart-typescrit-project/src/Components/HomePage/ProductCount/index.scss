@@ -1,0 +1,35 @@
+@import "../../../SCSSFile/ColorVariable/index.scss";
+@import "../../../SCSSFile/SCSSFunctions/index.scss";
+
+.number-container {
+  @include displayFlexProperty(center, flex-start, 0);
+  width: 55%;
+  border-radius: 0.5rem;
+}
+
+.symbol {
+  border: none;
+  background-color: transparent;
+  padding: 0.1rem 0.5rem;
+  font-size: 1.2rem;
+}
+
+.number {
+  text-align: center;
+  color: rgb(33, 33, 33);
+  border: 1px solid $borderLightGray;
+  border-radius: 0.6rem;
+  width: 4rem;
+  outline: none;
+  font-size: 1.1rem;
+  padding: 0.2rem 0;
+
+  &:active,
+  &:hover {
+    border: 1px solid $lightYellow;
+  }
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}

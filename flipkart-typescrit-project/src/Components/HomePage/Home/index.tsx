@@ -1,4 +1,4 @@
-import "./index.css";
+import "./index.scss";
 import HomeHeader from "../HomeHeader";
 import {
   getAllProduct,
@@ -63,7 +63,6 @@ const Home = observer(() => {
           <TopOfferTagsImage product={product} key={product.id} />
         ))}
       </div>
-      {counterStore?.getCounterValue}
       <ScrollingIamges />
       <ImageField src={offerCard} alt="card Offer" className="offer-card-img" />
       <div className="product-container">

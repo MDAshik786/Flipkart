@@ -28,6 +28,7 @@ export type ImageFiledProps = {
   src: string;
   alt?: string;
   className?: string;
+  ref?: any
 };
 
 export type SingleProductProps = {

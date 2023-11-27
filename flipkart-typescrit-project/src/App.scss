@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital@1&display=swap');
+@import './SCSSFile/SCSSFunctions/index.scss';
 
 *{
   margin:0;
@@ -11,16 +12,12 @@ body{
   overflow-x: hidden;
   
 }
+
 .app-main{
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-  align-items: center;
-  
+  @include displayFlexColumnProperty(center, start, 0.6rem);  
 }
 button {
   position: relative;
- 
   outline: none;
   border: none;
 }

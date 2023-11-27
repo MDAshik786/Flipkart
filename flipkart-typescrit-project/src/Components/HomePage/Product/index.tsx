@@ -4,7 +4,7 @@ import ProductCount from "../ProductCount";
 import { AiOutlineHeart } from "react-icons/ai";
 import { AiFillHeart } from "react-icons/ai";
 import { BiSolidStar } from "react-icons/bi";
-import "./index.css";
+import "./index.scss";
 import { SingleProductProps } from "../../../Types";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { addAProductToCart } from "../../../API Functions/HomePageAPI";
@@ -24,7 +24,7 @@ export const SingleProduct = ({ product }: SingleProductProps) => {
 
   const handleAddToCart = async (quantity: number) => {
     try {
-      await addToCartMutation.mutateAsync(quantity)
+      await addToCartMutation.mutate(quantity)
     }
     catch (error: any) {
       console.log(error.message)
@@ -56,7 +56,7 @@ export const SingleProduct = ({ product }: SingleProductProps) => {
         <span>Quantity:</span>
         <ProductCount product={product} />
       </div>
-      <ButtonFiled content="Add To Cart" className="single-addToCart-button" onClick={() => handleAddToCart(productCounterStore.getProductCounter[product.id])} disabled={addToCartMutation.isPending}/>
+      <ButtonFiled content="Add To Cart" className="single-addToCart-button" onClick={() => addToCartMutation.mutate(productCounterStore.getProductCounter[product.id])} disabled={addToCartMutation.isPending}/>
       <div className="single-absolute">
         <AiFillHeart className="single-wishlist-img-true" />
     

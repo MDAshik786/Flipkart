@@ -7,4 +7,3 @@ export type HanglenavigateType = {
     event.preventDefault();
     navigate(name);
   };
-  

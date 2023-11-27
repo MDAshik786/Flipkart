@@ -1,3 +1,4 @@
+import './index.scss'
 const SignUp = () => {
   return (
     <div>SignUp</div>

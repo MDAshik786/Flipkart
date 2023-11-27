@@ -1,0 +1,53 @@
+@import "../../../SCSSFile/ColorVariable/index.scss";
+@import "../../../SCSSFile/SCSSFunctions/index.scss";
+
+.cart-header {
+  height: 3.5rem;
+  background-color: $blueColor;
+  padding: 0 14rem;
+  width: 100%;
+  @include displayFlexProperty(center, space-around, 0);
+  position: sticky;
+  top: 0;
+
+  & img {
+    width: 7rem;
+    aspect-ratio: 1;
+  }
+
+  &-left {
+    @include displayFlexProperty(center, center, 1rem);
+  }
+
+  &-input {
+    height: 2.3rem;
+    outline: none;
+    border: none;
+    flex: 1;
+    padding: 0 0.5rem;
+    font-size: 1rem;
+    border-radius: 0.2rem 0 0 0.2rem;
+
+    &-button {
+      height: 2.3rem;
+      width: fit-content;
+      padding: 0 0.7rem;
+      @include displayFlexProperty(center, center, 0);
+      border-radius: 0 0.2rem 0.2rem 0;
+    }
+  }
+  &-icon {
+    width: 1.4rem;
+    height: 1.4rem;
+    color: $blueColor;
+  }
+
+  &-input-div {
+    @include displayFlexProperty(center, center, 0);
+    width: 35rem;
+  }
+  &-user{
+    color: $whiteColor;
+    font-weight: 550;
+  }
+}

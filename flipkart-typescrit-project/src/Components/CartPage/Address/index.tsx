@@ -13,7 +13,7 @@ const Address = () => {
                 <div className='cart-address-fully'>16, pallivasal Street, periyakalayam Puthur,Palani</div>
             </div>
             <div className="address-right">
-            <ButtonFiled content="Change" className='cart-address-location' />  
+            <ButtonFiled content="Change" className='cart-address-change-button' />  
             </div>
         </div>
     )

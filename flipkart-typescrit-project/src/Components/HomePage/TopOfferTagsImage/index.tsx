@@ -1,5 +1,5 @@
 import ImageField from "../../../CommonUsedComponents/ImageField";
-import "./index.css";
+import "./index.scss";
 import { TopOfferTagsImageProps } from "../../../Types";
 const TopOfferTagsImage = ({ product }: TopOfferTagsImageProps) => {
   return (

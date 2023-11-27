@@ -13,7 +13,7 @@ export class CounterStore {
             getCounterValue: computed
         })
         this.rootStore = rootStore
-        this.autoIncrement()
+        // this.autoIncrement()
     }
 
     increment = () => {

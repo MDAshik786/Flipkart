@@ -1,9 +1,11 @@
+@import "../../../SCSSFile/ColorVariable/index.scss";
+@import "../../../SCSSFile/SCSSFunctions/index.scss";
+
 .main-div {
   height: 100vh;
-  display: flex;
-  align-items: center;
+  @include displayFlexProperty (center, flex-start, 0);
   width: 100%;
-  background-color: whitesmoke;
+  background-color: $whitesmoke;
   font-size: 1rem;
 }
 .login-main-container {
@@ -11,24 +13,20 @@
   display: flex;
   width: 55%;
   height: 48rem;
-  background-color: white;
+  background-color: $whiteColor;
 }
 
 .login-left-container {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
+  @include displayFlexColumnProperty (start, flex-start, 2rem);
   width: 40%;
-  background-color: #2874f0;
-  color: #fff;
+  background-color: $blueColor;
+  color: $whiteColor;
   padding: 2rem;
 }
 
 .login-right-container {
   padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
+  @include displayFlexColumnProperty (start, flex-start, 2rem);
 }
 
 .login-heading {
@@ -40,7 +38,7 @@
 .login-left-content {
   font-size: 1.4rem;
   line-height: 2rem;
-  color: rgb(233, 230, 230);
+  color: $darkwhite;
 }
 .login-email-container,
 .login-password-container {
@@ -49,32 +47,31 @@
   padding: 0 0.5rem;
   border-top: none;
   border-right: none;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid $blackColor;
   border-left: none;
 }
 .blue-color {
-  color: #2874f0;
+  color: $blueColor;
 }
 .Login-button {
   height: 2.5rem;
   border-radius: 0.2rem;
   width: 80%;
-  background: #fb641b;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+  background: $darkOrange;
+  box-shadow: 0 1px 2px 0 $boxShadowBlack;
   border: none;
-  color: #ffffff;
+  color: $whiteColor;
   font-size: 1.1rem;
   font-weight: 600;
 }
 .login-email-div,
 .login-password-div {
   position: relative;
+  width: 100%;
 }
 .login-placeholder {
-  position: absolute;
-  top: 0.5rem;
-  left: 0.5rem;
+  @include absoluteProperty(0.5rem, -1, -1, 0.5rem)
 }
-.agree-container{
-    font-size: 0.9rem;
+.agree-container {
+  font-size: 0.9rem;
 }

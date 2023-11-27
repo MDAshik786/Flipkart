@@ -1,4 +1,4 @@
-import "./index.css";
+import "./index.scss";
 import {useState} from 'react'
 import logo from "../../../Asserts/Images/flipkartLogo.svg";
 import plus from "../../../Asserts/Images/flipkartPlus.svg";
@@ -18,8 +18,8 @@ const HomeHeader = () => {
   } 
   const navigate = useNavigate()
   return (
-    <header>
-      <div className="header-branding-container">
+    <header className="header">
+      <div className="header--branding-container">
         <img src={logo} alt="FlipKart" className="img" />
         <div className="header-explore-name">
           <span className="head-explore">Explore</span>

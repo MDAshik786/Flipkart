@@ -1,0 +1,11 @@
+@import "../../../SCSSFile/SCSSFunctions/index.scss";
+
+.top-offer-names-container{
+    @include displayFlexColumnProperty (center, flex-start, 1rem);
+}
+
+
+.top-offer-names{
+    font-weight: 550;
+    font-size: 1.1rem;
+}

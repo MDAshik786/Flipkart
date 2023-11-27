@@ -1,5 +1,5 @@
 
-import './index.css'
+import './index.scss'
 import img from '../../../Asserts/Images/flipkart-login.png'
 import InputFiled from "../../../CommonUsedComponents/InputFiled"
 import ButtonFiled from "../../../CommonUsedComponents/ButtonField"

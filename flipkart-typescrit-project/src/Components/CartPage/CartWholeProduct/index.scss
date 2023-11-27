@@ -1,39 +1,34 @@
-.cart-product{
-    padding: 0.5rem;
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    font-size: 1rem;
-    
-    &-allData{
-     display: flex;
-     align-items: center;
-     gap: 2rem;
-     border-bottom: 1px solid lightpink;
-     padding: 1rem 0.5rem;
-    }
-    &-img-container{
-        width: 22%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+@import "../../../SCSSFile/ColorVariable/index.scss";
+@import "../../../SCSSFile/SCSSFunctions/index.scss";
 
-    &-img{
-       width: 90%;
-       aspect-ratio: 1;
-       
-    }
-    &-details{
-        width: 42%;
-        display: flex;
-        flex-direction: column;
-        gap: 0.7rem;
-    }
-    &-action-container{
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-    }
+.cart-product {
+  padding: 0.5rem;
+  background-color: $whiteColor;
+  @include displayFlexColumnProperty(start, start, 1rem);
+  font-size: 1rem;
+
+  &-allData {
+    @include displayFlexProperty(center, start, 2rem);
+    border-bottom: 1px solid $lightPink;
+    padding: 1rem 0.5rem;
+  }
+
+  &-img-container {
+    width: 22%;
+    @include displayFlexProperty(center, center, 0); 
+  }
+
+  &-img {
+    width: 90%;
+    aspect-ratio: 1;
+  }
+  &-details {
+    width: 42%;
+    @include displayFlexColumnProperty(start, start, 0.7rem);
+  }
+  &-action-container {
+    @include displayFlexProperty(center, start, 1rem );
+    color: $darkGreen;
+    font-weight: 550;
+  }
 }
