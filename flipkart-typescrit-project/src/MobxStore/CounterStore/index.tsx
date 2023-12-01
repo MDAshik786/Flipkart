@@ -1,5 +1,5 @@
 import { action, computed, makeObservable, observable } from "mobx";
-import { IRootStore, RootStore } from "../RootStore";
+import { IRootStore } from "../RootStore";
 
 export class CounterStore {
     imageCounter: number = 0;

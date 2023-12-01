@@ -1,6 +1,6 @@
 import { InputFiledProps } from "../../Types";
 
-const InputFiled = ({ className, placeholder, autoFocus,type,value, onChange }: InputFiledProps) => {
+const InputFiled = ({ className, placeholder, autoFocus, type, name, value, onChange }: InputFiledProps) => {
   return (
     <input
       type={type}
@@ -8,7 +8,9 @@ const InputFiled = ({ className, placeholder, autoFocus,type,value, onChange }: 
       placeholder={placeholder}
       autoFocus={autoFocus}
       value={value}
+      name={name}
       onChange={onChange}
+     
       />
   );
 };

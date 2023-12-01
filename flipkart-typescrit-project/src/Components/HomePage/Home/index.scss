@@ -22,34 +22,41 @@
     width: 100%;
   }
 }
+
 .left-arrow-button,
 .right-arrow-button {
-  @include absoluteProperty(31%, 0, 0, 0);
-  width: 2.8rem;
+  @include absoluteProperty(31%, -1, -1, -1);
+  @include heightWidthProperty(7rem, 2.8rem);
   background-color: $whiteColor;
-  height: 7rem;
 }
 
 .left-arrow-button {
   left: 0;
   border-radius: 0 0.5rem 0.5rem 0;
 }
+
 .right-arrow-button {
   right: 0;
   border-radius: 0.5rem 0 0 0.5rem;
 }
+
 .arrow-icons {
-  width: 1rem;
-  height: 1rem;
+  @include heightWidthProperty(1rem, 1rem);
 }
+
 .addToCart-icons {
-  width: 1.2rem;
-  height: 1.2rem;
+  @include heightWidthProperty(1.2rem, 1.2rem);
 }
+
 .offer-card-img {
   width: 98%;
 }
+
 .product-container {
   @include displayGridProperty(repeat(6, 1fr), 0.7rem);
   width: 98%;
+}
+
+.₹{
+  color: $blueColor;
 }

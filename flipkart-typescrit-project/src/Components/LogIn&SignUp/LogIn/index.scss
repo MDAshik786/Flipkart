@@ -1,32 +1,30 @@
+
 @import "../../../SCSSFile/ColorVariable/index.scss";
 @import "../../../SCSSFile/SCSSFunctions/index.scss";
 
 .main-div {
-  height: 100vh;
-  @include displayFlexProperty (center, flex-start, 0);
-  width: 100%;
+  @include heightWidthProperty(100vh, 100%);
+  @include displayFlexProperty(center, flex-start, 0);
   background-color: $whitesmoke;
   font-size: 1rem;
 }
+
 .login-main-container {
   margin: auto;
   display: flex;
-  width: 55%;
-  height: 48rem;
+  @include heightWidthProperty(48rem, 55%);
   background-color: $whiteColor;
 }
 
 .login-left-container {
-  @include displayFlexColumnProperty (start, flex-start, 2rem);
-  width: 40%;
-  background-color: $blueColor;
-  color: $whiteColor;
-  padding: 2rem;
+  @include displayFlexColumnProperty(start, flex-start, 2rem);
+  @include buttonStyle(none, 40%, 2rem, none, $blueColor, $whiteColor);
 }
 
 .login-right-container {
   padding: 2rem;
-  @include displayFlexColumnProperty (start, flex-start, 2rem);
+  @include displayFlexColumnProperty(start, flex-start, 2rem);
+
 }
 
 .login-heading {
@@ -40,38 +38,55 @@
   line-height: 2rem;
   color: $darkwhite;
 }
+
 .login-email-container,
 .login-password-container {
-  height: 2.5rem;
-  width: 80%;
+  @include heightWidthProperty(2.5rem, 80%);
   padding: 0 0.5rem;
   border-top: none;
   border-right: none;
   border-bottom: 1px solid $blackColor;
   border-left: none;
+  position: relative;
+  font-size: 1.1rem;
 }
+
 .blue-color {
   color: $blueColor;
 }
+
 .Login-button {
-  height: 2.5rem;
-  border-radius: 0.2rem;
-  width: 80%;
-  background: $darkOrange;
+  @include buttonStyle(2.5rem, 80%, none, 0.2rem, $darkOrange, $whiteColor);
   box-shadow: 0 1px 2px 0 $boxShadowBlack;
   border: none;
-  color: $whiteColor;
   font-size: 1.1rem;
   font-weight: 600;
 }
+
 .login-email-div,
 .login-password-div {
   position: relative;
-  width: 100%;
+  width: auto;
+  height: auto;
 }
+
 .login-placeholder {
-  @include absoluteProperty(0.5rem, -1, -1, 0.5rem)
+  // @include absoluteProperty(1rem, -1, -1, 0);
+  pointer-events: none;
+  transition: 0.3s ease all;
+  font-size: 1rem;
 }
+
+.login-email-container:focus + .login-placeholder,
+.login-password-container:focus + .login-placeholder,
+.login-email-container:not(:placeholder-shown) + .login-placeholder,
+.login-password-container:not(:placeholder-shown) + .login-placeholder {
+  font-size: 2rem;
+  color: $blueColor;
+  top: 0;
+  left: 1rem;
+}
+
 .agree-container {
   font-size: 0.9rem;
 }

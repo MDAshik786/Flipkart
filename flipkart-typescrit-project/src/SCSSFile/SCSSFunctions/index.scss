@@ -1,4 +1,20 @@
-@mixin buttonStyle() {
+@mixin buttonStyle($height, $width, $padding, $br, $bc, $color) {
+  height: $height;
+  @if($width != 'none'){
+    width: $width;
+  }
+  @if ($padding != "none") {
+    padding: $padding;
+  }
+  @if ($br != "none") {
+    border-radius: $br;
+  }
+  @if ($bc != "none") {
+    background-color: $bc;
+  }
+  @if ($color != "none") {
+    color: $color;
+  }
 }
 
 @mixin displayFlexProperty($ai, $jc, $gap) {
@@ -10,8 +26,12 @@
 @mixin displayFlexColumnProperty($ai, $jc, $gap) {
   display: flex;
   flex-direction: column;
-  align-items: $ai;
-  justify-content: $jc;
+  @if $ai != "start" {
+    align-items: $ai;
+  }
+  @if $jc != "start" {
+    justify-content: $jc;
+  }
   gap: $gap;
 }
 @mixin displayGridProperty($gtc, $gap) {
@@ -22,16 +42,31 @@
 @mixin absoluteProperty($top, $right, $bottom, $left) {
   position: absolute;
 
-  @if $top > 0 {
+  @if $top >= 0 {
     top: $top;
   }
-  @if $right > 0 {
+  @if $right >= 0 {
     right: $right;
   }
-  @if $bottom > 0 {
+  @if $bottom >= 0 {
     bottom: $bottom;
   }
-  @if $left > 0 {
+  @if $left >= 0 {
     left: $left;
   }
+}
+
+@mixin imgProperty($width, $ar, $height) {
+  width: $width;
+  @if ($ar != "none") {
+    aspect-ratio: $ar;
+  }
+  @if ($height != "none") {
+    height: $height;
+  }
+}
+
+@mixin heightWidthProperty($height, $width) {
+  height: $height;
+  width: $width;
 }

@@ -5,3 +5,6 @@ export const addAProductToCartUrl = 'http://localhost:8080/cart/add/rioashik786@
 export const getAllCartProductUrl = 'http://localhost:8080/cart/get/rioashik786@gmail.com'
 export const updateAProductUrl = 'http://localhost:8080/cart/update/rioashik786@gmail.com'
 export const deleteAProductUrl = 'http://localhost:8080/cart/delete'
+export const addToWishListUrl =  'http://localhost:8080/wishList/add'
+export const getspecificWishListProductUrl = 'http://localhost:8080/wishList/get/specific'
+export const getAllWishListProductUrl = 'http://localhost:8080/wishList/get/'

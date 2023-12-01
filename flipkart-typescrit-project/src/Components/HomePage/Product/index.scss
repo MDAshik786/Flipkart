@@ -2,91 +2,87 @@
 @import "../../../SCSSFile/SCSSFunctions/index.scss";
 
 .single-product-container {
-    @include displayFlexColumnProperty(start, start, 1rem);
-   border-radius: 0.5rem;
-    padding: 2rem 1.5rem;
-    background-color: $whiteColor;
-    position: relative;
+  @include displayFlexColumnProperty(start, start, 1rem);
+  border-radius: 0.5rem;
+  padding: 2rem 1.5rem;
+  background-color: $whiteColor;
+  position: relative;
 
-    & .single-product-img {
-        width: 80%;
-        aspect-ratio: 1;
-       
-    }
-}
-.single-img-container{
-    max-width: 100%;
-    max-height: 100%;
+  & .single-product-img {
+    width: 80%;
     aspect-ratio: 1;
-    @include displayFlexProperty(center, center, 0);
+  }
+}
+.single-img-container {
+  max-width: 100%;
+  max-height: 100%;
+  aspect-ratio: 1;
+  @include displayFlexProperty(center, center, 0);
 }
 
-.single-product-name{
-    line-height:1.5rem;
-    height: 4rem;
+.single-product-name {
+  line-height: 1.5rem;
+  height: 4rem;
 }
 
 .rating-container {
-    @include displayFlexProperty(center, start, 0.5rem);
+  @include displayFlexProperty(center, start, 0.5rem);
 }
 
 .rating-image {
-    margin: 0;
+  margin: 0;
 }
 
 .single-price-container {
-    @include displayFlexProperty(center, start, 0);
+  @include displayFlexProperty(center, start, 0);
 }
 
 .single-quantity-conatiner {
-    @include displayFlexProperty(center, start, 0.5rem);
+  @include displayFlexProperty(center, start, 0.5rem);
 }
 
 .single-addToCart-button {
-    height: 2.1rem;
-    border-radius: 0.5rem;
-    background: $orangPeel;
-    color: $whiteColor;
-    text-transform: uppercase;
-    font-weight: 600;
-    font-size: 1rem;
-    @include displayFlexProperty(center, center, 0.5rem);
-    width: 100%
+  @include buttonStyle(2.1rem, 100%, none, 0.5rem, $orangPeel, $whiteColor);
+  @include displayFlexProperty(center, center, 0.5rem);
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 1rem;
 }
 
 .single-absolute {
-    @include absoluteProperty(0.4rem, 0.4rem, 0, 0);
-    border: 1px solid $borderLightGray;
-    padding: 0.5rem;
-    border-radius: 1.9rem;
-    display: flex; 
+  @include absoluteProperty(0.4rem, 0.4rem, -1, -1);
+  border: 1px solid $borderLightGray;
+  padding: 0.5rem;
+  border-radius: 1.9rem;
+  display: flex;
 }
 
 .wishlist-img-true,
 .single-wishlist-img-true {
-    height: 2rem;
-    width: 2rem;
-    color: $redColor;
+  @include heightWidthProperty(2rem, 2rem);
+  color: $redColor;
 }
 
 .wishlist-img,
 .single-wishlist-img {
-    width: 2rem;
-    height: 2rem;
-    color: $gray;
+  @include heightWidthProperty(2rem, 2rem);
+  color: $gray;
 }
-.single-rating-number{
-    @include displayFlexProperty(center, center, 0.3rem);
-    height: 1.8rem;
-    background-color: $greenColor;
-    color: $whiteColor;
-    width: fit-content;
-    padding: 0.2rem 0.7rem;
-    border-radius: 0.8rem;
-    font-size: 1.1rem;
+
+.single-rating-number {
+  @include displayFlexProperty(center, center, 0.3rem);
+  @include buttonStyle(
+    1.8rem,
+    fit-content,
+    0.2rem 0.7rem,
+    0.8rem,
+    $greenColor,
+    $whiteColor
+  );
+  font-size: 1.1rem;
 }
-.bsStar-icon{
-    color: $whiteColor;
-    width: 1.2rem;
-    height: 1.2rem;
+
+.bsStar-icon {
+  @include heightWidthProperty(1.2rem, 1.2rem);
+  color: $whiteColor;
 }

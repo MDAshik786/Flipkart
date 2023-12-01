@@ -4,7 +4,9 @@ import {
   getAllCartProductUrl,
   updateAProductUrl,
 } from "../../Utils_/APIUrls";
-const email = "rioashik786@gmail.com";
+
+export const email = "rioashik786@gmail.com";
+
 export const getAllCartData = async () => {
   try {
     const response = await axios.get(getAllCartProductUrl);
@@ -15,7 +17,7 @@ export const getAllCartData = async () => {
 };
 
 export const updateAProduct = async (id: number, quantity: number) => {
-  console.log(id, quantity);
+  
   try {
     const response = await axios.put(
       updateAProductUrl,

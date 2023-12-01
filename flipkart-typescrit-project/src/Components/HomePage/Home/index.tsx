@@ -14,9 +14,13 @@ import ImageField from "../../../CommonUsedComponents/ImageField";
 import SingleProduct from "../Product";
 import { useStore } from "../../../ContextHooks/UseStore";
 import ScrollingIamges from "../ScrollingImages";
+import { getAllWhishListProduct, getSpecificWhishListProduct } from "../../../API Functions/WishListAPI";
 
 const Home = observer(() => {
-  const { rootStore: { counterStore } } = useStore()
+  const {
+    rootStore: { counterStore, wishListStore },
+  } = useStore();
+
   const {
     data: tagImagesData,
     error: tagImagesError,
@@ -27,16 +31,6 @@ const Home = observer(() => {
   });
 
   const {
-    data: scrollingImagesData,
-    error: scrollingImagesError,
-    isLoading: scrollingImagesLoading,
-  } = useQuery({
-    queryKey: ["getAllScrollingImages"],
-    queryFn: () => getAllScrollingImages(),
-  });
-
-
-  const {
     data: getAllProductData,
     error: getAllProductError,
     isLoading: getAllProductLoading,
@@ -45,15 +39,22 @@ const Home = observer(() => {
     queryFn: () => getAllProduct(),
   });
 
-  if (tagImagesLoading || getAllProductLoading)
-    return <p>Loading...</p>;
+  const {
+    data: getSpecificWishListData,
+    error: wishListProductError,
+    isLoading: wishListProductLoading,
+  } = useQuery({
+    queryKey: ["getSpecificIdWishListProduct"],
+    queryFn: () => getSpecificWhishListProduct(),
+  });
+  
+  wishListStore.setFunction(getSpecificWishListData)
+  
+
+  if (tagImagesLoading || getAllProductLoading) return <p>Loading...</p>;
   if (tagImagesError && getAllProductError)
     return (
-      <p>
-        Error:{" "}
-        {tagImagesError?.message ||
-          getAllProductError?.message}
-      </p>
+      <p>Error: {tagImagesError?.message || getAllProductError?.message}</p>
     );
   return (
     <>
@@ -67,10 +68,9 @@ const Home = observer(() => {
       <ImageField src={offerCard} alt="card Offer" className="offer-card-img" />
       <div className="product-container">
         {getAllProductData?.map((product: Product, index: number) => (
-          <SingleProduct product={product} key={index} />
+          <SingleProduct product={product} key={index} data = {getSpecificWhishListProduct} />
         ))}
       </div>
-
     </>
   );
 });

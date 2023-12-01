@@ -1,6 +1,9 @@
+import React from "react";
+
 export type InputFiledProps = {
   type: string;
   className: string;
+  name? : string;
   placeholder?: string;
   value?: string | number | readonly string[] | undefined;
   autoFocus?: boolean;
@@ -33,16 +36,20 @@ export type ImageFiledProps = {
 
 export type SingleProductProps = {
   product: SingleProduct;
+  data : () => Promise<any>;
 };
+
 export type CartSingleProducts = {
   id: number;
   quantity: number;
   defaultValue: number;
   product: SingleProduct;
 };
+
 export type CartSingleProductProps = {
   products: CartSingleProducts;
 };
+
 export type SingleProduct = {
   id: number;
   image?: string;
@@ -55,11 +62,22 @@ export type SingleProduct = {
   description?: string;
   keywords?: keywordTypes[];
 };
+
 export type keywordTypes = {
   id: number;
   keyword: string;
 };
+
 export type ProductCountProps = {
   product: SingleProduct;
   quantity?: number;
 };
+
+export type setStateType =  React.Dispatch<React.SetStateAction<boolean>>;
+
+export type inputValueProps = {
+  email : string,
+  password : string
+}
+
+export type setStateObject = React.Dispatch<React.SetStateAction<inputValueProps>>;

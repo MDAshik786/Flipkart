@@ -19,16 +19,18 @@
   }
 
   &-img {
-    width: 90%;
-    aspect-ratio: 1;
+    @include imgProperty(90%,1, none);
   }
+
   &-details {
     width: 42%;
     @include displayFlexColumnProperty(start, start, 0.7rem);
   }
+
   &-action-container {
     @include displayFlexProperty(center, start, 1rem );
     color: $darkGreen;
     font-weight: 550;
   }
+  
 }

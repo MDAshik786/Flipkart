@@ -3,8 +3,7 @@
 
 .header {
   @include displayFlexProperty(center, space-between, 0);
-  width: 100%;
-  height: 4.5rem;
+  @include heightWidthProperty(4.5rem, 100%);
   padding: 0 2rem;
   background-color: $whiteColor;
   position: sticky;
@@ -29,22 +28,28 @@
     }
   }
   &-input {
-    border-radius: 0 0.5rem 0.5rem 0rem;
+    @include buttonStyle(
+      3rem,
+      100%,
+      none,
+      0 0.5rem 0.5rem 0rem,
+      $lightWhite,
+      none
+    );
     border: 0;
     outline: 0 none;
-    font-size: 17px;
-    height: 3rem;
-    width: 100%;
-    background-color: $lightWhite;
     font-size: 1.3rem;
   }
   &-serach-icons {
-    height: 3rem;
-    width: fit-content;
-    padding: 0 0.7rem;
-    background-color: $lightWhite;
     @include displayFlexProperty(center, center, 0);
-    border-radius: 0.5rem 0 0 0.5rem;
+    @include buttonStyle(
+      3rem,
+      fit-content,
+      0 0.7rem,
+      0.5rem 0 0 0.5rem,
+      $lightWhite,
+      none
+    );
   }
 }
 
@@ -77,6 +82,5 @@
 }
 
 .head-search-icons {
-  width: 1.5rem;
-  height: 1.5rem;
+  @include heightWidthProperty(1.5rem, 1.5rem);
 }

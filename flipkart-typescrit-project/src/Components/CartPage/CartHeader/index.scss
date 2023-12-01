@@ -8,11 +8,11 @@
   width: 100%;
   @include displayFlexProperty(center, space-around, 0);
   position: sticky;
-  top: 0;
+  top: 0.3rem;
+  z-index: 1;
 
   & img {
-    width: 7rem;
-    aspect-ratio: 1;
+    @include imgProperty(7rem , 1, none)
   }
 
   &-left {
@@ -20,6 +20,7 @@
   }
 
   &-input {
+   
     height: 2.3rem;
     outline: none;
     border: none;
@@ -29,16 +30,12 @@
     border-radius: 0.2rem 0 0 0.2rem;
 
     &-button {
-      height: 2.3rem;
-      width: fit-content;
-      padding: 0 0.7rem;
+      @include buttonStyle(2.3rem, fit-content, 0 0.7rem, 0 0.2rem 0.2rem 0 , $whiteColor, none);
       @include displayFlexProperty(center, center, 0);
-      border-radius: 0 0.2rem 0.2rem 0;
     }
   }
   &-icon {
-    width: 1.4rem;
-    height: 1.4rem;
+    @include heightWidthProperty(1.4rem , 1.4rem);
     color: $blueColor;
   }
 

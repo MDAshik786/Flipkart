@@ -18,7 +18,6 @@ export class SingleProductCounters {
     }
     
     addAProductCounter(id: number, value: number) {
-       console.log(id, value)
         id && (this.productCounters = { ...this.productCounters, [id]: value })
     }
 
