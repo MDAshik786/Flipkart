@@ -36,7 +36,6 @@ export type ImageFiledProps = {
 
 export type SingleProductProps = {
   product: SingleProduct;
-  data : () => Promise<any>;
 };
 
 export type CartSingleProducts = {

@@ -1,4 +1,4 @@
-import { action, makeObservable, observable, toJS } from "mobx";
+import { action, computed, makeObservable, observable, toJS } from "mobx";
 import { IRootStore } from "../RootStore";
 
 export class WishListStore {
@@ -12,7 +12,8 @@ export class WishListStore {
         makeObservable(this, {
             allWishListProduct : observable,
             specificWishListProduct : observable,
-            setFunction : action
+            setFunction : action,
+            getSpecificWishList : computed
         })
 
         this.rootStore = rootStore
@@ -20,6 +21,10 @@ export class WishListStore {
     
     setFunction = (value : []) => {
         this.specificWishListProduct = value;
+    }
+
+    get getSpecificWishList (){
+        return this.specificWishListProduct;
     }
  
 

@@ -68,7 +68,7 @@ const Home = observer(() => {
       <ImageField src={offerCard} alt="card Offer" className="offer-card-img" />
       <div className="product-container">
         {getAllProductData?.map((product: Product, index: number) => (
-          <SingleProduct product={product} key={index} data = {getSpecificWhishListProduct} />
+          <SingleProduct product={product} key={index} />
         ))}
       </div>
     </>

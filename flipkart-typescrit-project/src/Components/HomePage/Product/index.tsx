@@ -10,9 +10,9 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { addAProductToCart } from "../../../API Functions/HomePageAPI";
 import { useStore } from "../../../ContextHooks/UseStore";
 
-export const SingleProduct = ({ product, data }: SingleProductProps) => {
+export const SingleProduct = ({ product }: SingleProductProps) => {
   const {
-    rootStore: { productCounterStore },
+    rootStore: { productCounterStore, wishListStore },
   } = useStore();
 
   const queryClient = useQueryClient();
@@ -23,6 +23,12 @@ export const SingleProduct = ({ product, data }: SingleProductProps) => {
       queryClient.invalidateQueries({ queryKey: ["POST"] });
     },
   });
+ 
+  const id = product?.id
+  const temp = wishListStore?.getSpecificWishList.map(prod => prod)
+
+  console.log(temp, id, 'id')
+  const isProductInWishList: boolean = temp.some(t => t === id);
 
 
   return (
@@ -60,7 +66,7 @@ export const SingleProduct = ({ product, data }: SingleProductProps) => {
         disabled={addToCartMutation.isPending}
       />
       <div className="single-absolute">
-        
+        {/* {wishListStore.getSpecificWishList.includes(id)} */}
         <AiFillHeart className="single-wishlist-img-true" />
 
         {/* <AiOutlineHeart className="single-wishlist-img" /> */}
