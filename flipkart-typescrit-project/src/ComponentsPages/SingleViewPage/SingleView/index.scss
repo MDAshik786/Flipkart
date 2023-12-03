@@ -1,0 +1,29 @@
+@import "../../../SCSSFile/ColorVariable/index.scss";
+@import "../../../SCSSFile/SCSSFunctions/index.scss";
+
+.singleview {
+    @include displayFlexProperty(center, start, 0.5rem);
+    background-color: $whiteColor;
+
+
+    &-left {
+        width: 20rem;
+
+        & img {
+            @include imgProperty(15rem, 1, none );
+        }
+
+    }
+
+    &-right {
+       width: 30rem;
+    }
+
+    & .button-container {
+        @include displayFlexProperty(center, start, 0.5rem);
+    }
+
+    & .rating-counts {
+        @include displayFlexProperty(center, start, 0.5rem);
+    }
+}

@@ -14,7 +14,10 @@ import ImageField from "../../../CommonUsedComponents/ImageField";
 import SingleProduct from "../Product";
 import { useStore } from "../../../ContextHooks/UseStore";
 import ScrollingIamges from "../ScrollingImages";
-import { getAllWhishListProduct, getSpecificWhishListProduct } from "../../../API Functions/WishListAPI";
+import {
+  getAllWhishListProduct,
+  getSpecificWhishListProduct,
+} from "../../../API Functions/WishListAPI";
 
 const Home = observer(() => {
   const {
@@ -47,9 +50,8 @@ const Home = observer(() => {
     queryKey: ["getSpecificIdWishListProduct"],
     queryFn: () => getSpecificWhishListProduct(),
   });
-  
-  wishListStore.setFunction(getSpecificWishListData)
-  
+  // console.log(typeof(getSpecificWishListData), getSpecificWishListData, 'kk')
+  wishListStore.setFunctionSpecifcProduct(getSpecificWishListData);
 
   if (tagImagesLoading || getAllProductLoading) return <p>Loading...</p>;
   if (tagImagesError && getAllProductError)

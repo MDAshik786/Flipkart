@@ -1,0 +1,12 @@
+@import "../../../SCSSFile/ColorVariable/index.scss";
+@import "../../../SCSSFile/SCSSFunctions/index.scss";
+
+.wishlist {
+    @include displayFlexProperty(start, start, 0.6rem);
+
+    &-left {
+        @include displayFlexColumnProperty(start, start, 0.6rem);
+        width: 20rem;
+       
+    }
+}

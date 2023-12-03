@@ -8,7 +8,7 @@
   width: 100%;
   @include displayFlexProperty(center, space-around, 0);
   position: sticky;
-  top: 0.3rem;
+  top: 0.1rem;
   z-index: 1;
 
   & img {

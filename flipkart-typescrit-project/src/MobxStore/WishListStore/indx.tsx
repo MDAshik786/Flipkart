@@ -2,31 +2,36 @@ import { action, computed, makeObservable, observable, toJS } from "mobx";
 import { IRootStore } from "../RootStore";
 
 export class WishListStore {
- 
-    allWishListProduct : [] = [];
-    specificWishListProduct : [] = [];
-    rootStore : IRootStore;
+  allWishListProduct: [] = [];
+  specificWishListProduct: [] = [];
+  rootStore: IRootStore;
 
-    constructor(rootStore : IRootStore) {
+  constructor(rootStore: IRootStore) {
+    makeObservable(this, {
+      allWishListProduct: observable,
+      specificWishListProduct: observable,
+      setFunctionSpecifcProduct: action,
+      setFunctionAllWishlistProduct : action, 
+      getSpecificWishList: computed,
+      getAllWishlistProduct : computed
+    });
 
-        makeObservable(this, {
-            allWishListProduct : observable,
-            specificWishListProduct : observable,
-            setFunction : action,
-            getSpecificWishList : computed
-        })
+    this.rootStore = rootStore;
+  }
 
-        this.rootStore = rootStore
-    }
-    
-    setFunction = (value : []) => {
-        this.specificWishListProduct = value;
-    }
+  setFunctionSpecifcProduct = (value: []) => {
+    this.specificWishListProduct = value;
+  };
 
-    get getSpecificWishList (){
-        return this.specificWishListProduct;
-    }
- 
+  setFunctionAllWishlistProduct = (value: []) => {
+    this.allWishListProduct = value;
+  };
 
-    
+  get getSpecificWishList() {
+    return this.specificWishListProduct;
+  }
+
+  get getAllWishlistProduct() {
+    return this.allWishListProduct;
+  }
 }

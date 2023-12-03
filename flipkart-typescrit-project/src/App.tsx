@@ -11,8 +11,8 @@ const App = () => {
   return (
     <div className="app-main">
       <QueryClientProvider client={queryClient}>
-        <ReactQueryDevtools initialIsOpen={false} />
         <Router />
+        <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
     </div>
   );

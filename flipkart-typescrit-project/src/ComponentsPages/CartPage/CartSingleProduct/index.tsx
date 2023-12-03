@@ -59,14 +59,14 @@ const CartSingleProduct = ({ products }: CartSingleProductProps) => {
         </div>
 
         <div className="single-price-container">
-          <span>₹</span>
-          <span>{product?.priceIndia}</span>
+          <span className="₹">₹</span>
+          <h4>{product?.priceIndia}</h4>
         </div>
         <div className="cart-product-about-container">
-          <span>About:</span> <p>{product?.description}</p>
+          <h4>About:</h4> <p>{product?.description}</p>
         </div>
         <div className="single-quantity-conatiner">
-          <span>Quantity:</span>
+          <h4>Quantity:</h4>
           {!updateState ? (
             <span>{products.quantity}</span>
           ) : (
@@ -77,7 +77,7 @@ const CartSingleProduct = ({ products }: CartSingleProductProps) => {
           )}
         </div>
         <div className="cart-product-action-container">
-          <p
+          <h4
             className="cart-product-action"
             onClick={() =>
               !updateState
@@ -89,9 +89,9 @@ const CartSingleProduct = ({ products }: CartSingleProductProps) => {
             }
           >
             {!updateState ? "Update" : "Save"}
-          </p>
+          </h4>
 
-          <p
+          <h4
             className="cart-product-action"
             onClick={() =>
               updateState
@@ -100,7 +100,7 @@ const CartSingleProduct = ({ products }: CartSingleProductProps) => {
             }
           >
             {!updateState ? "Delete" : "Cancel"}
-          </p>
+          </h4>
         </div>
       </div>
 

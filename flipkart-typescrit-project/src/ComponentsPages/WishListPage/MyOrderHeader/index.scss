@@ -1,0 +1,25 @@
+@import "../../../SCSSFile/ColorVariable/index.scss";
+@import "../../../SCSSFile/SCSSFunctions/index.scss";
+
+.myorder {
+      @include displayFlexProperty(center,space-between, 0.5rem );
+      background-color: $whiteColor;
+      padding:  1rem 0.6rem;
+
+    &-file-names {
+        @include displayFlexProperty(center,start, 0.5rem );
+
+        & img {
+        @include imgProperty(2rem, 1, none);
+        }
+
+        & h4 {
+         color: $gray62;
+        }
+    }
+    
+    & .right-arrow {
+        @include heightWidthProperty(1.6rem, 1.6rem);
+    }
+
+}

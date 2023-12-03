@@ -12,6 +12,10 @@
     width: 80%;
     aspect-ratio: 1;
   }
+
+  & .rating-counts{
+    @include displayFlexProperty(center, start, 0.5rem);
+}
 }
 .single-img-container {
   max-width: 100%;
@@ -26,7 +30,7 @@
 }
 
 .rating-container {
-  @include displayFlexProperty(center, start, 0.5rem);
+  @include displayFlexProperty(end, start, 0.5rem);
 }
 
 .rating-image {
@@ -34,7 +38,7 @@
 }
 
 .single-price-container {
-  @include displayFlexProperty(center, start, 0);
+  @include displayFlexProperty(end, start, 0.2rem);
 }
 
 .single-quantity-conatiner {

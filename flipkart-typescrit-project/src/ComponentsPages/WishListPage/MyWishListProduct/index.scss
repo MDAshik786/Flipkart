@@ -1,0 +1,12 @@
+@import "../../../SCSSFile/ColorVariable/index.scss";
+@import "../../../SCSSFile/SCSSFunctions/index.scss";
+
+.my-wishlist-product {
+    width: 55rem;
+    background-color: $whiteColor;
+  
+    & .head {
+        padding: 1.3rem 0.6rem;
+        border-bottom : 1px solid $borderLightGray;
+    }
+}

@@ -12,7 +12,7 @@ export const getSpecificWhishListProduct = async () => {
     const response = await axios.get(
       `${getspecificWishListProductUrl}/${email}`
     );
-    // console.log(response.data,"getSpecificWishList")
+    // console.log(response.data,typeof(response.data),"getSpecificWishList")
     return response.data;
   } catch (e) {
     console.log(e, "getSpecificWhishListProduct");
@@ -22,7 +22,7 @@ export const getSpecificWhishListProduct = async () => {
 export const getAllWhishListProduct = async () => {
   try {
     const response = await axios.get(`${getAllWishListProductUrl}/${email}`);
-    // console.log(response.data)
+     console.log(response.data)
     return response.data;
   } catch (e) {
     console.log(e, "getAllWhishListProduct");

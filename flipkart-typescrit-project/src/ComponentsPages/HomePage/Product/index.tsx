@@ -9,11 +9,16 @@ import { SingleProductProps } from "../../../Types";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { addAProductToCart } from "../../../API Functions/HomePageAPI";
 import { useStore } from "../../../ContextHooks/UseStore";
+import { handleNavigate } from "../../../CommonFunctions/Navigate";
+import { useNavigate } from "react-router-dom";
+
 
 export const SingleProduct = ({ product }: SingleProductProps) => {
   const {
     rootStore: { productCounterStore, wishListStore },
   } = useStore();
+
+  const navigate = useNavigate();
 
   const queryClient = useQueryClient();
 
@@ -23,33 +28,39 @@ export const SingleProduct = ({ product }: SingleProductProps) => {
       queryClient.invalidateQueries({ queryKey: ["POST"] });
     },
   });
+
+  const handleSinglePage = () => {
+    navigate("single", {state : product})
+  }
  
   const id = product?.id
   const temp = wishListStore?.getSpecificWishList.map(prod => prod)
 
-  console.log(temp, id, 'id')
-  const isProductInWishList: boolean = temp.some(t => t === id);
+  // console.log(typeof(toJS(wishListStore?.getSpecificWishList)), toJS(wishListStore?.getSpecificWishList), 'id')
+  // console.log(typeof(temp), 'temp ')
+  // const isProductInWishList: boolean = toJS(wishListStore?.getSpecificWishList).some(t => t === id);
 
-
+// const array = [1,2,3]
+// console.log(array.includes(1))
   return (
     <div className="single-product-container">
-      <div className="single-img-container">
+      <div className="single-img-container" onClick={handleSinglePage} >
         <ImageField
           src={`http://localhost:3000/${product?.image}`}
-          alt=""
+          alt={product?.name}
           className="single-product-img"
         />
       </div>
-      <p className="single-product-name">{product?.name}</p>
+      <p className="single-product-name" onClick={handleSinglePage}>{product?.name}</p>
       <div className="rating-container">
         <div className="single-rating-number">
-          {product?.ratingStar} <BiSolidStar className="bsStar-icon" />
+          <h5>{product?.ratingStar}</h5> <BiSolidStar className="bsStar-icon" />
         </div>
-        <span>{product?.ratingCount}</span>
+       <div className="rating-counts"> <h5>{product?.ratingCount}</h5>Count</div>
       </div>
       <div className="single-price-container">
         <span className="₹">₹</span>
-        <span>{product?.priceIndia}</span>
+        <h5>{product?.priceIndia}</h5>
       </div>
       <div className="single-quantity-conatiner">
         <span>Quantity:</span>
@@ -66,7 +77,7 @@ export const SingleProduct = ({ product }: SingleProductProps) => {
         disabled={addToCartMutation.isPending}
       />
       <div className="single-absolute">
-        {/* {wishListStore.getSpecificWishList.includes(id)} */}
+        {/* {toJS(wishListStore.getSpecificWishList).includes(id)} */}
         <AiFillHeart className="single-wishlist-img-true" />
 
         {/* <AiOutlineHeart className="single-wishlist-img" /> */}

@@ -4,6 +4,7 @@ import { getAllScrollingImages } from "../../../API Functions/HomePageAPI";
 import ButtonField from "../../../CommonUsedComponents/ButtonField";
 import { BiSolidLeftArrow, BiSolidRightArrow } from "react-icons/bi";
 import { observer } from "mobx-react-lite";
+import ImageField from "../../../CommonUsedComponents/ImageField";
 
 const ScrollingImages = observer(() => {
 
@@ -52,7 +53,7 @@ const ScrollingImages = observer(() => {
   return (
       <div className="scrolling-offer-image-container">
         {scrollingImagesData && (
-          <img
+          <ImageField
             ref={imageRef}
             src={`http://localhost:3000/ScrollingOfferImages/${scrollingImagesData[scrollingCounter]?.images}`}
           />
