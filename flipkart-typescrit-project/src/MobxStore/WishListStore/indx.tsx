@@ -3,7 +3,7 @@ import { IRootStore } from "../RootStore";
 
 export class WishListStore {
   allWishListProduct: [] = [];
-  specificWishListProduct: [] = [];
+  specificWishListProduct: number[] = [];
   rootStore: IRootStore;
 
   constructor(rootStore: IRootStore) {
@@ -11,9 +11,9 @@ export class WishListStore {
       allWishListProduct: observable,
       specificWishListProduct: observable,
       setFunctionSpecifcProduct: action,
-      setFunctionAllWishlistProduct : action, 
+      setFunctionAllWishlistProduct: action,
       getSpecificWishList: computed,
-      getAllWishlistProduct : computed
+      getAllWishlistProduct: computed,
     });
 
     this.rootStore = rootStore;

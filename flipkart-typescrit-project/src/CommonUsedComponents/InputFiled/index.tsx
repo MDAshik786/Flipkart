@@ -1,6 +1,6 @@
 import { InputFiledProps } from "../../Types";
 
-const InputFiled = ({ className, placeholder, autoFocus, type, name, value, onChange }: InputFiledProps) => {
+const InputFiled = ({ className, placeholder, autoFocus, type, name, value, onChange, autoComplete }: InputFiledProps) => {
   return (
     <input
       type={type}
@@ -10,6 +10,7 @@ const InputFiled = ({ className, placeholder, autoFocus, type, name, value, onCh
       value={value}
       name={name}
       onChange={onChange}
+      autoComplete={autoComplete}
      
       />
   );

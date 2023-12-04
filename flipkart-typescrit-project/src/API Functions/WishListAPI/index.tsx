@@ -1,3 +1,4 @@
+import {SingleProduct } from "../../Types";
 import {
   addToWishListUrl,
   deleteWishListProductUrl,
@@ -12,7 +13,6 @@ export const getSpecificWhishListProduct = async () => {
     const response = await axios.get(
       `${getspecificWishListProductUrl}/${email}`
     );
-    // console.log(response.data,typeof(response.data),"getSpecificWishList")
     return response.data;
   } catch (e) {
     console.log(e, "getSpecificWhishListProduct");
@@ -22,40 +22,40 @@ export const getSpecificWhishListProduct = async () => {
 export const getAllWhishListProduct = async () => {
   try {
     const response = await axios.get(`${getAllWishListProductUrl}/${email}`);
-     console.log(response.data)
+    //  console.log(response.data, "getAllWhishListProduct")
     return response.data;
   } catch (e) {
     console.log(e, "getAllWhishListProduct");
   }
 };
 
-export const AddToWishList = async (product: []) => {
-  // const {
-  //   id,
-  //   name,
-  //   image,
-  //   priceCents,
-  //   priceIndia,
-  //   totalQuantity,
-  //   ratingStar,
-  //   ratingCount,
-  //   description,
-  //   size,
-  // } = product;
+export const AddToWishList = async (product: SingleProduct) => {
+  const {
+    id,
+    name,
+    image,
+    priceCents,
+    priceIndia,
+    totalQuantity,
+    ratingStar,
+    ratingCount,
+    description,
+    size,
+  } = product;
   try {
     const response = await axios.post(
-      `${addToWishListUrl}/${email}`,
+      `${addToWishListUrl}/${email}/${id}`,
       {
-        // id,
-        // name,
-        // image,
-        // priceCents,
-        // priceIndia,
-        // totalQuantity,
-        // ratingStar,
-        // ratingCount,
-        // description,
-        // size,
+        id,
+        name,
+        image,
+        priceCents,
+        priceIndia,
+        totalQuantity,
+        ratingStar,
+        ratingCount,
+        description,
+        size,
       },
       {
         headers: {

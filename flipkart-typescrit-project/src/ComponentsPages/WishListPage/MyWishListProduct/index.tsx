@@ -2,7 +2,7 @@ import './index.scss'
 import { useQuery } from "@tanstack/react-query";
 import { getAllWhishListProduct } from "../../../API Functions/WishListAPI";
 import { useStore } from "../../../ContextHooks/UseStore";
-import { Product } from "../../../Types";
+import { Product, SingleProduct } from "../../../Types";
 import SingleWishListProduct from "../SingleWishListProduct";
 
 const MyWishListProduct = () => {
@@ -23,7 +23,7 @@ const MyWishListProduct = () => {
 
       <div>
         {data &&
-          data.map((product: Product, index: number) => (
+          data.map((product: SingleProduct, index: number) => (
             <SingleWishListProduct product={product}  key={index}/>
           ))}
       </div>

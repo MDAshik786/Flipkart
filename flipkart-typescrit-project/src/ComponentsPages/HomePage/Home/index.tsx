@@ -6,12 +6,12 @@ import {
   getAllTagImages,
 } from "../../../API Functions/HomePageAPI";
 import { useQuery } from "@tanstack/react-query";
-import { Product } from "../../../Types";
+import { Product, SingleProduct } from "../../../Types";
 import TopOfferTagsImage from "../TopOfferTagsImage";
 import { observer } from "mobx-react";
 import offerCard from "../../../Asserts/Images/offerCard.jpg";
 import ImageField from "../../../CommonUsedComponents/ImageField";
-import SingleProduct from "../Product";
+import { HomeSingleProduct } from "../Product";
 import { useStore } from "../../../ContextHooks/UseStore";
 import ScrollingIamges from "../ScrollingImages";
 import {
@@ -21,7 +21,7 @@ import {
 
 const Home = observer(() => {
   const {
-    rootStore: { counterStore, wishListStore },
+    rootStore: { wishListStore },
   } = useStore();
 
   const {
@@ -50,7 +50,7 @@ const Home = observer(() => {
     queryKey: ["getSpecificIdWishListProduct"],
     queryFn: () => getSpecificWhishListProduct(),
   });
-  // console.log(typeof(getSpecificWishListData), getSpecificWishListData, 'kk')
+
   wishListStore.setFunctionSpecifcProduct(getSpecificWishListData);
 
   if (tagImagesLoading || getAllProductLoading) return <p>Loading...</p>;
@@ -69,8 +69,8 @@ const Home = observer(() => {
       <ScrollingIamges />
       <ImageField src={offerCard} alt="card Offer" className="offer-card-img" />
       <div className="product-container">
-        {getAllProductData?.map((product: Product, index: number) => (
-          <SingleProduct product={product} key={index} />
+        {getAllProductData?.map((product: SingleProduct, index: number) => (
+          <HomeSingleProduct product={product} key={index} />
         ))}
       </div>
     </>

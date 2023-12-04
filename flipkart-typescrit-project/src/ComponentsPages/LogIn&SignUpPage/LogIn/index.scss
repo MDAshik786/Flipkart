@@ -3,7 +3,6 @@
 @import "../../../SCSSFile/SCSSFunctions/index.scss";
 
 .main-div {
-  @include heightWidthProperty(100vh, 100%);
   @include displayFlexProperty(center, flex-start, 0);
   background-color: $whitesmoke;
   font-size: 1rem;
@@ -65,9 +64,10 @@
 
 .login-email-div,
 .login-password-div {
-  position: relative;
-  width: auto;
-  height: auto;
+  @include displayFlexColumnProperty(start, start, 0.1rem);
+  // position: relative;
+  // width: auto;
+  // height: auto;
 }
 
 .login-placeholder {
@@ -89,4 +89,9 @@
 
 .agree-container {
   font-size: 0.9rem;
+}
+
+.error-msg {
+  font-size: 1rem;
+  color: $redColor;
 }

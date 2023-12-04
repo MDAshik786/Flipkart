@@ -8,6 +8,7 @@ export type InputFiledProps = {
   value?: string | number | readonly string[] | undefined;
   autoFocus?: boolean;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void | undefined;
+  autoComplete? : string
 };
 
 export type ButtonFieldProps = {
@@ -15,6 +16,7 @@ export type ButtonFieldProps = {
   content: string | React.ReactNode;
   onClick?: any;
   disabled?: boolean;
+  type? : "button" | "reset" | "submit" | undefined ;
 };
 
 export type Product = {
@@ -51,7 +53,7 @@ export type CartSingleProductProps = {
 
 export type SingleProduct = {
   id: number;
-  image?: string;
+  image: string;
   name?: string;
   priceCents?: number;
   priceIndia?: number;
@@ -60,6 +62,7 @@ export type SingleProduct = {
   ratingCount?: number;
   description?: string;
   keywords?: keywordTypes[];
+  size?: string;
 };
 
 export type keywordTypes = {
@@ -76,7 +79,9 @@ export type setStateType =  React.Dispatch<React.SetStateAction<boolean>>;
 
 export type inputValueProps = {
   email : string,
-  password : string
+  password : string,
+  emailError : string,
+  passwordError : string
 }
 
 export type setStateObject = React.Dispatch<React.SetStateAction<inputValueProps>>;
