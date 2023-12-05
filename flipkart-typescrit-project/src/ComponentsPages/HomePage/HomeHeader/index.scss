@@ -15,6 +15,14 @@
     font-size: 1rem;
     font-family: "Merriweather", serif;
     font-style: italic;
+    border-radius: 0.5rem;
+    padding: 0.5rem 2rem 0.5rem 0;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid $borderLightGray;
+      background-color:$whitesmoke; 
+    }
 
     & img {
       width: 10rem;
@@ -75,11 +83,20 @@
 .head-nav-container {
   @include displayFlexProperty(center, start, 0.7rem);
   font-size: 1.3rem;
+  border-radius: 0.5rem;
+  padding: 0.8rem;
+  cursor: pointer;
+
+  &:hover{
+    border: 1px solid $borderLightGray;
+    background-color:$whitesmoke; 
+  }
 
   & img {
     width: 2rem;
   }
 }
+
 
 .head-search-icons {
   @include heightWidthProperty(1.5rem, 1.5rem);

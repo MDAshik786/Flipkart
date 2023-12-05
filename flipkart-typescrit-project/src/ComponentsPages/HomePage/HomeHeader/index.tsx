@@ -1,5 +1,5 @@
 import "./index.scss";
-import {useState} from 'react'
+import { useState } from "react";
 import logo from "../../../Asserts/Images/flipkartLogo.svg";
 import plus from "../../../Asserts/Images/flipkartPlus.svg";
 import InputFiled from "../../../CommonUsedComponents/InputFiled";
@@ -7,16 +7,32 @@ import seller from "../../../Asserts/Images/filpkartSellericon.svg";
 import profile from "../../../Asserts/Images/flipkartProfile.svg";
 import cart from "../../../Asserts/Images/flipkartCart.svg";
 import ButtonFiled from "../../../CommonUsedComponents/ButtonField";
-import { BiSearchAlt } from 'react-icons/bi';
+import { BiSearchAlt } from "react-icons/bi";
 import ImageField from "../../../CommonUsedComponents/ImageField";
 import { handleNavigate } from "../../../CommonFunctions/Navigate";
 import { useNavigate } from "react-router-dom";
-const HomeHeader = () => {
-  const [searchInput, setSearchInput] = useState<string>('')
-  const handleSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchInput(e.target.value)
-  } 
-  const navigate = useNavigate()
+import { checkEmailVerification } from "../../../CommonFunctions/LoginVerification";
+
+export type homeHeaderType = {
+  searchInput : string,
+  handleSetFunction : (value : string) => void
+}
+const HomeHeader = ({searchInput, handleSetFunction} : homeHeaderType) => {
+ 
+  const navigate = useNavigate();
+
+  const [loginState, setLoginState] = useState<boolean>(
+    checkEmailVerification()
+  );
+
+  const isLoginOrNot = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!checkEmailVerification()) handleNavigate(e, navigate, "login");
+    else {
+      localStorage.removeItem("loginData");
+      setLoginState(false);
+    } 
+  };
+
   return (
     <header className="header">
       <div className="header--branding-container">
@@ -28,17 +44,31 @@ const HomeHeader = () => {
         </div>
       </div>
       <div className="head-input-container">
-        <ButtonFiled content={<BiSearchAlt className='head-search-icons'/> }className={'header-serach-icons'} />
-        <InputFiled className={"header-input"} placeholder={"Search for Product, Brand and More"} autoFocus={true} type="text" value={searchInput} onChange={handleSearchInput}/>
+        <ButtonFiled
+          content={<BiSearchAlt className="head-search-icons" />}
+          className={"header-serach-icons"}
+        />
+        <InputFiled
+          className={"header-input"}
+          placeholder={"Search for Product, Brand and More"}
+          autoFocus={true}
+          type="text"
+          value={searchInput}
+          onChange={(e) => handleSetFunction(e.target.value)}
+        />
       </div>
       <div className="head-rightSide-container">
         <div className="head-nav-container">
-          <ImageField src={seller} alt=""  /> <p>Become a Seller</p>
+          <ImageField src={seller} alt="" /> <p>Become a Seller</p>
         </div>
-        <div className="head-nav-container" onClick={(e) => handleNavigate(e, navigate, "login")}>
-          <ImageField src={profile} alt=""/> <p>Sign in</p>
+        <div className="head-nav-container" onClick={isLoginOrNot}>
+          <ImageField src={profile} alt="" />{" "}
+          <p>{checkEmailVerification() ? "Sign Out" : "Sign In"}</p>
         </div>
-        <div className="head-nav-container" onClick={(e) => handleNavigate(e, navigate, "cart")}>
+        <div
+          className="head-nav-container"
+          onClick={(e) => handleNavigate(e, navigate, "cart")}
+        >
           <ImageField src={cart} alt="" /> <p>Cart</p>
         </div>
       </div>

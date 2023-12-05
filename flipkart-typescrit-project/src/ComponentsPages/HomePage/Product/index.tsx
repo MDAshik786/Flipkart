@@ -27,12 +27,19 @@ export const HomeSingleProduct = ({ product }: SingleProductProps) => {
   const queryClient = useQueryClient();
 
   const addToCartMutation = useMutation({
-    mutationFn: (quantity: number) => addAProductToCart(product.id, quantity),
+    mutationFn: async () => {
+      await new Promise(resolve => setTimeout(resolve, 1000));
+
+      addAProductToCart(
+        product.id,
+        productCounterStore.getProductCounter[product?.id]
+      );
+    },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["POST"] });
     },
   });
-
+  
   const addTowishList = useMutation({
     mutationFn: () => AddToWishList(product),
     onSuccess: () => {
@@ -71,7 +78,7 @@ export const HomeSingleProduct = ({ product }: SingleProductProps) => {
   ) => {
     !checkEmailVerification() ? navigate("/login") : mutationFunction();
   };
-
+  
   return (
     <div className="single-product-container">
       <div className="single-img-container" onClick={handleSinglePage}>
@@ -105,13 +112,16 @@ export const HomeSingleProduct = ({ product }: SingleProductProps) => {
         content="Add To Cart"
         className="single-addToCart-button"
         onClick={() =>
-          addToCartMutation.mutate(
-            productCounterStore.getProductCounter[product.id]
-          )
+          handleLoginVerification(navigate, () => addToCartMutation.mutate())
         }
         disabled={addToCartMutation.isPending}
       />
-      <div className="single-absolute" onClick={handleWishList}>
+      <div
+        className="single-absolute"
+        onClick={() =>
+          handleLoginVerification(navigate, () => handleWishList())
+        }
+      >
         {isWishlist ? (
           <AiFillHeart className="single-wishlist-img-true" />
         ) : (

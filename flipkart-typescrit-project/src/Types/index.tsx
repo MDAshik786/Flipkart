@@ -1,4 +1,4 @@
-import React from "react";
+import React, { LegacyRef } from "react";
 
 export type InputFiledProps = {
   type: string;
@@ -8,7 +8,8 @@ export type InputFiledProps = {
   value?: string | number | readonly string[] | undefined;
   autoFocus?: boolean;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void | undefined;
-  autoComplete? : string
+  autoComplete? : string;
+  ref? : LegacyRef<HTMLInputElement>;
 };
 
 export type ButtonFieldProps = {
@@ -64,6 +65,7 @@ export type SingleProduct = {
   keywords?: keywordTypes[];
   size?: string;
 };
+
 
 export type keywordTypes = {
   id: number;

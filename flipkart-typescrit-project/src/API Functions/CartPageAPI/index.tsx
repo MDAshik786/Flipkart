@@ -1,15 +1,16 @@
 import axios from "axios";
+import { displayEmail } from "../../CommonFunctions/LoginVerification";
 import {
   deleteAProductUrl,
   getAllCartProductUrl,
   updateAProductUrl,
 } from "../../Utils_/APIUrls";
 
-export const email = "rioashik786@gmail.com";
+const email = displayEmail();
 
 export const getAllCartData = async () => {
   try {
-    const response = await axios.get(getAllCartProductUrl);
+    const response = await axios.get(`${getAllCartProductUrl}/${email}`);
     return response.data;
   } catch (error) {
     console.log(error, "getAllCartData");
@@ -17,10 +18,9 @@ export const getAllCartData = async () => {
 };
 
 export const updateAProduct = async (id: number, quantity: number) => {
-  
   try {
     const response = await axios.put(
-      updateAProductUrl,
+      `${updateAProductUrl}/${email}`,
       { productId: id, quantity },
       {
         headers: {

@@ -1,12 +1,14 @@
+import { displayEmail } from "../../CommonFunctions/LoginVerification";
 import {SingleProduct } from "../../Types";
+import axios from "axios";
 import {
   addToWishListUrl,
   deleteWishListProductUrl,
   getAllWishListProductUrl,
   getspecificWishListProductUrl,
 } from "../../Utils_/APIUrls";
-import { email } from "../CartPageAPI";
-import axios from "axios";
+
+const email = displayEmail();
 
 export const getSpecificWhishListProduct = async () => {
   try {
@@ -30,42 +32,43 @@ export const getAllWhishListProduct = async () => {
 };
 
 export const AddToWishList = async (product: SingleProduct) => {
-  const {
-    id,
-    name,
-    image,
-    priceCents,
-    priceIndia,
-    totalQuantity,
-    ratingStar,
-    ratingCount,
-    description,
-    size,
-  } = product;
-  try {
-    const response = await axios.post(
-      `${addToWishListUrl}/${email}/${id}`,
-      {
-        id,
-        name,
-        image,
-        priceCents,
-        priceIndia,
-        totalQuantity,
-        ratingStar,
-        ratingCount,
-        description,
-        size,
-      },
-      {
-        headers: {
-          "content-Type": "application/json",
+  
+    const {
+      id,
+      name,
+      image,
+      priceCents,
+      priceIndia,
+      totalQuantity,
+      ratingStar,
+      ratingCount,
+      description,
+      size,
+    } = product;
+    try {
+      const response = await axios.post(
+        `${addToWishListUrl}/${email}/${id}`,
+        {
+          id,
+          name,
+          image,
+          priceCents,
+          priceIndia,
+          totalQuantity,
+          ratingStar,
+          ratingCount,
+          description,
+          size,
         },
-      }
-    );
-  } catch (e) {
-    console.log(e, "AddToWishList");
-  }
+        {
+          headers: {
+            "content-Type": "application/json",
+          },
+        }
+      );
+    } catch (e) {
+      console.log(e, "AddToWishList");
+    }
 };
 
 export const deleteFromWishList = async (id: number) => {

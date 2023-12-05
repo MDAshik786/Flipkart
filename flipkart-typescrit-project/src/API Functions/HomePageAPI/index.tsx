@@ -5,6 +5,10 @@ import {
   getAllScrollingIamgesUrl,
   getAllTopRelatedTagsUrl,
 } from "../../Utils_/APIUrls";
+import { displayEmail } from "../../CommonFunctions/LoginVerification";
+
+const email = displayEmail();
+
 export const getAllTagImages = async () => {
   try {
     const response = await axios.get(getAllTopRelatedTagsUrl);
@@ -41,7 +45,7 @@ export const addAProductToCart = async (
   if (productQuantity) quantity = productQuantity;
   try {
     const response = await axios.post(
-      addAProductToCartUrl,
+      `${addAProductToCartUrl}/${email}`,
       { productId, quantity },
       {
         headers: {

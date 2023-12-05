@@ -3,6 +3,7 @@
 @import "../../../SCSSFile/SCSSFunctions/index.scss";
 
 .main-div {
+  @include heightWidthProperty(100vh, 100%);
   @include displayFlexProperty(center, flex-start, 0);
   background-color: $whitesmoke;
   font-size: 1rem;

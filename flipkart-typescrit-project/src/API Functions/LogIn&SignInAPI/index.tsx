@@ -6,7 +6,6 @@ type loginState = {
     password : string
 }
 export const loginVerification = async (state: loginState ) => {
-    console.log(state,"aaa")
   try {
     const response = await axios.post(
       loginVerificationUrl,

@@ -18,23 +18,23 @@ export class SingleProductCounters {
     }
     
     addAProductCounter(id: number, value: number) {
-        id && (this.productCounters = { ...this.productCounters, [id]: value })
+        this.productCounters = { ...this.productCounters, [id]: value }
     }
 
-    incrementAProductCounter = (id: number | undefined) => {
+    incrementAProductCounter = (id: number) => {
 
-        id && (this.productCounters = {
+        this.productCounters = {
             ...this.productCounters,
             [id]: this.productCounters[id] ? this.productCounters[id] + 1 : 2,
-        })
+        }
 
     };
 
-    decrementAProductCounter = (id: number | undefined) => {
-        id && (this.productCounters = {
+    decrementAProductCounter = (id: number) => {
+       this.productCounters = {
             ...this.productCounters,
             [id]: this.productCounters[id] ? this.productCounters[id] - 1 : 1
-        })
+        }
     }
     get getProductCounter() {
         return this.productCounters;

@@ -1,4 +1,6 @@
+import { useStore } from "../../ContextHooks/UseStore";
 import { inputValueProps, setStateObject, setStateType } from "../../Types";
+
 
 export const handleUpdateChange = (
   updateState: boolean,
@@ -24,6 +26,7 @@ export interface handleLoginVerificationType {
   navigate: (name: string) => void;
   InputValues: inputValueProps;
   setInputValues: setStateObject;
+  user : any
 }
 
 export const handleLoginVerification = ({
@@ -43,7 +46,7 @@ export const handleLoginVerification = ({
       ...state,
       emailError: response,
     }));
-    else 
+  else
     setInputValues((state) => ({
       ...state,
       passwordError: response,
