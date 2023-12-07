@@ -30,7 +30,6 @@ const SingleView = () => {
             <BiSolidStar className="bsStar-icon" />
           </div>
           <div className="rating-counts">
-            {" "}
             <h5>{product?.ratingCount}</h5>Count
           </div>
         </div>

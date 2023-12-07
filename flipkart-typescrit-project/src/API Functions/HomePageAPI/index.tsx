@@ -5,9 +5,6 @@ import {
   getAllScrollingIamgesUrl,
   getAllTopRelatedTagsUrl,
 } from "../../Utils_/APIUrls";
-import { displayEmail } from "../../CommonFunctions/LoginVerification";
-
-const email = displayEmail();
 
 export const getAllTagImages = async () => {
   try {
@@ -39,7 +36,8 @@ export const getAllProduct = async () => {
 
 export const addAProductToCart = async (
   productId: number,
-  productQuantity: number | undefined
+  productQuantity: number | undefined,
+  email : string
 ) => {
   let quantity = 1;
   if (productQuantity) quantity = productQuantity;

@@ -16,13 +16,13 @@ import ScrollingIamges from "../ScrollingImages";
 import { getSpecificWhishListProduct } from "../../../API Functions/WishListAPI";
 import { useState } from "react";
 
-const Home = observer(() => {
+const Home = () => {
   const [searchInput, setSearchInput] = useState<string>("");
   const handleSetFunction = (value: string) => {
     setSearchInput(value);
   };
   const {
-    rootStore: { wishListStore },
+    rootStore: { wishListStore, userStore },
   } = useStore();
 
   const {
@@ -49,7 +49,7 @@ const Home = observer(() => {
     isLoading: wishListProductLoading,
   } = useQuery({
     queryKey: ["getSpecificIdWishListProduct"],
-    queryFn: () => getSpecificWhishListProduct(),
+    queryFn: () => getSpecificWhishListProduct(userStore.email),
   });
   wishListStore.setFunctionSpecifcProduct(getSpecificWishListData);
 
@@ -89,6 +89,6 @@ const Home = observer(() => {
       </div>
     </>
   );
-});
+};
 
-export default Home;
+export default observer(Home);

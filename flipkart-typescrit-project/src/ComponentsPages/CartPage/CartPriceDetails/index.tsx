@@ -1,3 +1,4 @@
+import { observer } from 'mobx-react-lite'
 import './index.scss'
 const CartPriceDetails = () => {
   return (
@@ -28,4 +29,4 @@ const CartPriceDetails = () => {
   )
 }
 
-export default CartPriceDetails
+export default observer(CartPriceDetails)

@@ -1,6 +1,9 @@
-import { useStore } from "../../ContextHooks/UseStore";
-import { inputValueProps, setStateObject, setStateType } from "../../Types";
-
+import {
+  handleLoginVerificationType,
+  handleLoginVerificationsType,
+  setStateObject,
+  setStateType,
+} from "../../Types";
 
 export const handleUpdateChange = (
   updateState: boolean,
@@ -21,25 +24,18 @@ export const handleOnChange = (
   }));
 };
 
-export interface handleLoginVerificationType {
-  response: string;
-  navigate: (name: string) => void;
-  InputValues: inputValueProps;
-  setInputValues: setStateObject;
-  user : any
-}
-
-export const handleLoginVerification = ({
+export const handleLoginVerifications = ({
   response,
   navigate,
   InputValues,
   setInputValues,
-}: handleLoginVerificationType) => {
+  user,
+  email,
+  password,
+}: handleLoginVerificationsType ) => {
+  console.log(response, email, password, "sep fun", user);
   if (response === "verified") {
-    localStorage.setItem(
-      "loginData",
-      JSON.stringify({ email: InputValues.email, role: "user" })
-    );
+    user({ emailInput: email, passwordInput: password });
     navigate("/");
   } else if (response === "Invalid Email")
     setInputValues((state) => ({

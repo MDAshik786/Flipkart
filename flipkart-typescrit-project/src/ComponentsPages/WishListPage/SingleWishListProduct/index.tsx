@@ -6,12 +6,15 @@ import { IoTrashBin } from "react-icons/io5";
 import fkAssured from "../../../Asserts/Images/fk-assured.png";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { deleteFromWishList } from "../../../API Functions/WishListAPI";
+import { useStore } from "../../../ContextHooks/UseStore";
 
 const SingleWishListProduct = ({ product }: SingleProductProps) => {
   const queryClient = useQueryClient();
 
+  const {rootStore : {userStore}} = useStore()
+
   const deleteFromWishListMutation = useMutation({
-    mutationFn: () => deleteFromWishList(product?.id),
+    mutationFn: () => deleteFromWishList(product?.id, userStore?.email ),
     onSuccess: () =>
       queryClient.invalidateQueries({ queryKey: ["wishlistAllProduct"] }),
   });

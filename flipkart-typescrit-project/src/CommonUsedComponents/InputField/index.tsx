@@ -1,5 +1,6 @@
 import { forwardRef } from "react";
 import { InputFiledProps } from "../../Types";
+import { refImage, refInput } from "../../Types/Name&Type";
 
 const InputFiled = forwardRef(function InputFiled(
   {
@@ -12,7 +13,7 @@ const InputFiled = forwardRef(function InputFiled(
     onChange,
     autoComplete,
   }: InputFiledProps,
-  ref: any
+  ref: refInput
 ) {
   return (
     <input

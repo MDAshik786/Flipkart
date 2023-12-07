@@ -14,6 +14,7 @@ export class WishListStore {
       setFunctionAllWishlistProduct: action,
       getSpecificWishList: computed,
       getAllWishlistProduct: computed,
+      clearAllWishListData : action
     });
 
     this.rootStore = rootStore;
@@ -34,4 +35,10 @@ export class WishListStore {
   get getAllWishlistProduct() {
     return this.allWishListProduct;
   }
+  clearAllWishListData = () => {
+    debugger
+    console.log("clearAllWishListData")
+    this.allWishListProduct = [];
+    this.specificWishListProduct = [];
+  };
 }

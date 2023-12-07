@@ -3,15 +3,19 @@ import { CartSingleProducts } from "../../../Types";
 import CartSingleProduct from "../CartSingleProduct";
 import { useQuery } from "@tanstack/react-query";
 import { getAllCartData } from "../../../API Functions/CartPageAPI";
-//"react-query": "^3.39.3",
+import { useStore } from "../../../ContextHooks/UseStore";
+import { observer } from "mobx-react-lite";
 const CartwholeProduct = () => {
+
+   const {rootStore : {userStore}} = useStore()
+
   const {
     data: getAllCartDatas,
     error: errorOfCartData,
     isLoading: errorOnCartData,
   } = useQuery({
     queryKey: ["getAllCartData"],
-    queryFn: () => getAllCartData(),
+    queryFn: () => getAllCartData(userStore?.email),
   });
 
   let cartItems: [] = [],
@@ -28,4 +32,4 @@ const CartwholeProduct = () => {
   );
 };
 
-export default CartwholeProduct;
+export default observer(CartwholeProduct);

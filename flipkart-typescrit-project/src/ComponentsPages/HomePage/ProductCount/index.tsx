@@ -1,5 +1,5 @@
 import ButtonFiled from "../../../CommonUsedComponents/ButtonField";
-import InputFiled from "../../../CommonUsedComponents/InputFiled";
+import InputFiled from "../../../CommonUsedComponents/InputField";
 import "./index.scss";
 import { ProductCountProps } from "../../../Types";
 import { useStore } from "../../../ContextHooks/UseStore";

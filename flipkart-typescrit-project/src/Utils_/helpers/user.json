@@ -1,0 +1,11 @@
+{
+    "signUp" : {
+        "heading" : "Looks like you're new here!",
+        "description" : "Sign up with your Email to get started"
+    },
+    
+    "signIn" : {
+        "heading" : "Login",
+        "description" : "Get access to your Orders, Wishlist and Recommendations"
+    }
+}

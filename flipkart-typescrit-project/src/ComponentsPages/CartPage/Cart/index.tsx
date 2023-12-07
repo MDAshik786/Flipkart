@@ -3,6 +3,7 @@ import Address from "../Address"
 import CartPriceDetails from "../CartPriceDetails"
 import CartwholeProduct from "../CartWholeProduct"
 import CartHeader from '../CartHeader'
+import { observer } from 'mobx-react-lite'
 
 const Cart = () => {
 
@@ -21,4 +22,4 @@ const Cart = () => {
   )
 }
 
-export default Cart
+export default observer(Cart)

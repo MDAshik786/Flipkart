@@ -2,17 +2,17 @@ import './index.scss'
 import { useQuery } from "@tanstack/react-query";
 import { getAllWhishListProduct } from "../../../API Functions/WishListAPI";
 import { useStore } from "../../../ContextHooks/UseStore";
-import { Product, SingleProduct } from "../../../Types";
+import { SingleProduct } from "../../../Types";
 import SingleWishListProduct from "../SingleWishListProduct";
 
 const MyWishListProduct = () => {
   const {
-    rootStore: { wishListStore },
+    rootStore: { wishListStore, userStore },
   } = useStore();
 
   const { data, isLoading, error } = useQuery({
     queryKey: ["wishlistAllProduct"],
-    queryFn: () => getAllWhishListProduct(),
+    queryFn: () => getAllWhishListProduct(userStore.email),
   });
 
   wishListStore.setFunctionAllWishlistProduct(data);

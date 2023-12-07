@@ -9,38 +9,51 @@
   font-size: 1rem;
 }
 
-.login-main-container {
+.user-form{
+    padding: 2rem;
+    @include displayFlexColumnProperty(center, space-between, 3rem);
+    height: 90%;
+}
+
+.all-input-container {
+  @include displayFlexColumnProperty(start, start, 1.5rem)
+}
+
+.form-main-container {
   margin: auto;
   display: flex;
   @include heightWidthProperty(48rem, 55%);
   background-color: $whiteColor;
 }
 
-.login-left-container {
+.form-left-container {
   @include displayFlexColumnProperty(start, flex-start, 2rem);
   @include buttonStyle(none, 40%, 2rem, none, $blueColor, $whiteColor);
 }
 
-.login-right-container {
+
+.form-right-container {
   padding: 2rem;
   @include displayFlexColumnProperty(start, flex-start, 2rem);
 
 }
 
-.login-heading {
+.form-heading {
   padding-top: 2rem;
   font-size: 2rem;
   font-weight: 550;
 }
 
-.login-left-content {
+.form-left-content {
   font-size: 1.4rem;
   line-height: 2rem;
   color: $darkwhite;
 }
 
-.login-email-container,
-.login-password-container {
+.form-email-container,
+.form-password-container, 
+.form-name-container,
+.form-phone-container{
   @include heightWidthProperty(2.5rem, 80%);
   padding: 0 0.5rem;
   border-top: none;
@@ -55,33 +68,42 @@
   color: $blueColor;
 }
 
-.Login-button {
+.Login-button,.signup-button {
   @include buttonStyle(2.5rem, 80%, none, 0.2rem, $darkOrange, $whiteColor);
-  box-shadow: 0 1px 2px 0 $boxShadowBlack;
-  border: none;
+  // box-shadow: 0 1px 2px 0 $boxShadowBlack;
   font-size: 1.1rem;
   font-weight: 600;
 }
 
-.login-email-div,
-.login-password-div {
-  @include displayFlexColumnProperty(start, start, 0.1rem);
+.newuser-button {
+  @include buttonStyle(2.5rem, 80%, none, 0.2rem, none, $blueColor);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.form-email-div,
+.form-password-div,
+.form-name-div,
+.form-phone-div  {
+  @include displayFlexColumnProperty(start, start, 0.3rem);
   // position: relative;
   // width: auto;
   // height: auto;
 }
 
-.login-placeholder {
+.form-placeholder {
   // @include absoluteProperty(1rem, -1, -1, 0);
-  pointer-events: none;
-  transition: 0.3s ease all;
+  // pointer-events: none;
+  // transition: 0.3s ease all;
   font-size: 1rem;
+  font-weight: 550;
+  word-spacing: 1px;
 }
 
-.login-email-container:focus + .login-placeholder,
-.login-password-container:focus + .login-placeholder,
-.login-email-container:not(:placeholder-shown) + .login-placeholder,
-.login-password-container:not(:placeholder-shown) + .login-placeholder {
+.form-email-container:focus + .form-placeholder,
+.form-password-container:focus + .form-placeholder,
+.form-email-container:not(:placeholder-shown) + .form-placeholder,
+.form-password-container:not(:placeholder-shown) + .form-placeholder {
   font-size: 2rem;
   color: $blueColor;
   top: 0;
@@ -90,9 +112,15 @@
 
 .agree-container {
   font-size: 0.9rem;
+  @include displayFlexProperty(start, start, 0.3rem);
+  flex-wrap: wrap;
 }
 
 .error-msg {
   font-size: 1rem;
   color: $redColor;
+}
+
+.create-new-account {
+  color: $blueColor;
 }

@@ -1,4 +1,5 @@
 
+import { observer } from "mobx-react-lite";
 import "./App.scss";
 import Router from "./Router";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
@@ -18,4 +19,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default observer(App);

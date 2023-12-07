@@ -1,8 +1,7 @@
 import "./index.scss";
-import { useState } from "react";
 import logo from "../../../Asserts/Images/flipkartLogo.svg";
 import plus from "../../../Asserts/Images/flipkartPlus.svg";
-import InputFiled from "../../../CommonUsedComponents/InputFiled";
+import InputFiled from "../../../CommonUsedComponents/InputField";
 import seller from "../../../Asserts/Images/filpkartSellericon.svg";
 import profile from "../../../Asserts/Images/flipkartProfile.svg";
 import cart from "../../../Asserts/Images/flipkartCart.svg";
@@ -11,26 +10,23 @@ import { BiSearchAlt } from "react-icons/bi";
 import ImageField from "../../../CommonUsedComponents/ImageField";
 import { handleNavigate } from "../../../CommonFunctions/Navigate";
 import { useNavigate } from "react-router-dom";
-import { checkEmailVerification } from "../../../CommonFunctions/LoginVerification";
+import { useStore } from "../../../ContextHooks/UseStore";
+import { observer } from "mobx-react-lite";
+import { homeHeaderType } from "../../../Types";
 
-export type homeHeaderType = {
-  searchInput : string,
-  handleSetFunction : (value : string) => void
-}
-const HomeHeader = ({searchInput, handleSetFunction} : homeHeaderType) => {
- 
+const HomeHeader = ({ searchInput, handleSetFunction }: homeHeaderType) => {
   const navigate = useNavigate();
 
-  const [loginState, setLoginState] = useState<boolean>(
-    checkEmailVerification()
-  );
+  const {
+    rootStore: { userStore, wishListStore },
+  } = useStore();
 
   const isLoginOrNot = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!checkEmailVerification()) handleNavigate(e, navigate, "login");
+    if (!userStore.isUserLoginOrNot) handleNavigate(e, navigate, "login");
     else {
-      localStorage.removeItem("loginData");
-      setLoginState(false);
-    } 
+      wishListStore.clearAllWishListData()
+      userStore.clearUserData();
+    }
   };
 
   return (
@@ -61,9 +57,10 @@ const HomeHeader = ({searchInput, handleSetFunction} : homeHeaderType) => {
         <div className="head-nav-container">
           <ImageField src={seller} alt="" /> <p>Become a Seller</p>
         </div>
+
         <div className="head-nav-container" onClick={isLoginOrNot}>
-          <ImageField src={profile} alt="" />{" "}
-          <p>{checkEmailVerification() ? "Sign Out" : "Sign In"}</p>
+          <ImageField src={profile} alt="" />
+          <p>{userStore.isUserLoginOrNot ? "Sign Out" : "Sign In"}</p>
         </div>
         <div
           className="head-nav-container"
@@ -76,4 +73,4 @@ const HomeHeader = ({searchInput, handleSetFunction} : homeHeaderType) => {
   );
 };
 
-export default HomeHeader;
+export default observer(HomeHeader);

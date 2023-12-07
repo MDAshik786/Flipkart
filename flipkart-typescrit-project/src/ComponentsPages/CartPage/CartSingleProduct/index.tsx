@@ -10,10 +10,11 @@ import {
 import { useStore } from "../../../ContextHooks/UseStore";
 import { useState } from "react";
 import { handleUpdateChange } from "../../../CommonFunctions/HandleFunction";
+import { observer } from "mobx-react-lite";
 
 const CartSingleProduct = ({ products }: CartSingleProductProps) => {
   const {
-    rootStore: { productCounterStore },
+    rootStore: { productCounterStore, userStore },
   } = useStore();
 
   const { product } = products;
@@ -23,7 +24,7 @@ const CartSingleProduct = ({ products }: CartSingleProductProps) => {
   const [updateState, setUpdateState] = useState<boolean>(false);
 
   const updateMutation = useMutation({
-    mutationFn: (quantity: number) => updateAProduct(product.id, quantity),
+    mutationFn: (quantity: number) => updateAProduct(product.id, quantity,userStore?.email ),
     onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: ["getAllCartData"],
@@ -32,7 +33,7 @@ const CartSingleProduct = ({ products }: CartSingleProductProps) => {
   });
 
   const deleteMutation = useMutation({
-    mutationFn: () => deleteAProduct(products?.id),
+    mutationFn: () => deleteAProduct(products?.id, userStore.email),
     onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: ["getAllCartData"],
@@ -109,4 +110,4 @@ const CartSingleProduct = ({ products }: CartSingleProductProps) => {
   );
 };
 
-export default CartSingleProduct;
+export default observer(CartSingleProduct);

@@ -1,4 +1,3 @@
-import { displayEmail } from "../../CommonFunctions/LoginVerification";
 import {SingleProduct } from "../../Types";
 import axios from "axios";
 import {
@@ -8,20 +7,22 @@ import {
   getspecificWishListProductUrl,
 } from "../../Utils_/APIUrls";
 
-const email = displayEmail();
-
-export const getSpecificWhishListProduct = async () => {
-  try {
-    const response = await axios.get(
-      `${getspecificWishListProductUrl}/${email}`
-    );
-    return response.data;
-  } catch (e) {
-    console.log(e, "getSpecificWhishListProduct");
+export const getSpecificWhishListProduct = async (email : string) => {
+  if(email){
+    try {
+      const response = await axios.get(
+        `${getspecificWishListProductUrl}/${email}`
+      );
+      return response.data;
+    } catch (e) {
+      console.log(e, "getSpecificWhishListProduct");
+    }
   }
-};
+  else 
+   return []
+}
 
-export const getAllWhishListProduct = async () => {
+export const getAllWhishListProduct = async (email : string) => {
   try {
     const response = await axios.get(`${getAllWishListProductUrl}/${email}`);
     //  console.log(response.data, "getAllWhishListProduct")
@@ -31,7 +32,7 @@ export const getAllWhishListProduct = async () => {
   }
 };
 
-export const AddToWishList = async (product: SingleProduct) => {
+export const AddToWishList = async (product: SingleProduct, email : string) => {
   
     const {
       id,
@@ -71,7 +72,7 @@ export const AddToWishList = async (product: SingleProduct) => {
     }
 };
 
-export const deleteFromWishList = async (id: number) => {
+export const deleteFromWishList = async (id: number, email : string) => {
   try {
     const response = await axios.delete(
       `${deleteWishListProductUrl}/${email}/${id}`

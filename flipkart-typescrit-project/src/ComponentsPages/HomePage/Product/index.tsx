@@ -10,16 +10,15 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { addAProductToCart } from "../../../API Functions/HomePageAPI";
 import { useStore } from "../../../ContextHooks/UseStore";
 import { useNavigate } from "react-router-dom";
-import { toJS } from "mobx";
 import {
   AddToWishList,
   deleteFromWishList,
 } from "../../../API Functions/WishListAPI";
-import { checkEmailVerification } from "../../../CommonFunctions/LoginVerification";
+import { observer } from "mobx-react-lite";
 
 export const HomeSingleProduct = ({ product }: SingleProductProps) => {
   const {
-    rootStore: { productCounterStore, wishListStore },
+    rootStore: { productCounterStore, wishListStore, userStore },
   } = useStore();
 
   const navigate = useNavigate();
@@ -32,7 +31,8 @@ export const HomeSingleProduct = ({ product }: SingleProductProps) => {
 
       addAProductToCart(
         product.id,
-        productCounterStore.getProductCounter[product?.id]
+        productCounterStore.getProductCounter[product?.id],
+        userStore.email
       );
     },
     onSuccess: () => {
@@ -41,7 +41,7 @@ export const HomeSingleProduct = ({ product }: SingleProductProps) => {
   });
   
   const addTowishList = useMutation({
-    mutationFn: () => AddToWishList(product),
+    mutationFn: () => AddToWishList(product, userStore.email),
     onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: ["getSpecificIdWishListProduct"],
@@ -50,7 +50,7 @@ export const HomeSingleProduct = ({ product }: SingleProductProps) => {
   });
 
   const deleteFromWishListMutation = useMutation({
-    mutationFn: () => deleteFromWishList(product?.id),
+    mutationFn: () => deleteFromWishList(product?.id, userStore?.email),
     onSuccess: () =>
       queryClient.invalidateQueries({
         queryKey: ["getSpecificIdWishListProduct"],
@@ -76,9 +76,10 @@ export const HomeSingleProduct = ({ product }: SingleProductProps) => {
     navigate: (name: string) => void,
     mutationFunction: () => void
   ) => {
-    !checkEmailVerification() ? navigate("/login") : mutationFunction();
+    !userStore.isUserLoginOrNot ? navigate("/login") : mutationFunction();
   };
-  
+
+
   return (
     <div className="single-product-container">
       <div className="single-img-container" onClick={handleSinglePage}>
@@ -89,7 +90,7 @@ export const HomeSingleProduct = ({ product }: SingleProductProps) => {
         />
       </div>
       <p className="single-product-name" onClick={handleSinglePage}>
-        {product?.name}
+        {product?.name} {userStore.password}
       </p>
       <div className="rating-container">
         <div className="single-rating-number">
@@ -132,4 +133,4 @@ export const HomeSingleProduct = ({ product }: SingleProductProps) => {
   );
 };
 
-export default HomeSingleProduct;
+export default observer(HomeSingleProduct);
