@@ -1,3 +1,4 @@
+export const signupApiUrl = 'http://localhost:8080/api/userlogin'
 export const loginVerificationUrl = 'http://localhost:8080/api/userlogin/password'
 export const getAllTopRelatedTagsUrl = 'http://localhost:8080/api/allTags'
 export const getAllScrollingIamgesUrl = 'http://localhost:8080/api/allScrollingImages'

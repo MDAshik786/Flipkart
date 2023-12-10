@@ -1,11 +1,16 @@
 import React from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { loginVerification } from "../../../API Functions/LogIn&SignInAPI";
+import {
+  loginVerification,
+  signUpVerification,
+} from "../../../API Functions/LogIn&SignInAPI";
 import { formRightWrapperType } from "../../../Types";
 import FormInputField from "../../../CommonUsedComponents/FormInputField";
 import ButtonFiled from "../../../CommonUsedComponents/ButtonField";
 import { userDataVerication } from "../../../CommonFunctions/FormValidation";
 import { observer } from "mobx-react-lite";
+import formContent from "../../../Utils_/helpers/user.json";
+import { singleUserDataType } from "../../../Types/UserAccontType";
 
 const AccountRightWrapper = ({
   InputErrorValues,
@@ -16,14 +21,28 @@ const AccountRightWrapper = ({
   handleSetStateOnChange,
   handleSetStateErrorOnChange,
 }: formRightWrapperType) => {
-  const loginData = [
+  const { signUp, agreeStatement, labelAndInputNames } = formContent;
+  const { newUser } = signUp;
+  const { content, firstPoint, andContent, secondPoint } = agreeStatement;
+  const {
+    emailInputName,
+    emailLabelName,
+    passwordInputName,
+    passwordLabelName,
+    nameInputName,
+    nameLabelName,
+    phoneInputName,
+    phoneLabelName,
+  } = labelAndInputNames;
+
+  const loginData : singleUserDataType[] = [
     {
       divClassName: "form-email-div",
       labelClassName: "form-placeholder",
-      labelContent: "Enter Your Email:",
+      labelContent: emailLabelName,
       inputClassName: "form-email-container",
-      type: "type",
-      name: "email",
+      type: "text" as "text",
+      name: emailInputName,
       value: inputData.email,
       onChange: handleSetStateOnChange,
       spanClassName: "error-msg",
@@ -32,10 +51,10 @@ const AccountRightWrapper = ({
     {
       divClassName: "form-password-div",
       labelClassName: "form-placeholder",
-      labelContent: "Enter Your Password:",
-      type: "password",
+      labelContent: passwordLabelName,
+      type: "password" as "password",
       inputClassName: "form-password-container",
-      name: "password",
+      name: passwordInputName,
       value: inputData.password,
       onChange: handleSetStateOnChange,
       autoComplete: "off",
@@ -44,14 +63,14 @@ const AccountRightWrapper = ({
     },
   ];
 
-  const signupData = [
+  const signupData: singleUserDataType[] = [
     {
       divClassName: "form-name-div",
       labelClassName: "form-placeholder",
-      labelContent: "Enter Your Name:",
+      labelContent: nameLabelName,
       inputClassName: "form-name-container",
-      type: "type",
-      name: "name",
+      type: "text" as "text",
+      name: nameInputName,
       value: inputData.name,
       onChange: handleSetStateOnChange,
       spanClassName: "error-msg",
@@ -60,10 +79,10 @@ const AccountRightWrapper = ({
     {
       divClassName: "form-phone-div",
       labelClassName: "form-placeholder",
-      labelContent: "Enter Your Mobile Number:",
-      type: "phone",
+      labelContent: phoneLabelName,
+      type: "number" as "number",
       inputClassName: "form-phone-container",
-      name: "phone",
+      name: phoneInputName,
       value: inputData.phone,
       onChange: handleSetStateOnChange,
       spanClassName: "error-msg",
@@ -85,25 +104,11 @@ const AccountRightWrapper = ({
 
   const loginVerificationMutation = useMutation({
     mutationFn: () => {
-      const responseData = loginVerification({
-        email: inputData.email,
-        password: inputData.password,
-      });
+      const responseData = isNewUser
+        ? signUpVerification(inputData)
+        : loginVerification(inputData);
       responseData.then((response) => {
-        handleLoginVerification({
-          response,
-          email: inputData.email,
-          password: inputData.password,
-        });
-        // handleLoginVerifications({
-        //   response,
-        //   navigate,
-        //   InputValues,
-        //   setInputValues,
-        //   user: userStore.setLoginUserData,
-        //   email: emailInput.current?.value || "",
-        //   password: passwordInput.current?.value || "",
-        // });
+        handleLoginVerification(response);
       });
       return responseData;
     },
@@ -112,7 +117,7 @@ const AccountRightWrapper = ({
         queryKey: ["getSpecificIdWishListProduct"],
       }),
   });
-  
+
   return (
     <form onSubmit={submitLoginVerification} className="user-form">
       <div className="all-input-container">
@@ -120,9 +125,9 @@ const AccountRightWrapper = ({
           userData={isNewUser ? [...loginData, ...signupData] : loginData}
         />
         <div className="agree-container">
-          By continuing, you agree to Flipkart's
-          <span className="blue-color">Terms of Use </span> and
-          <span className="blue-color">Privacy Policy. </span>
+          {content}
+          <span className="blue-color">{firstPoint} </span> {andContent}
+          <span className="blue-color">{secondPoint} </span>
         </div>
         <ButtonFiled className="signup-button" content="SignUp" />
         {isNewUser && (
@@ -135,11 +140,11 @@ const AccountRightWrapper = ({
       </div>
       {!isNewUser && (
         <h4 className="create-new-account" onClick={setStateFunction}>
-          New to Flipkart? Create an account
+          {newUser}
         </h4>
       )}
     </form>
   );
 };
 
-export default observer(AccountRightWrapper)
+export default observer(AccountRightWrapper);

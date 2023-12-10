@@ -1,11 +1,28 @@
 {
-    "signUp" : {
-        "heading" : "Looks like you're new here!",
-        "description" : "Sign up with your Email to get started"
-    },
-    
-    "signIn" : {
-        "heading" : "Login",
-        "description" : "Get access to your Orders, Wishlist and Recommendations"
-    }
+  "signUp": {
+    "heading": "Looks like you're new here!",
+    "description": "Sign up with your Email to get started",
+    "newUser": "New to Flipkart? Create an account"
+  },
+
+  "signIn": {
+    "heading": "Login",
+    "description": "Get access to your Orders, Wishlist and Recommendations"
+  },
+  "agreeStatement": {
+    "content": "By continuing, you agree to Flipkart's",
+    "firstPoint": "Terms of Use",
+    "andContent": "and",
+    "secondPoint": "Privacy Policy."
+  },
+  "labelAndInputNames": {
+    "emailLabelName": "Enter Your Email:",
+    "emailInputName": "email",
+    "passwordLabelName": "Enter Your Password:",
+    "passwordInputName": "password",
+    "nameLabelName": "Enter Your Name:",
+    "nameInputName": "name",
+    "phoneLabelName": "Enter Your Phone:",
+    "phoneInputName": "phone"
+  }
 }

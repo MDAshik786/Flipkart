@@ -4,9 +4,13 @@ import ImageField from "../../../CommonUsedComponents/ImageField";
 import ButtonFiled from "../../../CommonUsedComponents/ButtonField";
 import ProductCount from "../../HomePage/ProductCount";
 import { BiSolidStar } from "react-icons/bi";
+import fkAssured from "../../../Asserts/Images/fk-assured.png";
+import RatingAndReview from "../Rating";
+import { SingleProduct } from "../../../Types";
+
 const SingleView = () => {
   const location = useLocation();
-  const product = location.state;
+  const product : SingleProduct = location.state;
 
   return (
     <div className="singleview">
@@ -21,26 +25,39 @@ const SingleView = () => {
         </div>
       </div>
       <div className="singleview-right">
-        <p className="single-product-name">
-          {product?.name}
-        </p>
+        <p className="single-product-namee">{product?.name}</p>
         <div className="rating-container">
           <div className="single-rating-number">
             <h5>{product?.ratingStar}</h5>{" "}
             <BiSolidStar className="bsStar-icon" />
           </div>
           <div className="rating-counts">
-            <h5>{product?.ratingCount}</h5>Count
+            <h5>{product?.ratingCount} Reating Count</h5>
+            <h5>{product?.reviewCount} Review Count</h5>
           </div>
+        </div>
+        <div>
+          <ImageField
+            src={fkAssured}
+            alt="flipKart Assured"
+            className="assured-img"
+          />
         </div>
         <div className="single-price-container">
           <span className="₹">₹</span>
           <h5>{product?.priceIndia}</h5>
         </div>
+        <div className="ruppee-meassage">Convert into US dollar.</div>
         <div className="single-quantity-conatiner">
-          <span>Quantity:</span>
+          <h4>Quantity:</h4>
           <ProductCount product={product} />
         </div>
+        <div className="single-product-about">
+          <h4 className="about">About:</h4>
+          <p>{product?.description}</p>
+        </div>
+        <RatingAndReview product={product} />
+        
       </div>
     </div>
   );

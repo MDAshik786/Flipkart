@@ -12,9 +12,9 @@ export class WishListStore {
       specificWishListProduct: observable,
       setFunctionSpecifcProduct: action,
       setFunctionAllWishlistProduct: action,
+      clearAllWishListData: action,
       getSpecificWishList: computed,
       getAllWishlistProduct: computed,
-      clearAllWishListData : action
     });
 
     this.rootStore = rootStore;
@@ -36,8 +36,7 @@ export class WishListStore {
     return this.allWishListProduct;
   }
   clearAllWishListData = () => {
-    debugger
-    console.log("clearAllWishListData")
+    console.log("clearAllWishListData");
     this.allWishListProduct = [];
     this.specificWishListProduct = [];
   };

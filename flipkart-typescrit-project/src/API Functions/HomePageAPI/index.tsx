@@ -37,6 +37,7 @@ export const getAllProduct = async () => {
 export const addAProductToCart = async (
   productId: number,
   productQuantity: number | undefined,
+  color : string,
   email : string
 ) => {
   let quantity = 1;
@@ -44,7 +45,7 @@ export const addAProductToCart = async (
   try {
     const response = await axios.post(
       `${addAProductToCartUrl}/${email}`,
-      { productId, quantity },
+      { productId, quantity, color },
       {
         headers: {
           "content-Type": "application/json",

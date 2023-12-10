@@ -1,18 +1,10 @@
 import { action, computed, makeObservable, observable } from "mobx";
 import { IRootStore } from "../RootStore";
 import { makePersistable } from "mobx-persist-store";
+import { inputDataType, loginUserStoreType } from "../../Types";
 
-export interface newUserStoreType {
-  email: string;
-  password: string;
-  name: string;
-  phoneNumber: string;
-}
 
-export interface loginUserStoreType {
-  emailInput: string;
-  passwordInput: string;
-}
+
 
 export class UserStore {
   email: string = "";
@@ -43,7 +35,6 @@ export class UserStore {
   }
 
    get isUserLoginOrNot() {
-    // console.log(this.email !== "" ? true : false, "isLogin");
     return this.email !== "" ? true : false;
   }
 
@@ -59,16 +50,16 @@ export class UserStore {
     localStorage.removeItem("storeLoginData");
   }
 
-  setNewUserData({ email, password, name, phoneNumber }: newUserStoreType) {
-    this.email = email;
-    this.password = password;
-    this.name = name;
-    this.phoneNumber = phoneNumber;
+  setNewUserData(inputDat: inputDataType) {
+    this.email = inputDat.email.toLowerCase();
+    this.password = inputDat.password;
+    this.name = inputDat.name;
+    this.phoneNumber = inputDat.phone;
   }
 
   setLoginUserData({ emailInput, passwordInput }: loginUserStoreType) {
     console.log(emailInput, passwordInput, "setLoginUserData");
-    this.email = emailInput
+    this.email = emailInput.toLowerCase()
     this.password = passwordInput;
   }
 }

@@ -1,17 +1,17 @@
 export type userDataType = {
-    userData: singleUserDataType[];
-}
+  userData: singleUserDataType[];
+};
 
 export type singleUserDataType = {
-    divClassName: string;
-    labelClassName: string;
-    labelContent: string;
-    inputClassName: string;
-    type: string;
-    name: string;
-    value: string;
-    onChange: any; 
-    autoComplete?: string;
-    spanClassName: string;
-    errorMessage: string;
-}
+  divClassName: string;
+  labelClassName: string;
+  labelContent: string;
+  inputClassName: string;
+  type: "text" | "number" | "email" | "password";
+  name: string;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  autoComplete?: string;
+  spanClassName: string;
+  errorMessage: string;
+};

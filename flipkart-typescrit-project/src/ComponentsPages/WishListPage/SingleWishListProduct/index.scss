@@ -2,44 +2,44 @@
 @import "../../../SCSSFile/SCSSFunctions/index.scss";
 
 .wishlist-product {
-     @include displayFlexProperty(center, start, 0.7rem);
-     padding: 1rem;
-     border-bottom: 1px solid $borderLightGray;
+  @include displayFlexProperty(center, start, 0.7rem);
+  padding: 1rem;
+  border-bottom: 1px solid $borderLightGray;
 
-     & .img-container {
-        width: 14rem;
-        @include displayFlexProperty(center, center, none);
-     }
-    & .img-container img{
-        @include imgProperty(8rem, 1, none);
-    }
+  & .single-img-container {
+    width: 14rem;
+    @include displayFlexProperty(center, center, none);
+  }
+  & .single-product-img {
+    @include imgProperty(9rem, 1, none);
+  }
 
-    & .product-details {
-        @include displayFlexColumnProperty(start, start, 0.9rem);
-        width: 35rem;
-   
+  & .product-details {
+    @include displayFlexColumnProperty(start, start, 0.9rem);
+    width: 35rem;
+
     & .rating_counts {
-        @include displayFlexProperty(center, start, 0.5rem);
+      @include displayFlexProperty(center, start, 0.5rem);
 
-        & .rating-count {
-         @include displayFlexProperty(center, start, 0.5rem);
-        }
+      & .rating-count {
+        @include displayFlexProperty(center, start, 0.5rem);
+      }
     }
 
     & .price-container {
-        @include displayFlexProperty(center, start, 0.2rem);
+      @include displayFlexProperty(center, start, 0.2rem);
     }
 
-    & .assured-img {
-        @include imgProperty(6rem, 3, none);
+    .assured-img {
+      @include imgProperty(6rem, 3, none);
     }
 
     & .description {
-        @include displayFlexColumnProperty(start, start, 0.5rem);
+      @include displayFlexColumnProperty(start, start, 0.5rem);
     }
-}
+  }
 
-    & .trash-icons{
-        @include heightWidthProperty(1.8rem, 1.8rem);
-    }
+  & .trash-icons {
+    @include heightWidthProperty(1.5rem, 1.5rem);
+  }
 }

@@ -11,8 +11,12 @@ import { useStore } from "../../../ContextHooks/UseStore";
 import { useState } from "react";
 import { handleUpdateChange } from "../../../CommonFunctions/HandleFunction";
 import { observer } from "mobx-react-lite";
+import RatingContainer from "../../../CommonUsedComponents/Product/RatingContainer";
+import PriceContainer from "../../../CommonUsedComponents/Product/PriceContainer";
+import ImageConatiner from "../../../CommonUsedComponents/Product/ImageContainer";
+import { useNavigate } from "react-router-dom";
 
-const CartSingleProduct = ({ products }: CartSingleProductProps) => {
+const CartSingleProduct = ({ products,  }: CartSingleProductProps) => {
   const {
     rootStore: { productCounterStore, userStore },
   } = useStore();
@@ -20,11 +24,13 @@ const CartSingleProduct = ({ products }: CartSingleProductProps) => {
   const { product } = products;
 
   const queryClient = useQueryClient();
+  const navigate = useNavigate()
 
   const [updateState, setUpdateState] = useState<boolean>(false);
 
   const updateMutation = useMutation({
-    mutationFn: (quantity: number) => updateAProduct(product.id, quantity,userStore?.email ),
+    mutationFn: (quantity: number) =>
+      updateAProduct(product.id, quantity, userStore?.email),
     onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: ["getAllCartData"],
@@ -41,33 +47,36 @@ const CartSingleProduct = ({ products }: CartSingleProductProps) => {
     },
   });
 
+  const handleSinglePage = () => {
+    navigate("single", { state: product });
+  };
+
+  const ratingData = {
+    ratingStar: product.ratingStar,
+    content: "New Arrival",
+    ratingCount: product.ratingCount,
+    reviewCount: product.reviewCount,
+  };
+
+  const imageData = {
+    product,
+    onclick: handleSinglePage,
+    color : products.color,
+  };
+
   return (
     <div className="cart-product-allData">
-      <div className="cart-product-img-container">
-        <ImageField
-          src={`http://localhost:3000/${product?.image}`}
-          className="cart-product-img"
-          alt=""
-        />
-      </div>
+      <ImageConatiner imageData={imageData} />
       <div className="cart-product-details">
         <p className="cart-product-name">{product?.name}</p>
-        <div className="rating-container">
-          <div className="single-rating-number">
-            {product?.ratingStar} <BiSolidStar className="bsStar-icon" />
-          </div>
-          <span>{product?.ratingCount} rating</span>
-        </div>
+        <RatingContainer ratingData={ratingData} />
 
-        <div className="single-price-container">
-          <span className="₹">₹</span>
-          <h4>{product?.priceIndia}</h4>
-        </div>
+        <PriceContainer product={product} />
         <div className="cart-product-about-container">
-          <h4>About:</h4> <p>{product?.description}</p>
+          <h4>About :</h4> <p>{product?.description}</p>
         </div>
         <div className="single-quantity-conatiner">
-          <h4>Quantity:</h4>
+          <h4>Quantity :</h4>
           {!updateState ? (
             <span>{products.quantity}</span>
           ) : (

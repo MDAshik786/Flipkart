@@ -7,14 +7,13 @@ import {
 import { useQuery } from "@tanstack/react-query";
 import { Product, SingleProduct, keywordTypes } from "../../../Types";
 import TopOfferTagsImage from "../TopOfferTagsImage";
-import { observer } from "mobx-react-lite";
 import offerCard from "../../../Asserts/Images/offerCard.jpg";
 import ImageField from "../../../CommonUsedComponents/ImageField";
 import { HomeSingleProduct } from "../Product";
 import { useStore } from "../../../ContextHooks/UseStore";
 import ScrollingIamges from "../ScrollingImages";
 import { getSpecificWhishListProduct } from "../../../API Functions/WishListAPI";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Home = () => {
   const [searchInput, setSearchInput] = useState<string>("");
@@ -43,6 +42,28 @@ const Home = () => {
     queryFn: () => getAllProduct(),
   });
 
+  // const {
+  //   data: getAllProductData,
+  //   error: getAllProductError,
+  //   isLoading: getAllProductLoading,
+  // } = getAllProductQuery();
+
+  // import { useQuery } from "@tanstack/react-query";
+  // import { getAllProduct } from "../../API Functions/HomePageAPI";
+
+  // export const getAllProductQuery = () => {
+  //      const {
+  //         data,
+  //         error,
+  //         isLoading,
+  //       } = useQuery({
+  //         queryKey: ["getAllProduct"],
+  //         queryFn: () => getAllProduct(),
+
+  //     });
+  //         return {data, error, isLoading}
+  // }
+
   const {
     data: getSpecificWishListData,
     error: wishListProductError,
@@ -51,17 +72,18 @@ const Home = () => {
     queryKey: ["getSpecificIdWishListProduct"],
     queryFn: () => getSpecificWhishListProduct(userStore.email),
   });
-  wishListStore.setFunctionSpecifcProduct(getSpecificWishListData);
+  useEffect(() => {
+    wishListStore.setFunctionSpecifcProduct(getSpecificWishListData || []);
+  }, [getSpecificWishListData]);
 
   const filterData =
-  searchInput !== ""
-    ? getAllProductData.filter((product: SingleProduct) =>
-        product.keywords?.some((keywords: keywordTypes) =>
-          keywords.keyword.toLowerCase().includes(searchInput.toLowerCase())
+    searchInput !== ""
+      ? getAllProductData.filter((product: SingleProduct) =>
+          product.keywords?.some((keywords: keywordTypes) =>
+            keywords.keyword.toLowerCase().includes(searchInput.toLowerCase())
+          )
         )
-      )
-    : getAllProductData;
-
+      : getAllProductData;
 
   if (tagImagesLoading || getAllProductLoading) return <p>Loading...</p>;
   if (tagImagesError && getAllProductError)
@@ -84,11 +106,15 @@ const Home = () => {
       <ImageField src={offerCard} alt="card Offer" className="offer-card-img" />
       <div className="product-container">
         {filterData?.map((product: SingleProduct, index: number) => (
-          <HomeSingleProduct product={product} key={index} />
+          <HomeSingleProduct
+            product={product}
+            key={index}
+            getSpecificWishListData={getSpecificWishListData}
+          />
         ))}
       </div>
     </>
   );
 };
 
-export default observer(Home);
+export default Home;

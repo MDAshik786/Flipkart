@@ -24,6 +24,11 @@ export const userDataVerication = ({
         handleSetStateErrorOnChange(data, `Minimum 5 character Required`);
         isVerified = false;
       }
+    } else if (data === "phone") {
+      if (value.length != 10) {
+        handleSetStateErrorOnChange(data, `Incorrect Phone Number`);
+        isVerified = false;
+      }
     } else {
       if (value === "") {
         handleSetStateErrorOnChange(data, `${data} is Required`);
@@ -31,5 +36,6 @@ export const userDataVerication = ({
       }
     }
   });
+  console.log(isVerified, "isVerified");
   return isVerified;
 };

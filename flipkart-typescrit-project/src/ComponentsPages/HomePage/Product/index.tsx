@@ -1,11 +1,9 @@
 import "./index.scss";
 import ButtonFiled from "../../../CommonUsedComponents/ButtonField";
-import ImageField from "../../../CommonUsedComponents/ImageField";
 import ProductCount from "../ProductCount";
 import { AiOutlineHeart } from "react-icons/ai";
 import { AiFillHeart } from "react-icons/ai";
-import { BiSolidStar } from "react-icons/bi";
-import { SingleProductProps } from "../../../Types";
+import { SingleProduct, SingleProductProps2 } from "../../../Types";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { addAProductToCart } from "../../../API Functions/HomePageAPI";
 import { useStore } from "../../../ContextHooks/UseStore";
@@ -15,122 +13,144 @@ import {
   deleteFromWishList,
 } from "../../../API Functions/WishListAPI";
 import { observer } from "mobx-react-lite";
+import PriceContainer from "../../../CommonUsedComponents/Product/PriceContainer";
+import RatingContainer from "../../../CommonUsedComponents/Product/RatingContainer";
+import ImageConatiner from "../../../CommonUsedComponents/Product/ImageContainer";
 
-export const HomeSingleProduct = ({ product }: SingleProductProps) => {
-  const {
-    rootStore: { productCounterStore, wishListStore, userStore },
-  } = useStore();
+export const HomeSingleProduct = observer(
+  ({ product, getSpecificWishListData }: SingleProductProps2) => {
+    const {
+      rootStore: {
+        productCounterStore,
+        wishListStore,
+        userStore,
+        productImageStore,
+      },
+    } = useStore();
 
-  const navigate = useNavigate();
+    const navigate = useNavigate();
 
-  const queryClient = useQueryClient();
+    const queryClient = useQueryClient();
 
-  const addToCartMutation = useMutation({
-    mutationFn: async () => {
-      await new Promise(resolve => setTimeout(resolve, 1000));
+    const addToCartMutation = useMutation({
+      mutationFn: async () => {
+        await new Promise((resolve) => setTimeout(resolve, 1000));
 
-      addAProductToCart(
-        product.id,
-        productCounterStore.getProductCounter[product?.id],
-        userStore.email
-      );
-    },
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["POST"] });
-    },
-  });
-  
-  const addTowishList = useMutation({
-    mutationFn: () => AddToWishList(product, userStore.email),
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: ["getSpecificIdWishListProduct"],
-      });
-    },
-  });
+        addAProductToCart(
+          product.id,
+          productCounterStore.getProductCounter[product?.id],
+          color,
+          userStore.email
+        );
+      },
+    });
 
-  const deleteFromWishListMutation = useMutation({
-    mutationFn: () => deleteFromWishList(product?.id, userStore?.email),
-    onSuccess: () =>
-      queryClient.invalidateQueries({
-        queryKey: ["getSpecificIdWishListProduct"],
-      }),
-  });
+    const addTowishList = useMutation({
+      mutationFn: () => AddToWishList(product, userStore.email, color),
+      onSuccess: () => {
+        queryClient.invalidateQueries({
+          queryKey: ["getSpecificIdWishListProduct"],
+        });
+      },
+    });
 
-  const handleSinglePage = () => {
-    navigate("single", { state: product });
-  };
+    const deleteFromWishListMutation = useMutation({
+      mutationFn: () => deleteFromWishList(product?.id, userStore?.email),
+      onSuccess: () =>
+        queryClient.invalidateQueries({
+          queryKey: ["getSpecificIdWishListProduct"],
+        }),
+    });
 
-  const handleWishList = () => {
+    const handleSinglePage = () => {
+      navigate("single", { state: product });
+    };
+
+    const handleWishList = () => {
+      const isWishlist: boolean = getSpecificWishListData.includes(product.id);
+      isWishlist ? deleteFromWishListMutation.mutate() : addTowishList.mutate();
+    };
+
     const isWishlist: boolean = wishListStore.getSpecificWishList.includes(
       product.id
     );
-    isWishlist ? deleteFromWishListMutation.mutate() : addTowishList.mutate();
-  };
 
-  const isWishlist: boolean = wishListStore.getSpecificWishList.includes(
-    product.id
-  );
+    const color =
+      productImageStore.getProductImages[product.id] ||
+      product.productImages[0].color;
 
-  const handleLoginVerification = (
-    navigate: (name: string) => void,
-    mutationFunction: () => void
-  ) => {
-    !userStore.isUserLoginOrNot ? navigate("/login") : mutationFunction();
-  };
+    const handleLoginVerification = (
+      navigate: (name: string) => void,
+      mutationFunction: () => void
+    ) => {
+      !userStore.isUserLoginOrNot ? navigate("/login") : mutationFunction();
+    };
 
+    const ratingData = {
+      ratingStar: product.ratingStar,
+      content: "New Arrival",
+      ratingCount: product.ratingCount,
+      reviewCount: product.reviewCount,
+    };
 
-  return (
-    <div className="single-product-container">
-      <div className="single-img-container" onClick={handleSinglePage}>
-        <ImageField
-          src={`http://localhost:3000/${product?.image}`}
-          alt={product?.name}
-          className="single-product-img"
+  
+    const imageData = {
+      product,
+      onclick: handleSinglePage,
+      color,
+    };
+
+    return (
+      <div className="single-product-container">
+        <ImageConatiner imageData={imageData} />
+        <p className="single-product-name" onClick={handleSinglePage}>
+          {product?.name}
+        </p>
+        <RatingContainer ratingData={ratingData} />
+
+        <PriceContainer product={product} />
+
+        <div className="product-color-button-container">
+          {product.productImages.map((data, index) => (
+            <ButtonFiled
+              key={index}
+              content={data.color}
+              className={
+                color === data.color ? "choosen-button" : "product-color-button"
+              }
+              onClick={() =>
+                productImageStore.setColorFunction(product.id, data.color)
+              }
+            />
+          ))}
+        </div>
+        <div className="single-quantity-conatiner">
+          <span>Quantity:</span>
+          <ProductCount product={product} />
+        </div>
+        <ButtonFiled
+          content="Add To Cart"
+          className="single-addToCart-button"
+          onClick={() =>
+            handleLoginVerification(navigate, () => addToCartMutation.mutate())
+          }
+          disabled={addToCartMutation.isPending}
         />
-      </div>
-      <p className="single-product-name" onClick={handleSinglePage}>
-        {product?.name} {userStore.password}
-      </p>
-      <div className="rating-container">
-        <div className="single-rating-number">
-          <h5>{product?.ratingStar}</h5> <BiSolidStar className="bsStar-icon" />
+        <div
+          className="single-absolute"
+          onClick={() =>
+            handleLoginVerification(navigate, () => handleWishList())
+          }
+        >
+          {isWishlist ? (
+            <AiFillHeart className="single-wishlist-img-true" />
+          ) : (
+            <AiOutlineHeart className="single-wishlist-img" />
+          )}
         </div>
-        <div className="rating-counts">
-          {" "}
-          <h5>{product?.ratingCount}</h5>Count
-        </div>
       </div>
-      <div className="single-price-container">
-        <span className="₹">₹</span>
-        <h5>{product?.priceIndia}</h5>
-      </div>
-      <div className="single-quantity-conatiner">
-        <span>Quantity:</span>
-        <ProductCount product={product} />
-      </div>
-      <ButtonFiled
-        content="Add To Cart"
-        className="single-addToCart-button"
-        onClick={() =>
-          handleLoginVerification(navigate, () => addToCartMutation.mutate())
-        }
-        disabled={addToCartMutation.isPending}
-      />
-      <div
-        className="single-absolute"
-        onClick={() =>
-          handleLoginVerification(navigate, () => handleWishList())
-        }
-      >
-        {isWishlist ? (
-          <AiFillHeart className="single-wishlist-img-true" />
-        ) : (
-          <AiOutlineHeart className="single-wishlist-img" />
-        )}
-      </div>
-    </div>
-  );
-};
+    );
+  }
+);
 
-export default observer(HomeSingleProduct);
+export default HomeSingleProduct;

@@ -1,11 +1,8 @@
 import axios from "axios";
-import { loginVerificationUrl } from "../../Utils_/APIUrls";
+import { loginVerificationUrl, signupApiUrl } from "../../Utils_/APIUrls";
+import { inputDataOptionalType } from "../../Types";
 
-type loginState = {
-    email : string,
-    password : string
-}
-export const loginVerification = async (state: loginState ) => {
+export const loginVerification = async (state: inputDataOptionalType) => {
   try {
     const response = await axios.post(
       loginVerificationUrl,
@@ -19,8 +16,30 @@ export const loginVerification = async (state: loginState ) => {
         },
       }
     );
-    return response.data
+    return response.data;
   } catch (e) {
     console.log(e, "loginVerification");
+  }
+};
+
+export const signUpVerification = async (state: inputDataOptionalType) => {
+  try {
+    const response = await axios.post(
+      signupApiUrl,
+      {
+        email: state.email,
+        password: state.password,
+        name: state?.name,
+        phone: state?.phone,
+      },
+      {
+        headers: {
+          "content-Type": "application/json",
+        },
+      }
+    );
+    return response.data;
+  } catch (e) {
+    console.log(e, "signUpVerification ");
   }
 };

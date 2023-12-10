@@ -14,63 +14,65 @@ import { useStore } from "../../../ContextHooks/UseStore";
 import { observer } from "mobx-react-lite";
 import { homeHeaderType } from "../../../Types";
 
-const HomeHeader = ({ searchInput, handleSetFunction }: homeHeaderType) => {
-  const navigate = useNavigate();
+const HomeHeader = observer(
+  ({ searchInput, handleSetFunction }: homeHeaderType) => {
+    const navigate = useNavigate();
 
-  const {
-    rootStore: { userStore, wishListStore },
-  } = useStore();
+    const {
+      rootStore: { userStore, wishListStore },
+    } = useStore();
 
-  const isLoginOrNot = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!userStore.isUserLoginOrNot) handleNavigate(e, navigate, "login");
-    else {
-      wishListStore.clearAllWishListData()
-      userStore.clearUserData();
-    }
-  };
+    const isLoginOrNot = (e: React.MouseEvent<HTMLDivElement>) => {
+      if (!userStore.isUserLoginOrNot) handleNavigate(e, navigate, "login");
+      else {
+        wishListStore.clearAllWishListData();
+        userStore.clearUserData();
+      }
+    };
 
-  return (
-    <header className="header">
-      <div className="header--branding-container">
-        <img src={logo} alt="FlipKart" className="img" />
-        <div className="header-explore-name">
-          <span className="head-explore">Explore</span>
-          <span className="head-plus">Plus</span>
-          <img src={plus} alt="" />
+    return (
+      <header className="header">
+        <div className="header--branding-container">
+          <img src={logo} alt="FlipKart" className="img" />
+          <div className="header-explore-name">
+            <span className="head-explore">Explore</span>
+            <span className="head-plus">Plus</span>
+            <img src={plus} alt="" />
+          </div>
         </div>
-      </div>
-      <div className="head-input-container">
-        <ButtonFiled
-          content={<BiSearchAlt className="head-search-icons" />}
-          className={"header-serach-icons"}
-        />
-        <InputFiled
-          className={"header-input"}
-          placeholder={"Search for Product, Brand and More"}
-          autoFocus={true}
-          type="text"
-          value={searchInput}
-          onChange={(e) => handleSetFunction(e.target.value)}
-        />
-      </div>
-      <div className="head-rightSide-container">
-        <div className="head-nav-container">
-          <ImageField src={seller} alt="" /> <p>Become a Seller</p>
+        <div className="head-input-container">
+          <ButtonFiled
+            content={<BiSearchAlt className="head-search-icons" />}
+            className={"header-serach-icons"}
+          />
+          <InputFiled
+            className={"header-input"}
+            placeholder={"Search for Product, Brand and More"}
+            autoFocus={true}
+            type="text"
+            value={searchInput}
+            onChange={(e) => handleSetFunction(e.target.value)}
+          />
         </div>
+        <div className="head-rightSide-container">
+          <div className="head-nav-container">
+            <ImageField src={seller} alt="" /> <p>Become a Seller</p>
+          </div>
 
-        <div className="head-nav-container" onClick={isLoginOrNot}>
-          <ImageField src={profile} alt="" />
-          <p>{userStore.isUserLoginOrNot ? "Sign Out" : "Sign In"}</p>
+          <div className="head-nav-container" onClick={isLoginOrNot}>
+            <ImageField src={profile} alt="" />
+            <p>{userStore.isUserLoginOrNot ? "Sign Out" : "Sign In"}</p>
+          </div>
+          <div
+            className="head-nav-container"
+            onClick={(e) => handleNavigate(e, navigate, "cart")}
+          >
+            <ImageField src={cart} alt="" /> <p>Cart</p>
+          </div>
         </div>
-        <div
-          className="head-nav-container"
-          onClick={(e) => handleNavigate(e, navigate, "cart")}
-        >
-          <ImageField src={cart} alt="" /> <p>Cart</p>
-        </div>
-      </div>
-    </header>
-  );
-};
+      </header>
+    );
+  }
+);
 
-export default observer(HomeHeader);
+export default HomeHeader;

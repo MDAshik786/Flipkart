@@ -1,0 +1,60 @@
+@import "../../../SCSSFile/ColorVariable/index.scss";
+@import "../../../SCSSFile/SCSSFunctions/index.scss";
+
+.rating-review {
+  @include displayFlexProperty(center, start, 0.5rem);
+  border: 1px dashed $borderLightGray;
+  padding: 1rem;
+  border-radius: 0.4rem;
+
+  & .left {
+    @include displayFlexColumnProperty(center, space-around, 0.5rem);
+    width: 7rem;
+  }
+
+  & .rating {
+    @include displayFlexProperty(center, start, 0.4rem);
+    font-size: 1.8rem;
+  }
+
+  & .bsStar-icons {
+    height: 1.4rem;
+    width: 1.4rem;
+  }
+  
+  & .rating-review-content {
+    font-size: 0.9rem;
+    @include displayFlexProperty(center, center, 0.3rem);
+    flex-wrap: wrap;
+  }
+  & .c-rating,
+  & .c-review {
+    white-space: nowrap;
+  }
+
+  & .right {
+    @include displayFlexColumnProperty(start, start, 0.4rem);
+    font-size: 1.2rem;
+
+    & .stars-percentage {
+      font-size: 0.9rem;
+    }
+  }
+
+  & .starts-counts {
+    @include displayFlexProperty(center, start, 0.5rem);
+  }
+
+  & .starts {
+    @include displayFlexProperty(center, start, 0.2rem);
+
+    & .bsStar-icons {
+      @include heightWidthProperty(0.9rem, 0.9rem);
+    }
+  }
+  & .values {
+    width: 10rem;
+    background: #f0f0f0;
+    height: 0.3rem;
+  }
+}

@@ -1,15 +1,15 @@
 const scrollingData = [{
     "images":"diwali1.png"
 },{
-    "images":"diwali2.png"
+    "images":"diwali2.jpg"
 },{
-    "images":"diwali3.png"
+    "images":"diwali3.jpeg"
 },{
-    "images":"diwali4.png"
+    "images":"diwali4.jpg"
 },{
-    "images":"diwali5.png"
+    "images":"diwali5.jpg"
 },{
-    "images":"diwali6.png"
+    "images":"diwali6.jpg"
 },{
-    "images":"diwali7.png"
+    "images":"diwali7.jpeg"
 },]

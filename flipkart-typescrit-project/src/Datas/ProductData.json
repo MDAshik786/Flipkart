@@ -4,6 +4,8 @@
     "image": "images/products/athletic-cotton-socks-6-pairs.jpg",
     "priceCents": 2400,
     "priceIndia": 1752,
+    "discountPercentage": 11,
+    "discountPrice": 222,
     "ratingStar": 4.5,
     "totalQuantity": 25,
     "ratingCount": 87,
@@ -24,6 +26,8 @@
     "image": "images/products/intermediate-composite-basketball.jpg",
     "priceCents": 2095,
     "priceIndia": 1527,
+    "discountPercentage": 11,
+    "discountPrice": 222,
     "ratingStar": 4,
     "totalQuantity": 25,
     "ratingCount": 127,
@@ -44,6 +48,8 @@
     "image": "images/products/adults-plain-cotton-tshirt-2-pack-teal.jpg",
     "priceCents": 799,
     "priceIndia": 581,
+    "discountPercentage": 11,
+    "discountPrice": 222,
     "ratingStar": 4.5,
     "totalQuantity": 25,
     "ratingCount": 56,
@@ -67,6 +73,8 @@
     "image": "images/products/black-2-slot-toaster.jpg",
     "priceCents": 1899,
     "priceIndia": 1384,
+    "discountPercentage": 11,
+    "discountPrice": 222,
     "ratingStar": 5,
     "totalQuantity": 25,
     "ratingCount": 2197,
@@ -90,6 +98,8 @@
     "image": "images/products/6-piece-white-dinner-plate-set.jpg",
     "priceCents": 2067,
     "priceIndia": 1509,
+    "discountPercentage": 11,
+    "discountPrice": 222,
     "ratingStar": 4,
     "totalQuantity": 25,
     "ratingCount": 37,
@@ -113,6 +123,8 @@
     "image": "images/products/6-piece-non-stick-baking-set.webp",
     "priceCents": 3499,
     "priceIndia": 2547,
+    "discountPercentage": 11,
+    "discountPrice": 222,
     "ratingStar": 4.5,
     "totalQuantity": 25,
     "ratingCount": 175,
@@ -133,6 +145,8 @@
     "image": "images/products/plain-hooded-fleece-sweatshirt-yellow.jpg",
     "priceCents": 2400,
     "priceIndia": 1752,
+    "discountPercentage": 11,
+    "discountPrice": 222,
     "ratingStar": 4.5,
     "totalQuantity": 25,
     "ratingCount": 317,
@@ -156,6 +170,8 @@
     "image": "images/products/luxury-tower-set-6-piece.jpg",
     "priceCents": 3599,
     "priceIndia": 2627,
+    "discountPercentage": 11,
+    "discountPrice": 222,
     "ratingStar": 4.5,
     "totalQuantity": 25,
     "ratingCount": 144,
@@ -185,6 +201,8 @@
     "image": "images/products/liquid-laundry-detergent-plain.jpg",
     "priceCents": 2899,
     "priceIndia": 2107,
+    "discountPercentage": 11,
+    "discountPrice": 222,
     "ratingStar": 4.5,
     "totalQuantity": 25,
     "ratingCount": 305,
@@ -205,6 +223,8 @@
     "image": "images/products/knit-athletic-sneakers-gray.jpg",
     "priceCents": 3390,
     "priceIndia": 2472,
+    "discountPercentage": 11,
+    "discountPrice": 222,
     "ratingStar": 4,
     "totalQuantity": 25,
     "ratingCount": 89,
@@ -228,6 +248,8 @@
     "image": "images/products/women-chiffon-beachwear-coverup-black.jpg",
     "priceCents": 2070,
     "priceIndia": 1552,
+    "discountPercentage": 11,
+    "discountPrice": 222,
     "ratingStar": 4.5,
     "totalQuantity": 25,
     "ratingCount": 235,
@@ -257,6 +279,8 @@
     "image": "images/products/round-sunglasses-black.jpg",
     "priceCents": 1560,
     "priceIndia": 1170,
+    "discountPercentage": 11,
+    "discountPrice": 222,
     "ratingStar": 4.5,
     "totalQuantity": 25,
     "ratingCount": 30,
@@ -277,6 +301,8 @@
     "image": "images/products/women-beach-sandals.jpg",
     "priceCents": 2499,
     "priceIndia": 1874,
+    "discountPercentage": 11,
+    "discountPrice": 222,
     "ratingStar": 4.5,
     "totalQuantity": 25,
     "ratingCount": 562,
@@ -306,6 +332,8 @@
     "image": "images/products/blackout-curtain-set-beige.webp",
     "priceCents": 4599,
     "priceIndia": 3449,
+    "discountPercentage": 11,
+    "discountPrice": 222,
     "ratingStar": 4.5,
     "totalQuantity": 25,
     "ratingCount": 232,
@@ -329,6 +357,8 @@
     "image": "images/products/men-slim-fit-summer-shorts-gray.jpg",
     "priceCents": 1699,
     "priceIndia": 1274,
+    "discountPercentage": 11,
+    "discountPrice": 222,
     "ratingStar": 4,
     "totalQuantity": 25,
     "ratingCount": 160,
@@ -352,6 +382,8 @@
     "image": "images/products/electric-glass-and-steel-hot-water-kettle.webp",
     "priceCents": 3074,
     "priceIndia": 2305,
+    "discountPercentage": 11,
+    "discountPrice": 222,
     "ratingStar": 5,
     "totalQuantity": 25,
     "ratingCount": 846,
@@ -375,6 +407,8 @@
     "image": "images/products/facial-tissue-2-ply-18-boxes.jpg",
     "priceCents": 2374,
     "priceIndia": 1780,
+    "discountPercentage": 11,
+    "discountPrice": 222,
     "ratingStar": 4,
     "totalQuantity": 25,
     "ratingCount": 99,
@@ -404,6 +438,8 @@
     "image": "images/products/straw-sunhat.webp",
     "priceCents": 2200,
     "priceIndia": 1650,
+    "discountPercentage": 11,
+    "discountPrice": 222,
     "ratingStar": 4,
     "totalQuantity": 25,
     "ratingCount": 215,
@@ -430,6 +466,8 @@
     "image": "images/products/sky-flower-stud-earrings.webp",
     "priceCents": 1799,
     "priceIndia": 1349,
+    "discountPercentage": 11,
+    "discountPrice": 222,
     "ratingStar": 4.5,
     "totalQuantity": 25,
     "ratingCount": 52,
@@ -453,6 +491,8 @@
     "image": "images/products/women-stretch-popover-hoodie-black.jpg",
     "priceCents": 1374,
     "priceIndia": 1030,
+    "discountPercentage": 11,
+    "discountPrice": 222,
     "ratingStar": 4.5,
     "totalQuantity": 25,
     "ratingCount": 2465,
@@ -482,6 +522,8 @@
     "image": "images/products/bathroom-rug.jpg",
     "priceCents": 1250,
     "priceIndia": 937,
+    "discountPercentage": 11,
+    "discountPrice": 222,
     "ratingStar": 4.5,
     "totalQuantity": 25,
     "ratingCount": 119,
@@ -505,6 +547,8 @@
     "image": "images/products/women-knit-ballet-flat-black.jpg",
     "priceCents": 2640,
     "priceIndia": 1980,
+    "discountPercentage": 11,
+    "discountPrice": 222,
     "ratingStar": 4,
     "totalQuantity": 25,
     "ratingCount": 326,
@@ -531,6 +575,8 @@
     "image": "images/products/men-golf-polo-t-shirt-blue.jpg",
     "priceCents": 1599,
     "priceIndia": 1199,
+    "discountPercentage": 11,
+    "discountPrice": 222,
     "ratingStar": 4.5,
     "totalQuantity": 25,
     "ratingCount": 2556,
@@ -557,6 +603,8 @@
     "image": "images/products/trash-can-with-foot-pedal-50-liter.jpg",
     "priceCents": 8300,
     "priceIndia": 6225,
+    "discountPercentage": 11,
+    "discountPrice": 222,
     "ratingStar": 4.5,
     "totalQuantity": 25,
     "ratingCount": 2286,
@@ -583,6 +631,8 @@
     "image": "images/products/duvet-cover-set-blue-twin.jpg",
     "priceCents": 2399,
     "priceIndia": 1799,
+    "discountPercentage": 11,
+    "discountPrice": 222,
     "ratingStar": 4,
     "totalQuantity": 25,
     "ratingCount": 456,
@@ -612,6 +662,8 @@
     "image": "images/products/women-chunky-beanie-gray.webp",
     "priceCents": 1250,
     "priceIndia": 937,
+    "discountPercentage": 11,
+    "discountPrice": 222,
     "ratingStar": 5,
     "totalQuantity": 25,
     "ratingCount": 83,
@@ -644,6 +696,8 @@
     "image": "images/products/men-chino-pants-beige.jpg",
     "priceCents": 2290,
     "priceIndia": 1717,
+    "discountPercentage": 11,
+    "discountPrice": 222,
     "ratingStar": 4.5,
     "totalQuantity": 25,
     "ratingCount": 9017,
@@ -667,6 +721,8 @@
     "image": "images/products/men-athletic-shoes-green.jpg",
     "priceCents": 3890,
     "priceIndia": 2917,
+    "discountPercentage": 11,
+    "discountPrice": 222,
     "ratingStar": 4,
     "totalQuantity": 25,
     "ratingCount": 229,
@@ -693,6 +749,8 @@
     "image": "images/products/men-navigator-sunglasses-brown.jpg",
     "priceCents": 1690,
     "priceIndia": 1267,
+    "discountPercentage": 11,
+    "discountPrice": 222,
     "ratingStar": 3.5,
     "totalQuantity": 25,
     "ratingCount": 42,
@@ -719,6 +777,8 @@
     "image": "images/products/non-stick-cooking-set-15-pieces.webp",
     "priceCents": 6797,
     "priceIndia": 5097,
+    "discountPercentage": 11,
+    "discountPrice": 222,
     "ratingStar": 4.5,
     "totalQuantity": 25,
     "ratingCount": 511,
@@ -739,6 +799,8 @@
     "image": "images/products/vanity-mirror-silver.jpg",
     "priceCents": 1649,
     "priceIndia": 1237,
+    "discountPercentage": 11,
+    "discountPrice": 222,
     "ratingStar": 4.5,
     "totalQuantity": 25,
     "ratingCount": 130,
@@ -763,6 +825,8 @@
     "image": "images/products/women-french-terry-fleece-jogger-camo.jpg",
     "priceCents": 2400,
     "priceIndia": 1800,
+    "discountPercentage": 11,
+    "discountPrice": 222,
     "ratingStar": 4.5,
     "totalQuantity": 25,
     "ratingCount": 248,
@@ -792,6 +856,8 @@
     "image": "images/products/double-elongated-twist-french-wire-earrings.webp",
     "priceCents": 2400,
     "priceIndia": 1800,
+    "discountPercentage": 11,
+    "discountPrice": 222,
     "ratingStar": 4.5,
     "totalQuantity": 25,
     "ratingCount": 117,
@@ -812,6 +878,8 @@
     "image": "images/products/round-airtight-food-storage-containers.jpg",
     "priceCents": 2899,
     "priceIndia": 2174,
+    "discountPercentage": 11,
+    "discountPrice": 222,
     "ratingStar": 4,
     "totalQuantity": 25,
     "ratingCount": 126,
@@ -835,6 +903,8 @@
     "image": "images/products/coffeemaker-with-glass-carafe-black.jpg",
     "priceCents": 2250,
     "priceIndia": 1687,
+    "discountPercentage": 11,
+    "discountPrice": 222,
     "ratingStar": 4.5,
     "totalQuantity": 25,
     "ratingCount": 1211,
@@ -858,6 +928,8 @@
     "image": "images/products/blackout-curtains-black.jpg",
     "priceCents": 3099,
     "priceIndia": 2324,
+    "discountPercentage": 11,
+    "discountPrice": 222,
     "ratingStar": 4.5,
     "totalQuantity": 25,
     "ratingCount": 363,
@@ -878,6 +950,8 @@
     "image": "images/products/cotton-bath-towels-teal.webp",
     "priceCents": 2110,
     "priceIndia": 1582,
+    "discountPercentage": 11,
+    "discountPrice": 222,
     "ratingStar": 4.5,
     "totalQuantity": 25,
     "ratingCount": 93,
@@ -901,6 +975,8 @@
     "image": "images/products/knit-athletic-sneakers-pink.webp",
     "priceCents": 3390,
     "priceIndia": 2542,
+    "discountPercentage": 11,
+    "discountPrice": 222,
     "ratingStar": 4,
     "totalQuantity": 25,
     "ratingCount": 89,
@@ -927,6 +1003,8 @@
     "image": "images/products/countertop-blender-64-oz.jpg",
     "priceCents": 10747,
     "priceIndia": 8060,
+    "discountPercentage": 11,
+    "discountPrice": 222,
     "ratingStar": 4,
     "totalQuantity": 25,
     "ratingCount": 3,
@@ -942,6 +1020,221 @@
       },
       {
         "keyword": "appliances"
+      }
+    ]
+  },
+  {
+    "name": "Acer 21.5 inch Full HD Laptop",
+    "image": "acer-laptop.jpeg",
+    "priceCents": 8799,
+    "priceIndia": 8799,
+    "discountPercentage": 11,
+    "discountPrice": 222,
+    "ratingStar": 0,
+    "totalQuantity": 25,
+    "ratingCount": 0,
+    "description": "Acer 21.5 inch Full HD VA Panel with VGA, HDMI, Ergonomic Stand, 2X2W Inbuilt Speakers, ZeroFrame Design Monitor (KA222Q)  (AMD Free Sync, Response Time: 1 ms, 100 Hz Refresh Rate).",
+    "size": "21.5",
+    "keywords": [
+      {
+        "keyword": "acer"
+      },
+      {
+        "keyword": "laptop"
+      },
+      {
+        "keyword": "gadget"
+      },
+      {
+        "keyword": "gadgets"
+      }
+    ]
+  },
+  {
+    "name": "Acer Aspire 7 (2023) Intel Core i5 12th Gen Laptop",
+    "image": "acer-aspire-7.jpeg",
+    "priceCents": 22,
+    "priceIndia": 86999,
+    "discountPercentage": 31,
+    "discountPrice": 59990,
+    "ratingStar": 0,
+    "totalQuantity": 25,
+    "ratingCount": 0,
+    "description": "Acer Aspire 7 (2023) Intel Core i5 12th Gen 12450H - (8 GB/512 GB SSD/Windows 11 Home/4 GB Graphics/NVIDIA GeForce RTX 3050) A715-76G-562H Gaming Laptop  (15.6 Inch, Charcoal Black, 2.1 Kg).",
+    "size": "21.5 Inch",
+    "keywords": [
+      {
+        "keyword": "acer"
+      },
+      {
+        "keyword": "laptop"
+      },
+      {
+        "keyword": "gadget"
+      },
+      {
+        "keyword": "gadgets"
+      },
+      {
+        "keyword": "gadgets"
+      }
+    ]
+  },
+  {
+    "name": "APPLE Macbook Air (2023) Apple M2 Laptop ",
+    "image": "apple-macbook-air.jpeg",
+    "priceCents": 22,
+    "priceIndia": 134900,
+    "discountPercentage": 5,
+    "discountPrice": 126990,
+    "ratingStar": 0,
+    "totalQuantity": 25,
+    "ratingCount": 0,
+    "description": "APPLE Macbook Air (2023) Apple M2 - (8 GB/256 GB SSD/macOS Ventura) MQKW3HN/A  (15.3 Inch, Midnight, 1.51 Kg).",
+    "size": "15.3 Inch",
+    "keywords": [
+      {
+        "keyword": "apple"
+      },
+      {
+        "keyword": "laptop"
+      },
+      {
+        "keyword": "gadget"
+      },
+      {
+        "keyword": "gadgets"
+      },
+      {
+        "keyword": "gadgets"
+      },
+      {
+        "keyword": "macbook"
+      },
+      {
+        "keyword": "air"
+      }
+    ]
+  },{
+    "name": "APPLE 2023 MacBook Pro Apple M3 Laptop",
+    "image": "apple-macbook-pro.jpeg",
+    "priceCents": 22,
+    "priceIndia": 169900,
+    "discountPercentage": 0,
+    "discountPrice": 169900,
+    "ratingStar": 0,
+    "totalQuantity": 25,
+    "ratingCount": 0,
+    "description": "APPLE 2023 MacBook Pro Apple M3 - (8 GB/512 GB SSD/macOS Sonoma) MTL73HN/A  (14 Inch, Space Grey, 1.55 Kg).",
+    "size": "15.3 Inch",
+    "keywords": [
+      {
+        "keyword": "apple"
+      },
+      {
+        "keyword": "laptop"
+      },
+      {
+        "keyword": "gadget"
+      },
+      {
+        "keyword": "gadgets"
+      },
+      {
+        "keyword": "gadgets"
+      },
+      {
+        "keyword": "macbook"
+      },
+      {
+        "keyword": "air"
+      }
+    ]
+  },{
+    "name": "APPLE Watch Ultra 2 with GPS",
+    "image": "apple-watch.jpeg",
+    "priceCents": 22,
+    "priceIndia": 89800,
+    "discountPercentage": 7,
+    "discountPrice": 87000,
+    "ratingStar": 0,
+    "totalQuantity": 25,
+    "ratingCount": 0,
+    "description": "APPLE 2023 MacBook Pro Apple M3 - (8 GB/512 GB SSD/macOS Sonoma) MTL73HN/A  (14 Inch, Space Grey, 1.55 Kg).",
+    "size": "15.3 Inch",
+    "keywords": [
+      {
+        "keyword": "apple"
+      },
+      {
+        "keyword": "watch"
+      },
+      {
+        "keyword": "gadget"
+      },
+      {
+        "keyword": "gadgets"
+      },
+      {
+        "keyword": "smart watch"
+      }
+    ]
+  },{
+    "name": "APPLE iPhone 15 Pro Max",
+    "image": "apple-15-promax.jpeg",
+    "priceCents": 22,
+    "priceIndia": 159900,
+    "discountPercentage": 10,
+    "discountPrice": 87000,
+    "ratingStar": 0,
+    "totalQuantity": 25,
+    "ratingCount": 0,
+    "description": "APPLE iPhone 15 Pro Max (Natural Titanium, 256 GB) 17.02 cm (6.7 inch) Super Retina XDR Display 48MP + 12MP + 12MP | 12MP Front Camera A17 Pro Chip, 6 Core Processor Processor.",
+    "size": "15.3 Inch",
+    "keywords": [
+      {
+        "keyword": "apple"
+      },
+      {
+        "keyword": "phone"
+      },
+      {
+        "keyword": "gadget"
+      },
+      {
+        "keyword": "gadgets"
+      },
+      {
+        "keyword": "smart phone"
+      }
+    ]
+  },{
+    "name": "APPLE iPhone 15 Pro",
+    "image": "apple-15-pro.jpeg",
+    "priceCents": 22,
+    "priceIndia": 134900,
+    "discountPercentage": 10,
+    "discountPrice": 87000,
+    "ratingStar": 0,
+    "totalQuantity": 25,
+    "ratingCount": 0,
+    "description": "APPLE iPhone 15 Pro (White Titanium, 128 GB)15.49 cm (6.1 inch) Super Retina XDR Display 48MP + 12MP + 12MP | 12MP Front Camera A17 Pro Chip, 6 Core Processor Processor.",
+    "size": "15.3 Inch",
+    "keywords": [
+      {
+        "keyword": "apple"
+      },
+      {
+        "keyword": "phone"
+      },
+      {
+        "keyword": "gadget"
+      },
+      {
+        "keyword": "gadgets"
+      },
+      {
+        "keyword": "smart phone"
       }
     ]
   }

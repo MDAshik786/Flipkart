@@ -7,9 +7,8 @@ const ButtonFiled = ({
   className,
   onClick,
   disabled,
-  type 
+  type,
 }: ButtonFieldProps) => {
-
   let addToCart = false,
     buyNow = false;
 
@@ -22,7 +21,13 @@ const ButtonFiled = ({
     buyNow = true;
   }
   return (
-    <button className={className} onClick={onClick} disabled={disabled} type={type} style={disabled ? { backgroundColor: "gray" } : {}}>
+    <button
+      className={className}
+      onClick={onClick}
+      disabled={disabled}
+      type={type}
+      style={disabled ? { backgroundColor: "gray" } : {}}
+    >
       {addToCart && <BsFillCartCheckFill className="addToCart-icons" />}{" "}
       {buyNow && <AiFillThunderbolt />} {content}{" "}
     </button>

@@ -1,6 +1,6 @@
 @mixin buttonStyle($height, $width, $padding, $br, $bc, $color) {
   height: $height;
-  @if($width != 'none'){
+  @if ($width != "none") {
     width: $width;
   }
   @if ($padding != "none") {
@@ -19,9 +19,15 @@
 
 @mixin displayFlexProperty($ai, $jc, $gap) {
   display: flex;
-  align-items: $ai;
-  justify-content: $jc;
-  gap: $gap;
+  @if ($ai != "start") {
+    align-items: $ai;
+  }
+  @if ($jc != "start") {
+    justify-content: $jc;
+  }
+  @if ($gap != none) {
+    gap: $gap;
+  }
 }
 @mixin displayFlexColumnProperty($ai, $jc, $gap) {
   display: flex;
@@ -32,7 +38,9 @@
   @if $jc != "start" {
     justify-content: $jc;
   }
-  gap: $gap;
+  @if ($gap != none) {
+    gap: $gap;
+  }
 }
 @mixin displayGridProperty($gtc, $gap) {
   display: grid;

@@ -1,11 +1,17 @@
-import './index.scss'
+import "./index.scss";
 import { useQuery } from "@tanstack/react-query";
 import { getAllWhishListProduct } from "../../../API Functions/WishListAPI";
 import { useStore } from "../../../ContextHooks/UseStore";
-import { SingleProduct } from "../../../Types";
+import {
+  SingleProduct,
+  SingleWishListProductType,
+  productTypeData,
+} from "../../../Types";
 import SingleWishListProduct from "../SingleWishListProduct";
+import { observer } from "mobx-react-lite";
+import { useEffect } from "react";
 
-const MyWishListProduct = () => {
+const MyWishListProduct = observer(() => {
   const {
     rootStore: { wishListStore, userStore },
   } = useStore();
@@ -15,20 +21,24 @@ const MyWishListProduct = () => {
     queryFn: () => getAllWhishListProduct(userStore.email),
   });
 
-  wishListStore.setFunctionAllWishlistProduct(data);
-
+  useEffect(() => {
+    wishListStore.setFunctionAllWishlistProduct(data || []);
+  },[data])
+ 
   return (
     <div className="my-wishlist-product">
-      <h4 className='head'>My WishList(302)</h4>
+      <h4 className="head">My WishList ({wishListStore.allWishListProduct.length})</h4>
 
       <div>
-        {data &&
-          data.map((product: SingleProduct, index: number) => (
-            <SingleWishListProduct product={product}  key={index}/>
-          ))}
+        {wishListStore.allWishListProduct &&
+          wishListStore.allWishListProduct.map(
+            (product: productTypeData, index: number) => (
+              <SingleWishListProduct data={product} key={index} />
+            )
+          )}
       </div>
     </div>
   );
-};
+});
 
 export default MyWishListProduct;

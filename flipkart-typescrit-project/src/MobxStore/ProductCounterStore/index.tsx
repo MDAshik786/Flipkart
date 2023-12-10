@@ -1,8 +1,10 @@
 import { action, computed, makeObservable, observable } from "mobx";
 import { IRootStore } from "../RootStore";
+import { SingleProductCountersClassType } from "../../Types/ClassType";
+
 
 export class SingleProductCounters {
-    productCounters: any = {};
+    productCounters: SingleProductCountersClassType = {};
     rootStore: IRootStore;
 
     constructor(rootStore: IRootStore) {

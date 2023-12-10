@@ -1,7 +1,7 @@
 import React, { LegacyRef } from "react";
 
 export type InputFiledProps = {
-  type: string;
+  type: "text" | "number" | "email" | "password";
   className: string;
   name?: string;
   placeholder?: string;
@@ -17,6 +17,15 @@ export type ButtonFieldProps = {
   onClick?: any;
   disabled?: boolean;
   type?: "button" | "reset" | "submit" | undefined;
+};
+
+
+
+export type priceDataType = {
+  product: SingleProduct;
+};
+export type SingleProductProps = {
+  product: SingleProduct;
 };
 
 export type Product = {
@@ -35,14 +44,25 @@ export type ImageFiledProps = {
   className?: string;
 };
 
-export type SingleProductProps = {
+export type SingleWishListProductType = {
+  data: productTypeData;
+};
+
+export type productTypeData = {
+  productDTO: SingleProduct;
+  color: string;
+};
+
+export type SingleProductProps2 = {
   product: SingleProduct;
+  getSpecificWishListData: any;
 };
 
 export type CartSingleProducts = {
   id: number;
   quantity: number;
   defaultValue: number;
+  color: string;
   product: SingleProduct;
 };
 
@@ -54,14 +74,41 @@ export type SingleProduct = {
   id: number;
   image: string;
   name?: string;
-  priceCents?: number;
-  priceIndia?: number;
-  ratingStar?: number;
-  totalQuantity?: number;
-  ratingCount?: number;
+  priceCents: number;
+  priceIndia: number;
+  ratingStar: number;
+  totalQuantity: number;
+  ratingCount: number;
+  reviewCount: number;
+  discountPercentage: number;
+  discountPrice: number;
   description?: string;
   keywords?: keywordTypes[];
   size?: string;
+  productImages: productImagesType[];
+  reviews: reviewType[];
+};
+
+export type productImagesType = {
+  id: number;
+  image: string;
+  color: string;
+};
+
+export type reviewType = {
+  id: number;
+  ratings: number;
+  review: string;
+  users: usersType;
+};
+
+export type usersType = {
+  userId: number;
+  email: string;
+  password: string;
+  phone: string;
+  createdDate: Date;
+  currDate: Date;
 };
 
 export type keywordTypes = {
@@ -76,16 +123,20 @@ export type ProductCountProps = {
 
 export type setStateType = React.Dispatch<React.SetStateAction<boolean>>;
 
-export type inputErrorValueProps = {
-  emailError: string;
-  passwordError: string;
-  nameError: string;
-  phoneError: string;
-};
-
 export type homeHeaderType = {
   searchInput: string;
   handleSetFunction: (value: string) => void;
+};
+
+export type ratingContainerProps = {
+  ratingData: ratingDataType;
+};
+
+export type ratingDataType = {
+  ratingStar: number;
+  content: String;
+  ratingCount: number;
+  reviewCount: number;
 };
 
 export type setStateObject = React.Dispatch<
@@ -111,13 +162,15 @@ export type CommonLeftWarperType = {
   value: boolean;
 };
 
+export type inputErrorValueProps = {
+  [key: string]: string;
+};
+
+
+//inputErrorValueProps
 export type formRightWrapperType = {
   InputErrorValues: inputErrorValueProps;
-  handleLoginVerification: ({
-    response,
-    email,
-    password,
-  }: handleLoginVerificationType) => void;
+  handleLoginVerification: (response: string) => void;
   setStateFunction: () => void;
   isNewUser: boolean;
   inputData: inputDataType;
@@ -126,10 +179,14 @@ export type formRightWrapperType = {
 };
 
 export type usersDataVericationType = {
-  inputData: any;
+  inputData: inputDataKeyValuePairType;
   handleSetStateErrorOnChange: (name: string, value: string) => void;
   isNewUser: boolean;
 };
+
+export type inputDataKeyValuePairType = {
+  [key : string]: string;
+}
 
 export type inputDataType = {
   email: string;
@@ -137,12 +194,17 @@ export type inputDataType = {
   name: string;
   phone: string;
 };
-
-export type handleLoginVerificationType = {
-  response: string;
+export type inputDataOptionalType = {
   email: string;
   password: string;
+  name?: string;
+  phone?: string;
 };
+
+export interface loginUserStoreType {
+  emailInput: string;
+  passwordInput: string;
+}
 
 export type CommonRightWrapperType = {
   emailInput: React.RefObject<HTMLInputElement>;

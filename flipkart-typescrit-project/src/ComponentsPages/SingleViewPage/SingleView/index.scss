@@ -1,29 +1,101 @@
 @import "../../../SCSSFile/ColorVariable/index.scss";
 @import "../../../SCSSFile/SCSSFunctions/index.scss";
 
+@mixin fullPageButton($bc) {
+  background-color: $bc;
+  height: 4rem;
+  width: 13rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  border-radius: 0.4rem;
+  text-transform: capitalize;
+  color: white;
+  @include displayFlexProperty(center, center, 0.5rem);
+
+}
+
 .singleview {
+  @include displayFlexProperty(start, start, 0.5rem);
+  background-color: $whiteColor;
+  height: calc(99vh);
+  width: 70%;
+  font-size: 1.3rem;
+  &-left {
+    width: 35rem;
+    height: 100%;
+    @include displayFlexColumnProperty(center, center, 2rem);
+
+    & img {
+      @include imgProperty(25rem, none, none);
+      margin: 0;
+      height: 33rem;
+    }
+  }
+
+  &-right {
+    padding: 2rem;
+    @include displayFlexColumnProperty(start, start, 1.3rem)
+
+  }
+
+  & .button-container {
+    @include displayFlexProperty(center, start, 1rem);
+  }
+
+  & .addtocart-button {
+    @include fullPageButton($orangPeel);
+  }
+
+& .buynow-button {
+    @include fullPageButton($darkOrange);
+}
+
+  & .rating-counts {
     @include displayFlexProperty(center, start, 0.5rem);
-    background-color: $whiteColor;
+    flex-wrap: wrap;
 
-
-    &-left {
-        width: 20rem;
-
-        & img {
-            @include imgProperty(15rem, 1, none );
-        }
-
+    & h5 {
+        white-space: nowrap;
+        
     }
+  }
 
-    &-right {
-       width: 30rem;
-    }
+  & .rating-container {
+    @include displayFlexProperty(center, start, 1rem);
+    font-size: 1.2rem;
+  }
+  & .single-product-namee {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
 
-    & .button-container {
-        @include displayFlexProperty(center, start, 0.5rem);
-    }
+  & .single-rating-number{
+    @include displayFlexProperty(center, center, 0.3rem);
+  @include buttonStyle(
+    2.1rem,
+    fit-content,
+    0.2rem 1rem,
+    0.8rem,
+    $greenColor,
+    $whiteColor
+  );
+  font-size: 1.4rem;
+  }
 
-    & .rating-counts {
-        @include displayFlexProperty(center, start, 0.5rem);
+  & .assured-img {
+    @include imgProperty(8rem, 3, none);
+}
+
+  & .single-price-container {
+    font-size: 1.5rem;
+
+    & .₹{
+        font-size: 1.4rem;
     }
+  }
+
+  & .single-product-about{
+    @include displayFlexColumnProperty(start, start, 0.5rem);
+  }
+
 }

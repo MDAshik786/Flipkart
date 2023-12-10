@@ -1,4 +1,4 @@
-import {SingleProduct } from "../../Types";
+import { SingleProduct } from "../../Types";
 import axios from "axios";
 import {
   addToWishListUrl,
@@ -7,8 +7,8 @@ import {
   getspecificWishListProductUrl,
 } from "../../Utils_/APIUrls";
 
-export const getSpecificWhishListProduct = async (email : string) => {
-  if(email){
+export const getSpecificWhishListProduct = async (email: string) => {
+  if (email) {
     try {
       const response = await axios.get(
         `${getspecificWishListProductUrl}/${email}`
@@ -17,12 +17,10 @@ export const getSpecificWhishListProduct = async (email : string) => {
     } catch (e) {
       console.log(e, "getSpecificWhishListProduct");
     }
-  }
-  else 
-   return []
-}
+  } else return [];
+};
 
-export const getAllWhishListProduct = async (email : string) => {
+export const getAllWhishListProduct = async (email: string) => {
   try {
     const response = await axios.get(`${getAllWishListProductUrl}/${email}`);
     //  console.log(response.data, "getAllWhishListProduct")
@@ -32,24 +30,25 @@ export const getAllWhishListProduct = async (email : string) => {
   }
 };
 
-export const AddToWishList = async (product: SingleProduct, email : string) => {
-  
-    const {
-      id,
-      name,
-      image,
-      priceCents,
-      priceIndia,
-      totalQuantity,
-      ratingStar,
-      ratingCount,
-      description,
-      size,
-    } = product;
-    try {
-      const response = await axios.post(
-        `${addToWishListUrl}/${email}/${id}`,
-        {
+export const AddToWishList = async (product: SingleProduct, email: string, color : string) => {
+  const {
+    id,
+    name,
+    image,
+    priceCents,
+    priceIndia,
+    totalQuantity,
+    ratingStar,
+    ratingCount,
+    description,
+    size,
+    productImages,
+  } = product;
+  try {
+    const response = await axios.post(
+      `${addToWishListUrl}`,
+      {
+        productDTO: {
           id,
           name,
           image,
@@ -60,19 +59,24 @@ export const AddToWishList = async (product: SingleProduct, email : string) => {
           ratingCount,
           description,
           size,
+          productImage: productImages,
         },
-        {
-          headers: {
-            "content-Type": "application/json",
-          },
-        }
-      );
-    } catch (e) {
-      console.log(e, "AddToWishList");
-    }
+        email,
+        productId: id,
+        color,
+      },
+      {
+        headers: {
+          "content-Type": "application/json",
+        },
+      }
+    );
+  } catch (e) {
+    console.log(e, "AddToWishList");
+  }
 };
 
-export const deleteFromWishList = async (id: number, email : string) => {
+export const deleteFromWishList = async (id: number, email: string) => {
   try {
     const response = await axios.delete(
       `${deleteWishListProductUrl}/${email}/${id}`

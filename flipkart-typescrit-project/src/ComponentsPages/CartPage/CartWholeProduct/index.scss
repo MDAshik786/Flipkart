@@ -9,22 +9,23 @@
 
   &-allData {
     @include displayFlexProperty(center, start, 2rem);
-    border-bottom: 1px solid $lightPink;
+    border-bottom: 1px solid $borderLightGray;
     padding: 1rem 0.5rem;
   }
 
-  &-img-container {
-    width: 22%;
-    @include displayFlexProperty(center, center, 0); 
+  & .single-img-container {
+    width: 16rem;
   }
 
-  &-img {
-    @include imgProperty(90%,1, none);
-  }
+  & .single-product-img {
+    width: 90%;
+    aspect-ratio: 1;
+  } 
+
 
   &-details {
     width: 42%;
-    @include displayFlexColumnProperty(start, start, 0.7rem);
+    @include displayFlexColumnProperty(start, start, 1.2rem);
   }
 
   &-action-container {
@@ -33,4 +34,20 @@
     font-weight: 550;
   }
   
+  & h4{
+    letter-spacing: 0.5px;
+  }
+
+  & .cart-product-name {
+    font-size: 1.1rem
+  }
+  
+}
+
+.cart-product-about-container {
+  @include displayFlexColumnProperty(start, start, 0.5rem);
+}
+
+.discount-price-container h4 {
+  font-size: 1.2rem;
 }

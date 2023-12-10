@@ -1,5 +1,4 @@
 import {
-  handleLoginVerificationType,
   handleLoginVerificationsType,
   setStateObject,
   setStateType,
