@@ -4,7 +4,7 @@ import ProductCount from "../ProductCount";
 import { AiOutlineHeart } from "react-icons/ai";
 import { AiFillHeart } from "react-icons/ai";
 import { SingleProduct, SingleProductProps2 } from "../../../Types";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { addAProductToCart } from "../../../API Functions/HomePageAPI";
 import { useStore } from "../../../ContextHooks/UseStore";
 import { useNavigate } from "react-router-dom";
@@ -16,6 +16,8 @@ import { observer } from "mobx-react-lite";
 import PriceContainer from "../../../CommonUsedComponents/Product/PriceContainer";
 import RatingContainer from "../../../CommonUsedComponents/Product/RatingContainer";
 import ImageConatiner from "../../../CommonUsedComponents/Product/ImageContainer";
+import GetSingleDataQuery from "../../../UseQuery/GetSingleData";
+import { getSingleProductData } from "../../../API Functions/SinglePageAPI";
 
 export const HomeSingleProduct = observer(
   ({ product, getSpecificWishListData }: SingleProductProps2) => {
@@ -62,8 +64,15 @@ export const HomeSingleProduct = observer(
         }),
     });
 
+    const singleQueryOnHover = () => {
+      queryClient.prefetchQuery({
+        queryKey: ["getSingleProductData", product.id],
+        queryFn: () => getSingleProductData(product.id),
+      });
+    };
+
     const handleSinglePage = () => {
-      navigate("single", { state: {id : product.id} });
+      navigate("single", { state: { id: product.id } });
     };
 
     const handleWishList = () => {
@@ -93,7 +102,6 @@ export const HomeSingleProduct = observer(
       reviewCount: product.reviewCount,
     };
 
-  
     const imageData = {
       product,
       onclick: handleSinglePage,
@@ -144,7 +152,7 @@ export const HomeSingleProduct = observer(
         >
           {isWishlist ? (
             <AiFillHeart className="single-wishlist-img-true" />
-          ) :  (
+          ) : (
             <AiOutlineHeart className="single-wishlist-img" />
           )}
         </div>

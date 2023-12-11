@@ -5,43 +5,45 @@ import ImageField from "../../../CommonUsedComponents/ImageField";
 import ButtonFiled from "../../../CommonUsedComponents/ButtonField";
 import ProductCount from "../../HomePage/ProductCount";
 import fkAssured from "../../../Asserts/Images/fk-assured.png";
-import RatingAndReview from "../Rating";
-import { SingleProduct } from "../../../Types";
 import ImageConatiner from "../../../CommonUsedComponents/Product/ImageContainer";
 import { useStore } from "../../../ContextHooks/UseStore";
 import RatingContainer from "../../../CommonUsedComponents/Product/RatingContainer";
 import PriceContainer from "../../../CommonUsedComponents/Product/PriceContainer";
 import { useQuery } from "@tanstack/react-query";
 import { getSingleProductData } from "../../../API Functions/SinglePageAPI";
-import { useEffect } from "react";
-import { getSingleProductDataUrl } from "../../../Utils_/APIUrls";
+import { useEffect, useState } from "react";
+import Rating from "../Rating";
+import { toJS } from "mobx";
 
 const SingleView = () => {
   const location = useLocation();
-  let id: number | undefined = undefined;
+  const [id, setId] = useState<number | undefined>(undefined);
+
   useEffect(() => {
-    id = location.state.id;
+    setId(location?.state?.id);
     console.log(id);
   }, []);
 
-  const {
-    rootStore: { productImageStore },
-  } = useStore();
-    
   const {
     data: getSingleData,
     error,
     isLoading,
   } = useQuery({
-    queryKey: ["getSingleProductData"],
+    queryKey: ["getSingleProductData", id],
     queryFn: () => getSingleProductData(id),
-    enabled: id,
+    enabled: id !== undefined,
   });
+
+  const {
+    rootStore: { productImageStore },
+  } = useStore();
+
+  if (isLoading || !id) return <p>Loading</p>;
+
   const product = getSingleData?.product;
   const color =
     productImageStore?.productImages[id || 0] ||
     product?.productImages[0]?.color;
-  console.log(product, "product");
 
   const imageData = {
     product,
@@ -84,7 +86,7 @@ const SingleView = () => {
           <h4 className="about">About:</h4>
           <p>{product?.description}</p>
         </div>
-        {/* <RatingAndReview data={getSingleData} /> */}
+        <Rating data={getSingleData} />
       </div>
     </div>
   );

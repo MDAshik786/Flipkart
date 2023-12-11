@@ -14,7 +14,7 @@ export type ImageDataTypes = {
 const ImageConatiner = ({ imageData }: ImageContainerProps) => {
   const { product, color, onclick } = imageData;
   return (
-    <div className="single-img-container" onClick={onclick } >
+    <div className="single-img-container" onClick={onclick }  >
       {product?.productImages.map(
         (data, index) =>
           data.color === color && (
@@ -23,6 +23,7 @@ const ImageConatiner = ({ imageData }: ImageContainerProps) => {
               src={`http://localhost:3000/${data.image}`}
               alt={product?.name}
               className="single-product-img"
+            
             />
           )
       )}

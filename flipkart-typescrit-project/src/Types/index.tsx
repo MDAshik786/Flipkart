@@ -58,6 +58,7 @@ export type ImageFiledProps = {
   src: string;
   alt?: string;
   className?: string;
+
 };
 
 export type SingleWishListProductType = {

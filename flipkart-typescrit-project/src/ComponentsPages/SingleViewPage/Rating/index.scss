@@ -6,6 +6,7 @@
   border: 1px dashed $borderLightGray;
   padding: 1rem;
   border-radius: 0.4rem;
+  width: 75%;
 
   & .left {
     @include displayFlexColumnProperty(center, space-around, 0.5rem);
@@ -13,7 +14,7 @@
   }
 
   & .rating {
-    @include displayFlexProperty(center, start, 0.4rem);
+    @include displayFlexProperty(initial, start, 0.4rem);
     font-size: 1.8rem;
   }
 
@@ -33,7 +34,7 @@
   }
 
   & .right {
-    @include displayFlexColumnProperty(start, start, 0.4rem);
+    @include displayFlexColumnProperty(start, start, 0.6rem);
     font-size: 1.2rem;
 
     & .stars-percentage {
@@ -42,11 +43,11 @@
   }
 
   & .starts-counts {
-    @include displayFlexProperty(center, start, 0.5rem);
+    @include displayFlexProperty(center, start, 0.6rem);
   }
 
   & .starts {
-    @include displayFlexProperty(center, start, 0.2rem);
+    @include displayFlexProperty(center, start, 0.3rem);
 
     & .bsStar-icons {
       @include heightWidthProperty(0.9rem, 0.9rem);
@@ -57,4 +58,10 @@
     background: #f0f0f0;
     height: 0.3rem;
   }
+}
+.width {
+  display: block;
+   height: 0.3rem;
+   background-color: $greenColor;
+   border-radius: 0.3rem;
 }
