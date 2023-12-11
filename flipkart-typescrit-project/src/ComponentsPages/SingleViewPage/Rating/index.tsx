@@ -1,10 +1,12 @@
 import "./index.scss";
 import { BiSolidStar } from "react-icons/bi";
-import { SingleProduct, SingleProductProps } from "../../../Types";
+import { RatingProps } from "../../../Types";
 
-const Rating = ({ product }: SingleProductProps) => {
+const Rating = ({ data }: RatingProps) => {
+  
+  const {product} = data
 
-  const data = [1, 2, 3, 4, 5]
+  const dataArray = [1, 2, 3, 4, 5]
 
   return (
     <div className="rating-review">
@@ -18,9 +20,9 @@ const Rating = ({ product }: SingleProductProps) => {
         </div>
       </div>
       <div className="right">
-       {data.reverse().map((value : number, index : number) => {
+       {dataArray.reverse().map((value : number, index : number) => {
         return(
-          <div className="starts-counts">
+          <div className="starts-counts" key={index}>
           <div className="starts">
             <h5>{value}</h5>
             <BiSolidStar className="bsStar-icons" />

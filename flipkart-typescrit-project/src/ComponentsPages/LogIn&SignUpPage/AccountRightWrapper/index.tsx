@@ -35,13 +35,13 @@ const AccountRightWrapper = ({
     phoneLabelName,
   } = labelAndInputNames;
 
-  const loginData : singleUserDataType[] = [
+  const loginData: singleUserDataType[] = [
     {
       divClassName: "form-email-div",
       labelClassName: "form-placeholder",
       labelContent: emailLabelName,
       inputClassName: "form-email-container",
-      type: "text" as "text",
+      type: "text",
       name: emailInputName,
       value: inputData.email,
       onChange: handleSetStateOnChange,
@@ -52,7 +52,7 @@ const AccountRightWrapper = ({
       divClassName: "form-password-div",
       labelClassName: "form-placeholder",
       labelContent: passwordLabelName,
-      type: "password" as "password",
+      type: "password",
       inputClassName: "form-password-container",
       name: passwordInputName,
       value: inputData.password,
@@ -69,7 +69,7 @@ const AccountRightWrapper = ({
       labelClassName: "form-placeholder",
       labelContent: nameLabelName,
       inputClassName: "form-name-container",
-      type: "text" as "text",
+      type: "text",
       name: nameInputName,
       value: inputData.name,
       onChange: handleSetStateOnChange,
@@ -80,7 +80,7 @@ const AccountRightWrapper = ({
       divClassName: "form-phone-div",
       labelClassName: "form-placeholder",
       labelContent: phoneLabelName,
-      type: "number" as "number",
+      type: "number",
       inputClassName: "form-phone-container",
       name: phoneInputName,
       value: inputData.phone,

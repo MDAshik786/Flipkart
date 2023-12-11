@@ -1,10 +1,9 @@
-import { ratingContainerProps} from "../../../Types"
+import { ratingContainerProps } from "../../../Types";
 import { BiSolidStar } from "react-icons/bi";
-import ButtonFiled from "../../ButtonField"
+import ButtonFiled from "../../ButtonField";
 
-const RatingContainer = ({ratingData} : ratingContainerProps) => {
-  return (
-  ratingData?.ratingStar === 0 ? (
+const RatingContainer = ({ ratingData }: ratingContainerProps) => {
+  return ratingData?.ratingStar === 0 ? (
     <ButtonFiled content={ratingData.content} className="new-arrival-button" />
   ) : (
     <div className="rating-container">
@@ -17,9 +16,7 @@ const RatingContainer = ({ratingData} : ratingContainerProps) => {
         <p>{ratingData?.reviewCount} Review </p>
       </div>
     </div>
-    
-  )
-  )
-}
+  );
+};
 
-export default RatingContainer
+export default RatingContainer;

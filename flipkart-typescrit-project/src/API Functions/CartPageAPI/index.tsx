@@ -6,15 +6,15 @@ import {
 } from "../../Utils_/APIUrls";
 
 export const getAllCartData = async (email: string) => {
- if(email){
-  try {
-    const response = await axios.get(`${getAllCartProductUrl}/${email}`);
-    return response.data;
-  } catch (error) {
-    console.log(error, "getAllCartData");
+  if (email) {
+    try {
+      const response = await axios.get(`${getAllCartProductUrl}/${email}`);
+      return response.data;
+    } catch (error) {
+      console.log(error, "getAllCartData");
+    }
   }
- }
- return []
+  return [];
 };
 
 export const updateAProduct = async (

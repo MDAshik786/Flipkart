@@ -63,7 +63,7 @@ export const HomeSingleProduct = observer(
     });
 
     const handleSinglePage = () => {
-      navigate("single", { state: product });
+      navigate("single", { state: {id : product.id} });
     };
 
     const handleWishList = () => {
@@ -144,7 +144,7 @@ export const HomeSingleProduct = observer(
         >
           {isWishlist ? (
             <AiFillHeart className="single-wishlist-img-true" />
-          ) : (
+          ) :  (
             <AiOutlineHeart className="single-wishlist-img" />
           )}
         </div>

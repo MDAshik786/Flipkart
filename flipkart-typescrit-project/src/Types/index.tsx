@@ -28,6 +28,22 @@ export type SingleProductProps = {
   product: SingleProduct;
 };
 
+export type RatingProps = {
+  data : RatingObjectProps
+}
+export type RatingObjectProps = {
+  product : SingleProduct;
+  rating : ratingtype,
+  oneStar : number,
+  twoStar : number,
+  threeStar : number,
+  fourStar : number,
+  fiveStar : number,
+}
+export type ratingtype = {
+  [key : number] : number
+} 
+
 export type Product = {
   name: string;
   id: number;

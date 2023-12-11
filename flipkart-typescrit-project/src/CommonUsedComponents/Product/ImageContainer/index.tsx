@@ -7,15 +7,15 @@ export type ImageContainerProps = {
 
 export type ImageDataTypes = {
   product: SingleProduct;
-  onclick: () => void;
+  onclick ? : () => void;
   color: string;
 };
 
 const ImageConatiner = ({ imageData }: ImageContainerProps) => {
   const { product, color, onclick } = imageData;
   return (
-    <div className="single-img-container" onClick={onclick}>
-      {product.productImages.map(
+    <div className="single-img-container" onClick={onclick } >
+      {product?.productImages.map(
         (data, index) =>
           data.color === color && (
             <ImageField

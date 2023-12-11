@@ -12,7 +12,6 @@
     width: 80%;
     aspect-ratio: 1;
   }
-
 }
 
 .rating-counts {
@@ -46,11 +45,11 @@
 }
 
 .single-price-container {
-  @include displayFlexProperty(end, start, 0.5rem);
+  @include displayFlexProperty(center, start, 0.5rem);
 
   & .discount-percentage {
     font-size: 0.8rem;
-    color : $greenColor;
+    color: $greenColor;
     font-weight: 600;
   }
 }
@@ -147,12 +146,11 @@
 
 .original-price-container {
   text-decoration: line-through;
-  color : $darkGray;
-  
+  color: $darkGray;
+
   & .₹,
   & p {
     font-size: 0.9rem;
-    color : $darkGray;
-    
+    color: $darkGray;
   }
 }
