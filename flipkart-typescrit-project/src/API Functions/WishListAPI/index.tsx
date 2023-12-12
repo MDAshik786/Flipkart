@@ -59,7 +59,7 @@ export const AddToWishList = async (product: SingleProduct, email: string, color
           ratingCount,
           description,
           size,
-          productImage: productImages,
+          productImages,
         },
         email,
         productId: id,

@@ -1,0 +1,47 @@
+@import "../../../SCSSFile/ColorVariable/index.scss";
+@import "../../../SCSSFile/SCSSFunctions/index.scss";
+
+.review-rating {
+  @include displayFlexColumnProperty(start, start, none);
+  font-size: 1.1rem;
+  border: 1px solid $borderLightGray;
+  border-radius: 0.5rem;
+  background-color: $whitesmoke;
+
+  & .review-content {
+    font-size: 1rem;
+    word-spacing: 0.5px;
+    line-height: 1.6rem;
+    padding: 2rem 1rem;
+    background-color: $whiteColor;
+    color: $darkGray;
+  }
+  & .single-rating-number {
+    font-size: 1.3rem;
+  }
+  & .bsStar-icon {
+    @include heightWidthProperty(1rem, 1.1rem);
+  }
+}
+.font-class {
+  font-size: 1.2rem;
+}
+.top-rating-container {
+  @include displayFlexProperty(center, start, 1rem);
+  padding: 1rem;
+}
+
+.bottom-container {
+  @include displayFlexProperty(center, space-between, 1rem);
+  font-size: 1rem;
+
+  & .bottom-left,
+  & .bottom-right {
+    @include displayFlexProperty(center, start, 1.5rem);
+    padding: 1.5rem 1rem;
+  }
+  & .review-like-container,
+  & .review-dislike-container {
+    @include displayFlexProperty(center, start, 0.2rem);
+  }
+}

@@ -1,0 +1,12 @@
+@import "../../../SCSSFile/ColorVariable/index.scss";
+@import "../../../SCSSFile/SCSSFunctions/index.scss";
+
+.offer-name {
+    font-size: 0.8rem;
+    color: $blueColor;
+    height: 1rem
+}
+
+.special-price-container {
+    @include displayFlexColumnProperty(start, start, 0.5rem);
+}   

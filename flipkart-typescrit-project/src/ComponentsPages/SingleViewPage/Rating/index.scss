@@ -6,7 +6,7 @@
   border: 1px dashed $borderLightGray;
   padding: 1rem;
   border-radius: 0.4rem;
-  width: 75%;
+  width: 55%;
 
   & .left {
     @include displayFlexColumnProperty(center, space-around, 0.5rem);
@@ -59,9 +59,9 @@
     height: 0.3rem;
   }
 }
-.width {
+.width-length {
+  @include heightWidthProperty(0.3rem, 0);
   display: block;
-   height: 0.3rem;
    background-color: $greenColor;
    border-radius: 0.3rem;
 }

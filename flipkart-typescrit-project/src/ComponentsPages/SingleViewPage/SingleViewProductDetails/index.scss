@@ -2,23 +2,22 @@
 @import "../../../SCSSFile/SCSSFunctions/index.scss";
 
 @mixin fullPageButton($bc) {
+  @include displayFlexProperty(center, center, 0.5rem);
+  @include heightWidthProperty(4rem, 13rem);
   background-color: $bc;
-  height: 4rem;
-  width: 13rem;
   font-size: 1.4rem;
   font-weight: 600;
   border-radius: 0.4rem;
   text-transform: capitalize;
   color: white;
-  @include displayFlexProperty(center, center, 0.5rem);
 }
 
 .singleview {
   @include displayFlexProperty(start, start, 0.5rem);
   background-color: $whiteColor;
-  height: calc(99vh);
   width: 70%;
   font-size: 1.3rem;
+  padding: 1rem;
   &-left {
     width: 35rem;
     height: 100%;
@@ -27,7 +26,7 @@
     & img {
       @include imgProperty(25rem, none, none);
       margin: 0;
-      height: 33rem;
+      height: 30rem;
     }
   }
   & .discount-price-container {

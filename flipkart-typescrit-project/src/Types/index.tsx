@@ -28,7 +28,7 @@ export type SingleProductProps = {
   product: SingleProduct;
 };
 
-export type RatingProps = {
+export type RatingAndSinglePageProps = {
   data : RatingObjectProps
 }
 export type RatingObjectProps = {

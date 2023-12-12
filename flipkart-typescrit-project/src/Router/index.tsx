@@ -2,8 +2,9 @@ import Home from "../ComponentsPages/HomePage/Home";
 import { Route, Routes } from "react-router-dom";
 import Cart from "../ComponentsPages/CartPage/Cart";
 import WishList from "../ComponentsPages/WishListPage/WishList";
-import SingleView from "../ComponentsPages/SingleViewPage/SingleView";
+
 import AccountForm from "../ComponentsPages/LogIn&SignUpPage/AccountForm";
+import SingleView from "../ComponentsPages/SingleViewPage/SingleView";
 
 const Router = () => {
   return (

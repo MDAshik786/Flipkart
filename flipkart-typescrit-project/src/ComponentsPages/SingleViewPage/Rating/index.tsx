@@ -1,8 +1,8 @@
 import "./index.scss";
 import { BiSolidStar } from "react-icons/bi";
-import { RatingProps } from "../../../Types";
+import { RatingAndSinglePageProps } from "../../../Types";
 
-const Rating = ({ data }: RatingProps) => {
+const Rating = ({ data }: RatingAndSinglePageProps) => {
   const { product, rating, oneStar, twoStar, threeStar, fourStar, fiveStar } =
     data;
 
@@ -54,7 +54,7 @@ const Rating = ({ data }: RatingProps) => {
                 <BiSolidStar className="bsStar-icons" />
               </div>
               <div className="values">
-                <span  className="width" style={{ width: rating[data.id] }}></span>
+                <span  className="width-length" style={{ width: rating[data.id] }}></span>
               </div>
               <p className="stars-percentage">{data.count}</p>
             </div>
