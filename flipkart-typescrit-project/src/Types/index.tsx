@@ -1,13 +1,14 @@
 import React, { LegacyRef } from "react";
 
 export type InputFiledProps = {
-  type: "text" | "number" | "email" | "password";
+  type: "text" | "number" | "email" | "password" | "radio" | "checkbox" ;
   className: string;
   name?: string;
   placeholder?: string;
   value?: string | number | readonly string[] | undefined;
   autoFocus?: boolean;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void | undefined;
+  onClick?: (e: React.ChangeEvent<HTMLInputElement>) => void
   autoComplete?: string;
 };
 

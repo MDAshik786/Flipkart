@@ -1,0 +1,96 @@
+@import "../../../SCSSFile/ColorVariable/index.scss";
+@import "../../../SCSSFile/SCSSFunctions/index.scss";
+
+.login {
+  @include displayFlexProperty(center, space-between, 1rem);
+  padding: 1rem;
+  background-color: $whiteColor;
+
+  &-name-details {
+    @include displayFlexColumnProperty(start, start, 0.3rem);
+  }
+  &-name-container {
+    @include displayFlexProperty(center, start, 0.5rem);
+  }
+  &-verifed-container {
+    @include displayFlexProperty(start, start, 1rem);
+  }
+  .change-button {
+    @include buttonStyle(
+      2.3rem,
+      fit-content,
+      0 1.5rem,
+      0.3rem,
+      $whiteColor,
+      $blueColor
+    );
+    border: 1px solid $borderLightGray;
+    text-transform: uppercase;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+  &-heading {
+    color: $darkGray;
+  }
+}
+
+.row-number {
+  @include heightWidthProperty(1.5rem, 1.6rem);
+  @include displayFlexProperty(center, center, none);
+  background-color: $whitesmoke;
+  border-radius: 0.2rem;
+}
+
+.login-changes {
+  background-color: $whiteColor;
+  border-radius: 0.3rem;
+  .login-top {
+    @include displayFlexProperty(center, start, 1rem);
+    background-color: $blueColor;
+    color: $whiteColor;
+    height: 3.5rem;
+    padding: 1rem;
+  }
+
+  .row-number {
+    color: $blueColor;
+  }
+
+  &-details {
+    @include displayFlexProperty(start, space-between, none);
+    padding: 2rem;
+    font-size: 1.1rem;
+
+    &-left {
+      @include displayFlexColumnProperty(start, start, 1rem);
+    }
+
+    &-right {
+      @include displayFlexColumnProperty(start, start, 1rem);
+    }
+  }
+
+  .flex-row {
+    @include displayFlexProperty(start, start, 1rem);
+  }
+
+  .bottom-content {
+    color: $darkGray;
+    font-size: 1rem;
+    padding: 1rem 2rem;
+  }
+}
+
+.continue-checkout-button {
+  @include buttonStyle(
+    2.5rem,
+    100%,
+    0 3.5rem,
+    0.3rem,
+    $darkOrange,
+    $whiteColor
+  );
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}

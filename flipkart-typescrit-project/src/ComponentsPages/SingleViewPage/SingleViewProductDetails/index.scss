@@ -20,7 +20,6 @@
   padding: 1rem;
   &-left {
     width: 35rem;
-    height: 100%;
     @include displayFlexColumnProperty(center, center, 2rem);
 
     & img {

@@ -1,0 +1,55 @@
+@import "../../../SCSSFile/ColorVariable/index.scss";
+@import "../../../SCSSFile/SCSSFunctions/index.scss";
+
+.order-summary-heading {
+  @include displayFlexProperty(center, start, 1rem);
+  background-color: $whiteColor;
+  padding: 1.4rem 1rem;
+
+  .heading {
+    color: $darkGray;
+  }
+}
+
+.main-checkout-product,
+.product-details {
+  @include displayFlexColumnProperty(start, start, 0.5rem);
+}
+
+.heading-product {
+  @include displayFlexColumnProperty(start, start, 1rem);
+  background-color: $whiteColor;
+  padding: 1rem;
+}
+
+.product {
+  @include displayFlexProperty(center, start, 1rem);
+}
+
+.email-container {
+  @include displayFlexProperty(center, space-between, none);
+  padding: 1rem;
+  background-color: $whiteColor;
+}
+.cancel-checkout-button {
+  @include buttonStyle(
+    2.5rem,
+    fit-content,
+    0 3.5rem,
+    0.3rem,
+    $darkOrange,
+    $whiteColor
+  );
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+.email-details {
+  font-size: 1rem;
+  color: $lightBlack;
+
+  .email {
+    font-weight: 600;
+    color: $blackColor;
+  }
+}

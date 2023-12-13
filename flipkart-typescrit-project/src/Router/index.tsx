@@ -5,6 +5,7 @@ import WishList from "../ComponentsPages/WishListPage/WishList";
 
 import AccountForm from "../ComponentsPages/LogIn&SignUpPage/AccountForm";
 import SingleView from "../ComponentsPages/SingleViewPage/SingleView";
+import Checkout from "../ComponentsPages/CheckOutPage/Checkout";
 
 const Router = () => {
   return (
@@ -14,6 +15,7 @@ const Router = () => {
       <Route path="/cart" element={<Cart />} />
       <Route path="/wishlist" element={<WishList />} />
       <Route path="/single" element={<SingleView />} />
+      <Route path="/checkout" element={<Checkout />} />
     </Routes>
   );
 };

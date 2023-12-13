@@ -1,0 +1,11 @@
+@import "../../../SCSSFile/ColorVariable/index.scss";
+@import "../../../SCSSFile/SCSSFunctions/index.scss";
+
+.checkout {
+    @include displayFlexProperty(start, start, 1rem);
+    width: 70%;
+
+    &-left {
+        width: 70%;
+    }
+}

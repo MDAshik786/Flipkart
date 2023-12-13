@@ -1,0 +1,131 @@
+@import "../../../SCSSFile/ColorVariable/index.scss";
+@import "../../../SCSSFile/SCSSFunctions/index.scss";
+
+.add-new-address {
+  @include displayFlexProperty(start, start, 0.7rem);
+  padding: 1.4rem 1rem;
+  background-color: $whitesmoke;
+  border-radius: 0.4rem;
+  color: $blueColor;
+
+
+  .add-new-img {
+    @include imgProperty(1rem, 1, none);
+  }
+}
+.add-new-name {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.item0 {
+  grid-area: name;
+}
+.item1 {
+  grid-area: phone;
+}
+.item2 {
+  grid-area: pincode;
+}
+.item3 {
+  grid-area: locality;
+}
+.item4 {
+  grid-area: address;
+}
+.item5 {
+  grid-area: cityDistrict;
+}
+.item6 {
+  grid-area: state;
+}
+.item7 {
+  grid-area: landmark;
+}
+.item8 {
+  grid-area: alternativePhone;
+}
+.item9 {
+  grid-area: homeAddress;
+}
+.item10 {
+  grid-area: officeAddress;
+}
+
+.grid-container {
+  display: grid;
+  gap: 1.5rem;
+  padding: 1.5rem 1rem;
+  grid-template-areas:
+    "name name name phone phone phone"
+    "pincode pincode pincode locality locality locality"
+    "address address address address address address"
+    "cityDistrict cityDistrict cityDistrict state state state"
+    "landmark landmark landmark alternativePhone alternativePhone alternativePhone"
+    "homeAddress homeAddress homeAddress officeAddress officeAddress officeAddress";
+
+  .input-type-name,
+  .selected-field {
+    height: 2.5rem;
+    border-radius: 0.4rem;
+    border: 1px solid $borderLightGray;
+    padding: 0.2rem 0.7rem;
+    width: 100%;
+    font-size: 1rem;
+    outline: none;
+  }
+  .selected-field {
+    background-color: $whiteColor;
+  }
+  .item4 {
+    height: 8rem;
+    padding-top: 0.5rem
+
+  }
+ 
+}
+.checkbox-radio-container {
+  @include displayFlexColumnProperty(start, end, 0.7rem);
+}
+
+.add-new-address-radio {
+  padding: 1rem;
+  color: $blueColor;
+}
+
+.checkbox-form {
+  background-color: $whiteColor;
+  padding: 1rem;
+  border-radius: 0.4rem;
+}
+
+.radio-type {
+  height: 0.9rem;
+  width: 0.9rem;
+  color: $blueColor;
+}
+.rodio-content {
+  font-size: 1rem;
+}
+.radio-content {
+  @include displayFlexProperty(center, start, 0.5rem);
+}
+
+.address-type-name {
+  font-size: 0.9rem;
+  color: $darkGray;
+}
+.save-address {
+  @include buttonStyle(2.5rem, 40%, 0 1rem, 0.4rem, $darkOrange, $whiteColor);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.calcel-text {
+  padding-left: 2rem;
+  color: $blueColor;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  font-size: 1rem;
+}
