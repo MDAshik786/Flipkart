@@ -1,0 +1,18 @@
+@import "../../../../SCSSFile/ColorVariable/index.scss";
+@import "../../../../SCSSFile/SCSSFunctions/index.scss";
+
+.delivery-address {
+    background-color: $whiteColor;
+    border-radius: 0.3rem;
+}
+.delivery-address-top {
+    @include displayFlexProperty(center, start, 1rem);
+    background-color: $blueColor;
+    color: $whiteColor;
+    height: 3.5rem;
+    padding: 1rem;
+
+    .row-number {
+        color: $blueColor;
+    }
+}

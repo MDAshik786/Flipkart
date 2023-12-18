@@ -1,11 +1,12 @@
 import { forwardRef } from "react";
 import { InputFiledProps } from "../../Types";
-import { refImage, refInput } from "../../Types/Name&Type";
+import { refInput } from "../../Types/Name&Type";
 
 const InputFiled = forwardRef(function InputFiled(
   {
     className,
     placeholder,
+    id,
     autoFocus,
     type,
     name,
@@ -23,8 +24,9 @@ const InputFiled = forwardRef(function InputFiled(
       autoFocus={autoFocus}
       value={value}
       name={name}
-      onChange={onChange}
+      onChange={type === "radio" ? (e) => onChange(e, id) : onChange}
       autoComplete={autoComplete}
+      defaultChecked={value === id}
       ref={ref}
     />
   );

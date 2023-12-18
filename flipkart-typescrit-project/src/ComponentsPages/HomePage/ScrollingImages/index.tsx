@@ -6,6 +6,7 @@ import { BiSolidLeftArrow, BiSolidRightArrow } from "react-icons/bi";
 import { observer } from "mobx-react-lite";
 import ImageField from "../../../CommonUsedComponents/ImageField";
 
+
 const ScrollingImages = observer(() => {
 
   const [scrollingCounter, setScrollingCounter] = useState(0);
@@ -26,7 +27,6 @@ const ScrollingImages = observer(() => {
 
   const handleAutoIncrement = () => {
     return setInterval(() => {
-
       if (scrollingCounter === 6) {
         setScrollingCounter(0);
       } else {

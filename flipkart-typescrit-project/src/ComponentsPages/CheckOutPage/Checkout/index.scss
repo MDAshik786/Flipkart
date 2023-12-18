@@ -7,5 +7,6 @@
 
     &-left {
         width: 70%;
+        @include displayFlexColumnProperty(start, start, 0.7rem);
     }
 }

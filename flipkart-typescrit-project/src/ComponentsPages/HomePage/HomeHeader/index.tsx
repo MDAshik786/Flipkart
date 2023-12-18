@@ -51,7 +51,11 @@ const HomeHeader = observer(
             autoFocus={true}
             type="text"
             value={searchInput}
-            onChange={(e) => handleSetFunction(e.target.value)}
+            onChange={(
+              e: React.ChangeEvent<
+                HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+              >
+            ) => handleSetFunction(e.target.value)}
           />
         </div>
         <div className="head-rightSide-container">

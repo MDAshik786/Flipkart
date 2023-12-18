@@ -8,7 +8,7 @@ import {
   updateAProduct,
 } from "../../../API Functions/CartPageAPI";
 import { useStore } from "../../../ContextHooks/UseStore";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { handleUpdateChange } from "../../../CommonFunctions/HandleFunction";
 import { observer } from "mobx-react-lite";
 import RatingContainer from "../../../CommonUsedComponents/Product/RatingContainer";
@@ -16,7 +16,12 @@ import PriceContainer from "../../../CommonUsedComponents/Product/PriceContainer
 import ImageConatiner from "../../../CommonUsedComponents/Product/ImageContainer";
 import { useNavigate } from "react-router-dom";
 
-const CartSingleProduct = ({ products,  }: CartSingleProductProps) => {
+const CartSingleProduct = ({
+  products,
+  index,
+  data,
+  handleSetStateOnChange
+}: any) => {
   const {
     rootStore: { productCounterStore, userStore },
   } = useStore();
@@ -24,7 +29,7 @@ const CartSingleProduct = ({ products,  }: CartSingleProductProps) => {
   const { product } = products;
 
   const queryClient = useQueryClient();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const [updateState, setUpdateState] = useState<boolean>(false);
 
@@ -61,11 +66,38 @@ const CartSingleProduct = ({ products,  }: CartSingleProductProps) => {
   const imageData = {
     product,
     onclick: handleSinglePage,
-    color : products.color,
+    color: products.color,
   };
 
+  const handleDragStart = (
+    event: React.DragEvent<HTMLDivElement>,
+    index: number
+  ) => {
+    console.log(index, "dragStart");
+    handleSetStateOnChange(index)
+  };
+
+  const handleDraggableDrop = (
+    event: React.DragEvent<HTMLDivElement>,
+    index: number
+  ) => {
+    console.log(data, index, "draggerEnd");
+ 
+  };
+
+  const handleOnDragOver = (event: React.DragEvent<HTMLDivElement>) => {
+    event.preventDefault();
+  };
+
+
   return (
-    <div className="cart-product-allData">
+    <div
+      className="cart-product-allData"
+      draggable
+      onDragStart={(e) => handleDragStart(e, index)}
+      onDrop={(e) => handleDraggableDrop(e, index)}
+      onDragOver={handleOnDragOver}
+    >
       <ImageConatiner imageData={imageData} />
       <div className="cart-product-details">
         <p className="cart-product-name">{product?.name}</p>

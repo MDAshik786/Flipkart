@@ -1,3 +1,4 @@
+import { CheckoutStore } from "../CheckoutStore";
 import { CounterStore } from "../CounterStore";
 import { SingleProductCounters } from "../ProductCounterStore";
 import { ProductImageStore } from "../ProductImageStore";
@@ -10,6 +11,7 @@ export interface IRootStore {
     wishListStore : WishListStore 
     userStore : UserStore
     productImageStore : ProductImageStore
+    checkoutStore : CheckoutStore
 }
 
 export class RootStore implements IRootStore {
@@ -18,6 +20,7 @@ export class RootStore implements IRootStore {
     wishListStore : WishListStore
     userStore: UserStore;
     productImageStore : ProductImageStore;
+    checkoutStore : CheckoutStore
     
     constructor() {
         this.counterStore = new CounterStore(this)
@@ -25,5 +28,7 @@ export class RootStore implements IRootStore {
         this.wishListStore = new WishListStore(this)
         this.userStore = new UserStore(this)
         this.productImageStore = new ProductImageStore(this)
+        this.checkoutStore = new CheckoutStore(this)
+
     }
 }

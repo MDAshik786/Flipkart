@@ -1,14 +1,29 @@
 import "./index.scss";
-import ImageField from "../../../CommonUsedComponents/ImageField";
-import plusImage from "../../../Asserts/Images/plus.svg";
-import InputFiled from "../../../CommonUsedComponents/InputField";
+import ImageField from "../../../../CommonUsedComponents/ImageField";
+import plusImage from "../../../../Asserts/Images/plus.svg";
+import InputFiled from "../../../../CommonUsedComponents/InputField";
 import { ChangeEventHandler, useState } from "react";
-import FormInputField from "../../../CommonUsedComponents/FormInputField";
-import { checkboxDataType } from "../../../Types/UserAccontType";
-import { statesData } from "../../../Datas/States";
-import ButtonFiled from "../../../CommonUsedComponents/ButtonField";
+import FormInputField from "../../../../CommonUsedComponents/FormInputField";
+import { checkboxDataType } from "../../../../Types/UserAccontType";
+import { statesData } from "../../../../Datas/States";
+import ButtonFiled from "../../../../CommonUsedComponents/ButtonField";
+import { useStore } from "../../../../ContextHooks/UseStore";
 const NewAddress = () => {
   type checkoutStateDataType = {
+    name: string;
+    phone: string;
+    pincode: string;
+    locality: string;
+    address: string;
+    cityDistrict: string;
+    landmark: string;
+    alternativePhone: string;
+    chooseAddress: string;
+    state: string;
+    defaultAddress: boolean;
+  };
+
+  type errorCheckoutStateDataType = {
     [key: string]: string;
   };
 
@@ -22,9 +37,11 @@ const NewAddress = () => {
     landmark: "",
     alternativePhone: "",
     chooseAddress: "",
+    state: "",
+    defaultAddress: false,
   });
 
-  const [errorData, setErrorData] = useState<checkoutStateDataType>({
+  const [errorData, setErrorData] = useState<errorCheckoutStateDataType>({
     name: "",
     phone: "",
     pincode: "",
@@ -39,13 +56,19 @@ const NewAddress = () => {
   const handleOnChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
+    >,
+    values?: string
   ) => {
-    const { name, value } = e.target;
-
+    const { name, value, type } = e.target;
+    console.log(name, value, type);
     setInputData((state) => ({
       ...state,
-      [name]: value,
+      [name]:
+        type === "checkbox" && name === "defaultAddress"
+          ? !state[name]
+          : type === "radio"
+          ? values
+          : value,
     }));
   };
 
@@ -122,7 +145,7 @@ const NewAddress = () => {
       divClassName: "item8 checkbox-input-container",
       placeholderName: "Alternative Phone (Optional)",
       inputClassName: "input-type-name item8",
-      type: "text",
+      type: "number",
       spanClassName: "error-msg",
       errorMessage: errorData.alternativePhone,
       value: inputData.alternativePhone,
@@ -131,71 +154,95 @@ const NewAddress = () => {
     {
       name: "chooseAddress",
       labelClassName: "address-type-name",
+      id: "home",
       divClassName: "item9 checkbox-radio-container",
       labelContent: "AddressType",
       inputClassName: "radio-type",
       type: "radio",
-      value: "home",
-      onClick: handleOnChange,
+      value: inputData.chooseAddress,
+      onChange: handleOnChange,
       radioContent: "Home ( All day delivery )",
     },
     {
       name: "chooseAddress",
+      id: "work",
       divClassName: "item10 checkbox-radio-container",
       inputClassName: "radio-type item10",
       type: "radio",
-      value: "work",
-      onClick: handleOnChange,
+      value: inputData.chooseAddress,
+      onChange: handleOnChange,
       radioContent: "Work ( Delivery Between 10AM - 5PM )",
+    },
+    {
+      name: "defaultAddress",
+      id: true,
+      divClassName: "checkbox-radio-container",
+      inputClassName: "radio-type",
+      type: "checkbox",
+      value: inputData.defaultAddress,
+      onChange: handleOnChange,
+      radioContent: "Make it as Default Address",
     },
   ];
 
+  const {
+    rootStore: { checkoutStore },
+  } = useStore();
+  const { checkoutData } = checkoutStore;
+
   return (
     <>
-      <div className="add-new-address">
-        <div>
-          <ImageField src={plusImage} alt="add" className="add-new-img" />
-        </div>
-        <p className="add-new-name">Add a new address</p>
-      </div>
+      {checkoutData.DeliveryAddress && checkoutData.newAddress && (
+        <>
+          <div className="add-new-address">
+            <div>
+              <ImageField src={plusImage} alt="add" className="add-new-img" />
+            </div>
+            <p className="add-new-name">Add a new address</p>
+          </div>
 
+          <form className="checkbox-form">
+            <div className="add-new-address-radio radio-content">
+              <InputFiled className="radio-type" type="radio" />
+              <p className="add-new-name">ADD A NEW ADDRESS</p>
+            </div>
+            <div className="checkout-form grid-container">
+              <FormInputField userData={checkoutFormData} />
+              <textarea
+                name="address"
+                className="item4 input-type-name"
+                placeholder="Address ( Area and Street)"
+                value={inputData.address}
+                onChange={handleOnChange}
+              />
 
-      
-      <form className="checkbox-form">
-        <div className="add-new-address-radio radio-content">
-          <InputFiled className="radio-type" type="radio" />
-          <p className="add-new-name">ADD A NEW ADDRESS</p>
-        </div>
-        <div className="checkout-form grid-container">
-          <FormInputField userData={checkoutFormData} />
-          <textarea
-            name="address"
-            className="item4 input-type-name"
-            placeholder="Address ( Area and Street)"
-            value={inputData.address}
-            onChange={handleOnChange}
-          />
-
-          <select
-            name="pets"
-            id="select-state"
-            className="selected-field item6"
-            value={inputData.state}
-            onChange={handleOnChange}
-          >
-            <option value="Select State" disabled>
-              Select State
-            </option>
-            {statesData.map((state: string, index: number) => (
-              <option value={state} key={index}>
-                {state}
-              </option>
-            ))}
-          </select>
-        </div>
-        <ButtonFiled content="SAVE AND DELIVER HERE" className="save-address" />
-        <span className="calcel-text">CANCEL</span>
-      </form>
+              <select
+                name="state"
+                id="select-state"
+                className="selected-field item6"
+                value={inputData.state}
+                onChange={handleOnChange}
+              >
+                {inputData.state === "" ? (
+                  <option value="" disabled>
+                    Select State
+                  </option>
+                ) : null}
+                {statesData.map((state: string, index: number) => (
+                  <option value={state} key={index}>
+                    {state}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <ButtonFiled
+              content="SAVE AND DELIVER HERE"
+              className="save-address"
+            />
+            <span className="calcel-text">CANCEL</span>
+          </form>
+        </>
+      )}
     </>
   );
 };

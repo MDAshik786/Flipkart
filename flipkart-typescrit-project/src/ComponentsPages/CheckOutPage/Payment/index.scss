@@ -1,0 +1,82 @@
+@import "../../../SCSSFile/ColorVariable/index.scss";
+@import "../../../SCSSFile/SCSSFunctions/index.scss";
+
+.payment {
+  @include displayFlexColumnProperty(start, start, 0.5rem);
+  font-size: 1rem;
+  background-color: $whiteColor;
+}
+
+.top-heading-conatainer {
+  @include displayFlexProperty(start, start, 1rem);
+  width: 100%;
+  background-color: $blueColor;
+  color: $whiteColor;
+  height: 3.5rem;
+  padding: 1rem;
+
+  .row-number {
+    color: $blueColor;
+  }
+}
+.radio-container {
+  @include displayFlexProperty(flex-start, start, 1rem);
+  padding: 1rem;
+ 
+
+  .upi-container {
+    @include displayFlexColumnProperty(start, center, 0.5rem);
+    width: 100%
+  }
+}
+
+.ur-upi-container {
+  @include displayFlexProperty(baseline, start, 0.5rem);
+ 
+}
+
+.upi-id-container {
+  @include displayFlexProperty(center, start, 1rem);
+
+  
+
+  .upi-id {
+    @include heightWidthProperty(2.1rem, 50%);
+    border-radius: 0.2rem;
+    padding: 0 0.5rem;
+    border: 1px solid $borderLightGray;
+    font-size: 1rem;
+
+  }
+}
+
+.upi-radio {
+  @include heightWidthProperty(1.1rem, 1.1rem);
+}
+
+.upi-img {
+  width: 2rem;
+  height: 2rem;
+  margin: 0;
+}
+.ur-upi-id {
+  @include displayFlexColumnProperty(start, center, 1rem);
+  width : 100%;
+}
+
+.cash-on-delivery {
+  @include displayFlexProperty(center, start, 1rem);
+  padding: 1rem;
+}
+
+.payment-ruppess {
+  @include buttonStyle(
+    2.1rem,
+    fit-content,
+    0 1rem,
+    0.2rem,
+    $gray62,
+    $whiteColor
+  );
+  font-weight: 600;
+}

@@ -1,9 +1,16 @@
+@import "../../../SCSSFile/ColorVariable/index.scss";
 @import "../../../SCSSFile/SCSSFunctions/index.scss";
 
 .top-offer-names-container{
-    @include displayFlexColumnProperty (center, flex-start, 1rem);
+    @include displayFlexColumnProperty (center, flex-start, 0.5rem);
+    padding: 1rem 1.7rem;
+    border-radius: 0.4rem;
+    border : 1px solid $whiteColor;
+    
+    &:hover {
+     border : 1px solid $borderLightGray;
+    }
 }
-
 
 .top-offer-names{
     font-weight: 550;

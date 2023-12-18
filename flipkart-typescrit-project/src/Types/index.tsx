@@ -1,14 +1,15 @@
 import React, { LegacyRef } from "react";
 
 export type InputFiledProps = {
-  type: "text" | "number" | "email" | "password" | "radio" | "checkbox" ;
+  type: "text" | "number" | "email" | "password" | "radio" | "checkbox";
   className: string;
   name?: string;
+  id?: string | boolean;
   placeholder?: string;
-  value?: string | number | readonly string[] | undefined;
+  value?:any
   autoFocus?: boolean;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void | undefined;
-  onClick?: (e: React.ChangeEvent<HTMLInputElement>) => void
+  onChange?: any;
+  onClick?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   autoComplete?: string;
 };
 
@@ -20,8 +21,6 @@ export type ButtonFieldProps = {
   type?: "button" | "reset" | "submit" | undefined;
 };
 
-
-
 export type priceDataType = {
   product: SingleProduct;
 };
@@ -30,20 +29,20 @@ export type SingleProductProps = {
 };
 
 export type RatingAndSinglePageProps = {
-  data : RatingObjectProps
-}
+  data: RatingObjectProps;
+};
 export type RatingObjectProps = {
-  product : SingleProduct;
-  rating : ratingtype,
-  oneStar : number,
-  twoStar : number,
-  threeStar : number,
-  fourStar : number,
-  fiveStar : number,
-}
+  product: SingleProduct;
+  rating: ratingtype;
+  oneStar: number;
+  twoStar: number;
+  threeStar: number;
+  fourStar: number;
+  fiveStar: number;
+};
 export type ratingtype = {
-  [key : number] : number
-} 
+  [key: number]: number;
+};
 
 export type Product = {
   name: string;
@@ -59,7 +58,6 @@ export type ImageFiledProps = {
   src: string;
   alt?: string;
   className?: string;
-
 };
 
 export type SingleWishListProductType = {
@@ -86,6 +84,7 @@ export type CartSingleProducts = {
 
 export type CartSingleProductProps = {
   products: CartSingleProducts;
+  index: number;
 };
 
 export type SingleProduct = {
@@ -184,7 +183,6 @@ export type inputErrorValueProps = {
   [key: string]: string;
 };
 
-
 //inputErrorValueProps
 export type formRightWrapperType = {
   InputErrorValues: inputErrorValueProps;
@@ -203,8 +201,8 @@ export type usersDataVericationType = {
 };
 
 export type inputDataKeyValuePairType = {
-  [key : string]: string;
-}
+  [key: string]: string;
+};
 
 export type inputDataType = {
   email: string;
@@ -229,3 +227,12 @@ export type CommonRightWrapperType = {
   passwordInput: React.RefObject<HTMLInputElement>;
   InputErrorValues: inputErrorValueProps;
 };
+
+export type dataType ={
+  number : number,
+  name : string
+}
+
+export type unverifiedDataType = {
+  data : dataType;
+}

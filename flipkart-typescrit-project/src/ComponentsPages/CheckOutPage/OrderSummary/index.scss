@@ -4,11 +4,13 @@
 .order-summary-heading {
   @include displayFlexProperty(center, start, 1rem);
   background-color: $whiteColor;
-  padding: 1.4rem 1rem;
+  padding: 1rem;
+}
 
-  .heading {
-    color: $darkGray;
-  }
+.heading {
+  color: $darkGray;
+  letter-spacing: 0.3px;
+  font-size: 1.1rem;
 }
 
 .main-checkout-product,
@@ -51,5 +53,6 @@
   .email {
     font-weight: 600;
     color: $blackColor;
+    padding-left: 0.5rem;
   }
 }

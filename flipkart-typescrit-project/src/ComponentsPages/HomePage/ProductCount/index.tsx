@@ -30,7 +30,9 @@ const ProductCount = ({ product, quantity }: ProductCountProps) => {
             ? quantity
             : 1
         }
-        onChange={(e) =>
+        onChange={(e: React.ChangeEvent<
+          HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+        >) =>
           productCounterStore?.addAProductCounter(
             product.id,
             Number(e.target.value)

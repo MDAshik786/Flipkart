@@ -5,7 +5,7 @@ export type productImageStoreType = {
   [key: number]: string;
 };
 export class ProductImageStore {
-  productImages: productImageStoreType = { 2: "orange" };
+  productImages: productImageStoreType = {};
   rootStore: IRootStore;
 
   constructor(rootStore: IRootStore) {

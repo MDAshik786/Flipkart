@@ -1,5 +1,5 @@
-@import "../../../SCSSFile/ColorVariable/index.scss";
-@import "../../../SCSSFile/SCSSFunctions/index.scss";
+@import "../../../../SCSSFile/ColorVariable/index.scss";
+@import "../../../../SCSSFile/SCSSFunctions/index.scss";
 
 .add-new-address {
   @include displayFlexProperty(start, start, 0.7rem);

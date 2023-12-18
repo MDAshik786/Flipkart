@@ -24,7 +24,7 @@
       $whiteColor,
       $blueColor
     );
-    border: 1px solid $borderLightGray;
+    border: 1px solid $lightGray;
     text-transform: uppercase;
     font-size: 1rem;
     font-weight: 600;
@@ -37,7 +37,7 @@
 .row-number {
   @include heightWidthProperty(1.5rem, 1.6rem);
   @include displayFlexProperty(center, center, none);
-  background-color: $whitesmoke;
+  background-color: $darkWhite;
   border-radius: 0.2rem;
 }
 
@@ -94,3 +94,9 @@
   font-weight: 600;
   letter-spacing: 0.5px;
 }
+
+.blue {
+  color: $blueColor;
+  font-size: 1rem;
+}
+

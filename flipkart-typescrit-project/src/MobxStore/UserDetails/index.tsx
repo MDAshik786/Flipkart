@@ -3,14 +3,11 @@ import { IRootStore } from "../RootStore";
 import { makePersistable } from "mobx-persist-store";
 import { inputDataType, loginUserStoreType } from "../../Types";
 
-
-
-
 export class UserStore {
   email: string = "";
   password: string = "";
   name: string = "";
-  phoneNumber: string = "";
+  phoneNumber: string = ""; //
   rootStore: IRootStore;
 
   constructor(rootStore: IRootStore) {

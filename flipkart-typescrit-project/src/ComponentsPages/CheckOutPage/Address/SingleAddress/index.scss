@@ -1,0 +1,21 @@
+@import "../../../../SCSSFile/ColorVariable/index.scss";
+@import "../../../../SCSSFile/SCSSFunctions/index.scss";
+
+.single-address {
+    @include displayFlexProperty(baseline, start, 1rem);
+    padding: 1rem;
+    font-size: 1rem;
+    border-bottom: 1px solid $borderLightGray;
+
+    .name-details {
+        @include displayFlexColumnProperty(start, start, 1rem);
+    }
+
+    .name-specification {
+        @include displayFlexProperty(center, start, 1rem);
+    }
+
+    .address-container {
+        @include displayFlexProperty(center, start, 1rem);
+    }
+}
