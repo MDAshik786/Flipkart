@@ -6,7 +6,7 @@ export type InputFiledProps = {
   name?: string;
   id?: string | boolean;
   placeholder?: string;
-  value?:any
+  value?: any;
   autoFocus?: boolean;
   onChange?: any;
   onClick?: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -77,14 +77,29 @@ export type SingleProductProps2 = {
 export type CartSingleProducts = {
   id: number;
   quantity: number;
-  defaultValue: number;
+  defaultValue?: number;
   color: string;
   product: SingleProduct;
 };
 
+export type orderSummaryMapType = {
+  data : CartSingleProducts
+}
+
+export type VerifiedContainerPropsType = {
+  data : {
+    number : number,
+    name : string,
+    content : string[],
+    onclick : () => void
+  }
+}
+
 export type CartSingleProductProps = {
   products: CartSingleProducts;
   index: number;
+  data: number | null;
+  handleSetStateOnChange: (value: number) => void;
 };
 
 export type SingleProduct = {
@@ -228,11 +243,11 @@ export type CommonRightWrapperType = {
   InputErrorValues: inputErrorValueProps;
 };
 
-export type dataType ={
-  number : number,
-  name : string
-}
+export type dataType = {
+  number: number;
+  name: string;
+};
 
 export type unverifiedDataType = {
-  data : dataType;
-}
+  data: dataType;
+};

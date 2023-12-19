@@ -1,0 +1,34 @@
+@import "../../../../SCSSFile/ColorVariable/index.scss";
+@import "../../../../SCSSFile/SCSSFunctions/index.scss";
+
+.product {
+  @include displayFlexProperty(start, start, 1.5rem);
+  padding: 1rem;
+  border-bottom: 1px solid $borderLightGray;
+
+  .img-container {
+    @include displayFlexColumnProperty(center, center, 1.5rem);
+    width: 20%;
+    img {
+      @include imgProperty(100%, 1, none);
+    }
+  }
+
+  .product-details {
+     width: 60%;
+     @include displayFlexColumnProperty(start, start, 0.5rem);
+     font-size: 1rem;
+
+     .cart-product-about-container {
+        line-height: 1.5rem;
+     }
+  }
+
+  .number-container {
+    justify-content: center;
+  }
+
+  .delivery-date {
+    font-size: 1rem;
+  }
+}

@@ -137,7 +137,7 @@ export const HomeSingleProduct = observer(
           <ProductCount product={product} />
         </div>
         <ButtonFiled
-          content="Add To Cart"
+          content={addToCartMutation.isPending ?"Added" : "Add To Cart"}
           className="single-addToCart-button"
           onClick={() =>
             handleLoginVerification(navigate, () => addToCartMutation.mutate())

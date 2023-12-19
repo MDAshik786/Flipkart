@@ -1,3 +1,4 @@
+import { formatNumberWithComma } from "../../../CommonFunctions/Amount";
 import { priceDataType } from "../../../Types";
 import './index.scss'
 const PriceContainer = ({ product }: priceDataType) => {
@@ -13,11 +14,11 @@ const PriceContainer = ({ product }: priceDataType) => {
       <div className="single-price-container">
         <div className="discount-price-container">
           <span className="₹">₹</span>
-          <h4>{product?.discountPrice}</h4>
+          <h4 className="formate-price">{formatNumberWithComma(product?.discountPrice)}</h4>
         </div>
         <div className="original-price-container">
           <span className="₹">₹</span>
-          <p>{product?.priceIndia}</p>
+          <p className="formate-price">{formatNumberWithComma(product?.priceIndia)}</p>
         </div>
         <span className="discount-percentage">
           {product?.discountPercentage}% off

@@ -6,8 +6,10 @@ import upiGif from "../../../Asserts/Images/UPI.gif";
 import { useState } from "react";
 import { useStore } from "../../../ContextHooks/UseStore";
 import UnVerifiedContainer from "../UnVerifiedContainer";
+import VerifiedContainer from "../VerifiedContainer";
+import { observer } from "mobx-react-lite";
 
-const Payment = () => {
+const Payment = observer(() => {
   const [paymentSelection, setPaymentSelection] = useState<string>("");
   const [upiId, setUpiId] = useState<string>("");
 
@@ -21,17 +23,26 @@ const Payment = () => {
   const {
     rootStore: { checkoutStore },
   } = useStore();
-  const { checkoutData } = checkoutStore;
+  const { checkoutData, checkoutVerification, changePaymentOption } = checkoutStore;
 
   const unverifiedData = {
-    number : 4, 
-    name : "PAYMENT OPTION"
-  }
+    number: 4,
+    name: "PAYMENT OPTION",
+  };
+  const verifiedContainerData = {
+    number: 1,
+    name: "PAYMENT OPTION",
+    content: ["Moahmed Ashik", "9122581422"],
+    onclick : changePaymentOption 
+  };
+
 
   return (
     <>
-      {!checkoutData.paymentOption ? (
-       <UnVerifiedContainer data={unverifiedData}/>
+      {checkoutVerification.paymentOption ? (
+        <VerifiedContainer data={verifiedContainerData}/>
+      ) : !checkoutData.paymentOption ? (
+        <UnVerifiedContainer data={unverifiedData} />
       ) : (
         <div className="payment">
           <div className="top-heading-conatainer">
@@ -96,6 +107,6 @@ const Payment = () => {
       )}
     </>
   );
-};
+});
 
 export default Payment;

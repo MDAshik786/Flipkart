@@ -1,23 +1,28 @@
 import { GoVerified } from "react-icons/go";
 import ButtonFiled from "../../../CommonUsedComponents/ButtonField";
+import { VerifiedContainerPropsType } from "../../../Types";
 
-
-const VerifiedContainer = () => {
+const VerifiedContainer = ({ data }: VerifiedContainerPropsType) => {
+  const { number, name, content, onclick } = data;
   return (
     <div className="login">
-    <div className="login-verifed-container">
-      <p className="row-number">1</p>
-      <div className="login-name-details">
-        <div className="login-name-container">
-          <h4 className="heading">LOGIN</h4>
-          <GoVerified className="verified" />
+      <div className="login-verifed-container">
+        <p className="row-number">{number}</p>
+        <div className="login-name-details">
+          <div className="login-name-container">
+            <h4 className="heading">{name}</h4>
+            <GoVerified className="verified" />
+          </div>
+          <div className="items">
+            {content.map((item: string, index: number) => (
+              <p className="login-name" key={index}>{item}</p>
+            ))}
+          </div>
         </div>
-        <p className="login-name">Moahmed Ashik</p>
       </div>
+      <ButtonFiled content={"Change"} className="change-button" onClick={onclick} />
     </div>
-    <ButtonFiled content={"Change"} className="change-button" />
-  </div>
-  )
-}
+  );
+};
 
-export default VerifiedContainer
+export default VerifiedContainer;

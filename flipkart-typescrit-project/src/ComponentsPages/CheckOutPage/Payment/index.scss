@@ -22,23 +22,19 @@
 .radio-container {
   @include displayFlexProperty(flex-start, start, 1rem);
   padding: 1rem;
- 
 
   .upi-container {
     @include displayFlexColumnProperty(start, center, 0.5rem);
-    width: 100%
+    width: 100%;
   }
 }
 
 .ur-upi-container {
   @include displayFlexProperty(baseline, start, 0.5rem);
- 
 }
 
 .upi-id-container {
   @include displayFlexProperty(center, start, 1rem);
-
-  
 
   .upi-id {
     @include heightWidthProperty(2.1rem, 50%);
@@ -46,7 +42,6 @@
     padding: 0 0.5rem;
     border: 1px solid $borderLightGray;
     font-size: 1rem;
-
   }
 }
 
@@ -61,7 +56,7 @@
 }
 .ur-upi-id {
   @include displayFlexColumnProperty(start, center, 1rem);
-  width : 100%;
+  width: 100%;
 }
 
 .cash-on-delivery {
@@ -79,4 +74,9 @@
     $whiteColor
   );
   font-weight: 600;
+}
+
+.items {
+  @include displayFlexProperty(center, start, 0.8rem);
+  font-size: 1rem;
 }

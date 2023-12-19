@@ -14,6 +14,7 @@ import { useStore } from "../../../ContextHooks/UseStore";
 import ScrollingIamges from "../ScrollingImages";
 import { getSpecificWhishListProduct } from "../../../API Functions/WishListAPI";
 import { useEffect, useState } from "react";
+import { toJS } from "mobx";
 
 const Home = () => {
   const [searchInput, setSearchInput] = useState<string>("");
@@ -75,6 +76,8 @@ const Home = () => {
   useEffect(() => {
     wishListStore.setFunctionSpecifcProduct(getSpecificWishListData || []);
   }, [getSpecificWishListData]);
+
+
 
   const filterData =
     searchInput !== ""

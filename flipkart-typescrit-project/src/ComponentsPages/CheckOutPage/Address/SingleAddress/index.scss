@@ -2,20 +2,33 @@
 @import "../../../../SCSSFile/SCSSFunctions/index.scss";
 
 .single-address {
-    @include displayFlexProperty(baseline, start, 1rem);
-    padding: 1rem;
+  position: relative;
+  @include displayFlexProperty(baseline, start, 1rem);
+  padding: 1rem;
+  font-size: 1rem;
+  border-bottom: 1px solid $borderLightGray;
+
+  .name-details {
+    @include displayFlexColumnProperty(start, start, 1rem);
+  }
+
+  .name-specification {
+    @include displayFlexProperty(center, start, 1rem);
+  }
+
+  .address-container {
+    @include displayFlexProperty(center, start, 1rem);
+  }
+  .deliver-here-button {
+    @include buttonStyle(2.4rem, 50%, 0.5rem, 0.3rem, $darkOrange, $whiteColor);
     font-size: 1rem;
-    border-bottom: 1px solid $borderLightGray;
-
-    .name-details {
-        @include displayFlexColumnProperty(start, start, 1rem);
-    }
-
-    .name-specification {
-        @include displayFlexProperty(center, start, 1rem);
-    }
-
-    .address-container {
-        @include displayFlexProperty(center, start, 1rem);
-    }
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+}
+.edit-link {
+  @include absoluteProperty(1rem, 1rem, -1, -1);
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  color: $blueColor;
 }

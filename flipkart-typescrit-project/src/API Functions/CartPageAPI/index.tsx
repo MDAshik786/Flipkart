@@ -5,7 +5,7 @@ import {
   updateAProductUrl,
 } from "../../Utils_/APIUrls";
 
-export const getAllCartData = async (email: string) => {
+export const getAllCartDataFunction = async (email: string) => {
   if (email) {
     try {
       const response = await axios.get(`${getAllCartProductUrl}/${email}`);

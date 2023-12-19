@@ -7,7 +7,7 @@
   background-color: $whiteColor;
 
   &-name-details {
-    @include displayFlexColumnProperty(start, start, 0.3rem);
+    @include displayFlexColumnProperty(start, start, 0.5rem);
   }
   &-name-container {
     @include displayFlexProperty(center, start, 0.5rem);
@@ -98,5 +98,8 @@
 .blue {
   color: $blueColor;
   font-size: 1rem;
+}
+.verified {
+  color : $mediumGreeen
 }
 

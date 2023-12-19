@@ -24,14 +24,14 @@
   padding: 1rem;
 }
 
-.product {
-  @include displayFlexProperty(center, start, 1rem);
-}
-
 .email-container {
   @include displayFlexProperty(center, space-between, none);
   padding: 1rem;
   background-color: $whiteColor;
+  position: sticky;
+  bottom: 0;
+  box-shadow: rgba(9, 9, 14, 0.1) 0px 0px 50px;
+  
 }
 .cancel-checkout-button {
   @include buttonStyle(

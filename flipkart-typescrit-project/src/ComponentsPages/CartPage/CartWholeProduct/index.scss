@@ -20,8 +20,7 @@
   & .single-product-img {
     width: 90%;
     aspect-ratio: 1;
-  } 
-
+  }
 
   &-details {
     width: 42%;
@@ -29,19 +28,18 @@
   }
 
   &-action-container {
-    @include displayFlexProperty(center, start, 1rem );
+    @include displayFlexProperty(center, start, 1rem);
     color: $darkGreen;
     font-weight: 550;
   }
-  
-  & h4{
+
+  & h4 {
     letter-spacing: 0.5px;
   }
 
   & .cart-product-name {
-    font-size: 1.1rem
+    font-size: 1.1rem;
   }
-  
 }
 
 .cart-product-about-container {
@@ -50,4 +48,20 @@
 
 .discount-price-container h4 {
   font-size: 1.2rem;
+}
+
+.place-order-container {
+  @include displayFlexProperty(center, end, none);
+  padding: 1rem;
+  background-color: $whiteColor;
+  position: sticky;
+  bottom: 0rem;
+  box-shadow: rgba(9, 9, 14, 0.1) 0px 0px 16px;
+  
+  .Place-order-button {
+    @include buttonStyle(2.9rem, 30%, 0.5rem, 0.2rem, $darkOrange, $whiteColor);
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
 }

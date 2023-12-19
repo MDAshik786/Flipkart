@@ -8,7 +8,8 @@ import { checkboxDataType } from "../../../../Types/UserAccontType";
 import { statesData } from "../../../../Datas/States";
 import ButtonFiled from "../../../../CommonUsedComponents/ButtonField";
 import { useStore } from "../../../../ContextHooks/UseStore";
-const NewAddress = () => {
+import { observer } from "mobx-react-lite";
+const NewAddress = observer(() => {
   type checkoutStateDataType = {
     name: string;
     phone: string;
@@ -49,8 +50,6 @@ const NewAddress = () => {
     address: "",
     cityDistrict: "",
     landmark: "",
-    alternativePhone: "",
-    chooseAddress: "",
   });
 
   const handleOnChange = (
@@ -60,7 +59,6 @@ const NewAddress = () => {
     values?: string
   ) => {
     const { name, value, type } = e.target;
-    console.log(name, value, type);
     setInputData((state) => ({
       ...state,
       [name]:
@@ -188,63 +186,65 @@ const NewAddress = () => {
   const {
     rootStore: { checkoutStore },
   } = useStore();
-  const { checkoutData } = checkoutStore;
+  const { checkoutData,checkoutVerification, addANewAddress } = checkoutStore;
 
   return (
     <>
-      {checkoutData.DeliveryAddress && checkoutData.newAddress && (
-        <>
-          <div className="add-new-address">
-            <div>
-              <ImageField src={plusImage} alt="add" className="add-new-img" />
-            </div>
-            <p className="add-new-name">Add a new address</p>
+      {!checkoutVerification.DeliveryAddress && checkoutData.DeliveryAddress && !checkoutData.newAddress && (
+        <div className="add-new-address" onClick={() => addANewAddress(true)}>
+          <div>
+            <ImageField src={plusImage} alt="add" className="add-new-img" />
           </div>
+          <p className="add-new-name">Add a new address</p>
+        </div>
+      )}
 
-          <form className="checkbox-form">
-            <div className="add-new-address-radio radio-content">
-              <InputFiled className="radio-type" type="radio" />
-              <p className="add-new-name">ADD A NEW ADDRESS</p>
-            </div>
-            <div className="checkout-form grid-container">
-              <FormInputField userData={checkoutFormData} />
-              <textarea
-                name="address"
-                className="item4 input-type-name"
-                placeholder="Address ( Area and Street)"
-                value={inputData.address}
-                onChange={handleOnChange}
-              />
-
-              <select
-                name="state"
-                id="select-state"
-                className="selected-field item6"
-                value={inputData.state}
-                onChange={handleOnChange}
-              >
-                {inputData.state === "" ? (
-                  <option value="" disabled>
-                    Select State
-                  </option>
-                ) : null}
-                {statesData.map((state: string, index: number) => (
-                  <option value={state} key={index}>
-                    {state}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <ButtonFiled
-              content="SAVE AND DELIVER HERE"
-              className="save-address"
+      {checkoutData.DeliveryAddress && checkoutData.newAddress && (
+        <form className="checkbox-form">
+          <div className="add-new-address-radio radio-content">
+            <InputFiled className="radio-type" type="radio" />
+            <p className="add-new-name">ADD A NEW ADDRESS</p>
+          </div>
+          <div className="checkout-form grid-container">
+            <FormInputField userData={checkoutFormData} />
+            <textarea
+              name="address"
+              className="item4 input-type-name"
+              placeholder="Address ( Area and Street)"
+              value={inputData.address}
+              onChange={handleOnChange}
             />
-            <span className="calcel-text">CANCEL</span>
-          </form>
-        </>
+
+            <select
+              name="state"
+              id="select-state"
+              className="selected-field item6"
+              value={inputData.state}
+              onChange={handleOnChange}
+            >
+              {inputData.state === "" ? (
+                <option value="" disabled>
+                  Select State
+                </option>
+              ) : null}
+              {statesData.map((state: string, index: number) => (
+                <option value={state} key={index}>
+                  {state}
+                </option>
+              ))}
+            </select>
+          </div>
+          <ButtonFiled
+            content="SAVE AND DELIVER HERE"
+            className="save-address"
+          />
+          <span className="calcel-text" onClick={() => addANewAddress(false)}>
+            CANCEL
+          </span>
+        </form>
       )}
     </>
   );
-};
+});
 
 export default NewAddress;

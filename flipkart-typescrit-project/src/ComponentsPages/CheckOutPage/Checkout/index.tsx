@@ -19,7 +19,9 @@ const Checkout = () => {
           <OrderSummary />
           <Payment />
         </div>
-        <CartPriceDetails />
+       <div className="right-checkout">
+       <CartPriceDetails />
+       </div>
       </div>
     </>
   );

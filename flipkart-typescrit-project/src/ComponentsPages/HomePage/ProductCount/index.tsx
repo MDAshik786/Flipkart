@@ -5,11 +5,17 @@ import { ProductCountProps } from "../../../Types";
 import { useStore } from "../../../ContextHooks/UseStore";
 
 import { observer } from "mobx-react-lite";
+import { useEffect } from "react";
 
 const ProductCount = ({ product, quantity }: ProductCountProps) => {
   const {
-    rootStore: { productCounterStore },
+    rootStore: { productCounterStore, cartStore },
   } = useStore();
+  const { addQuantityFunction } = productCounterStore;
+  
+  useEffect(() => {
+    if (quantity) addQuantityFunction(product.id, quantity);
+  }, []);
 
   return (
     <div className="number-container">
@@ -30,9 +36,11 @@ const ProductCount = ({ product, quantity }: ProductCountProps) => {
             ? quantity
             : 1
         }
-        onChange={(e: React.ChangeEvent<
-          HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-        >) =>
+        onChange={(
+          e: React.ChangeEvent<
+            HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+          >
+        ) =>
           productCounterStore?.addAProductCounter(
             product.id,
             Number(e.target.value)

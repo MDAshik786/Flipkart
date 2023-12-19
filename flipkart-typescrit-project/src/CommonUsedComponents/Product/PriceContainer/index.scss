@@ -9,4 +9,8 @@
 
 .special-price-container {
     @include displayFlexColumnProperty(start, start, 0.5rem);
-}   
+} 
+
+.formate-price{
+  letter-spacing: 0.6px;
+}

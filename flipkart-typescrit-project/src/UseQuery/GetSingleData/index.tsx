@@ -6,7 +6,6 @@ type GetSingleDataQueryPropsType = {
 };
 
 const GetSingleDataQuery = ({id} : GetSingleDataQueryPropsType) => {
- console.log(id,"iiii")
   const {
     data,
     error,

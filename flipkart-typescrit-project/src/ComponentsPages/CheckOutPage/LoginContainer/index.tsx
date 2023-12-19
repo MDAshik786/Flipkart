@@ -5,20 +5,17 @@ import { IoStar } from "react-icons/io5";
 import ButtonFiled from "../../../CommonUsedComponents/ButtonField";
 import { useStore } from "../../../ContextHooks/UseStore";
 import { useNavigate } from "react-router-dom";
+import VerifiedContainer from "../VerifiedContainer";
+import { observer } from "mobx-react-lite";
 
 
-const verifiedContainerData = {
-  number: 1,
-  name: "LOGIN",
-  content: ["Moahmed Ashik", "9122581422"],
-};
 
-const LoginContainer = () => {
+const LoginContainer = observer(() => {
   const {
     rootStore: { checkoutStore },
   } = useStore();
-  const { checkoutData } = checkoutStore;
-
+  const { checkoutData, checkoutVerification, verificationFunction, changeLoginFunction } =
+    checkoutStore;
 
   const {
     rootStore: { userStore },
@@ -29,10 +26,19 @@ const LoginContainer = () => {
     userStore.clearUserData();
     navigate("/");
   };
+ 
+  const verifiedContainerData = {
+    number: 1,
+    name: "LOGIN",
+    content: ["Moahmed Ashik", "9122581422"],
+    onclick : changeLoginFunction
+  };
 
   return (
     <>
-      {checkoutData.login && (
+      {checkoutVerification.login ? (
+        <VerifiedContainer data= {verifiedContainerData} />
+      ) : (
         <div className="login-changes">
           <div className="login-top">
             <p className="row-number">1</p>
@@ -54,6 +60,7 @@ const LoginContainer = () => {
               <ButtonFiled
                 content={"CONTINUE CHECKOUT"}
                 className="continue-checkout-button"
+                onClick={() => verificationFunction("login", "DeliveryAddress")}
               />
             </div>
             <div className="login-changes-details-right">
@@ -80,6 +87,6 @@ const LoginContainer = () => {
       )}
     </>
   );
-};
+});
 
 export default LoginContainer;

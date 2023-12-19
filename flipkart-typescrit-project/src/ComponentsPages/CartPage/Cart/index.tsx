@@ -5,7 +5,7 @@ import CartwholeProduct from "../CartWholeProduct"
 import CartHeader from '../CartHeader'
 import { observer } from 'mobx-react-lite'
 
-const Cart = () => {
+const Cart = observer(() => {
 
 
   return (
@@ -20,6 +20,6 @@ const Cart = () => {
     </div>
     </>
   )
-}
+})
 
-export default observer(Cart)
+export default Cart

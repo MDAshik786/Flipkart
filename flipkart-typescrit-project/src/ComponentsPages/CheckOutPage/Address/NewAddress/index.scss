@@ -4,7 +4,7 @@
 .add-new-address {
   @include displayFlexProperty(start, start, 0.7rem);
   padding: 1.4rem 1rem;
-  background-color: $whitesmoke;
+  background-color: $whiteColor;
   border-radius: 0.4rem;
   color: $blueColor;
 
@@ -128,4 +128,5 @@
   font-weight: 600;
   letter-spacing: 0.5px;
   font-size: 1rem;
+  cursor: pointer
 }
