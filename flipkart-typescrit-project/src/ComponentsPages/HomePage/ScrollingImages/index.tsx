@@ -1,20 +1,16 @@
 import { useState, useEffect, useRef } from "react";
-import { useQuery } from "@tanstack/react-query";
-import { getAllScrollingImages } from "../../../API Functions/HomePageAPI";
 import ButtonField from "../../../CommonUsedComponents/ButtonField";
 import { BiSolidLeftArrow, BiSolidRightArrow } from "react-icons/bi";
 import { observer } from "mobx-react-lite";
 import ImageField from "../../../CommonUsedComponents/ImageField";
-
+import ScrollingImagesQuery from "../../../APIQueryFunction/HomePageQuery/ScrollingImagesQuery";
 
 const ScrollingImages = observer(() => {
-
   const [scrollingCounter, setScrollingCounter] = useState(0);
 
   const imageRef = useRef<any>([]);
 
   const handleUpAndDown = (value: number) => {
-    
     if (value === 1 && scrollingCounter === 6) {
       setScrollingCounter(0);
     } else if (value === -1 && scrollingCounter === 0) {
@@ -37,7 +33,6 @@ const ScrollingImages = observer(() => {
 
   useEffect(() => {
     const intervalId = handleAutoIncrement();
-
     return () => clearInterval(intervalId);
   }, [scrollingCounter]);
 
@@ -45,32 +40,30 @@ const ScrollingImages = observer(() => {
     data: scrollingImagesData,
     error: scrollingImagesError,
     isLoading: scrollingImagesLoading,
-  } = useQuery({
-    queryKey: ["getAllScrollingImages"],
-    queryFn: () => getAllScrollingImages(),
-  });
+    refetch: scrollingImagesRefetch,
+  } = ScrollingImagesQuery();
 
   return (
-      <div className="scrolling-offer-image-container">
-        {scrollingImagesData && (
-          <ImageField
-            ref={imageRef}
-            src={`http://localhost:3000/ScrollingOfferImages/${scrollingImagesData[scrollingCounter]?.images}`}
-          />
-        )}
-
-        <ButtonField
-          content={<BiSolidLeftArrow className={"arrow-icons"} />}
-          className="left-arrow-button"
-          onClick={() => handleUpAndDown(-1)}
+    <div className="scrolling-offer-image-container">
+      {scrollingImagesData && (
+        <ImageField
+          ref={imageRef}
+          src={`http://localhost:3000/ScrollingOfferImages/${scrollingImagesData[scrollingCounter]?.images}`}
         />
+      )}
 
-        <ButtonField
-          content={<BiSolidRightArrow className={"arrow-icons"} />}
-          className="right-arrow-button"
-          onClick={() => handleUpAndDown(1)}
-        />
-      </div>
+      <ButtonField
+        content={<BiSolidLeftArrow className={"arrow-icons"} />}
+        className="left-arrow-button"
+        onClick={() => handleUpAndDown(-1)}
+      />
+
+      <ButtonField
+        content={<BiSolidRightArrow className={"arrow-icons"} />}
+        className="right-arrow-button"
+        onClick={() => handleUpAndDown(1)}
+      />
+    </div>
   );
 });
 

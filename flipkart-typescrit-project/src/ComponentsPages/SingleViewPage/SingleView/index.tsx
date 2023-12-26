@@ -2,9 +2,9 @@ import { useQuery } from "@tanstack/react-query";
 import Rating from "../Rating";
 import ReviewandRatingConatiner from "../Review&RatingConatiner";
 import SingleViewProductDetails from "../SingleViewProductDetails";
-import { getSingleProductData } from "../../../API Functions/SinglePageAPI";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import SingleProductQuery from "../../../APIQueryFunction/SingleViewPageQuery/SingleProductQuery";
 
 const SingleView = () => {
   const location = useLocation();
@@ -16,13 +16,10 @@ const SingleView = () => {
 
   const {
     data: getSingleData,
-    error,
     isLoading,
-  } = useQuery({
-    queryKey: ["getSingleProductData", id],
-    queryFn: () => getSingleProductData(id),
-    enabled: id !== undefined,
-  });
+    error,
+    refetch,
+  } = SingleProductQuery(id);
 
   if (isLoading || !id) return <p>Loading</p>;
 

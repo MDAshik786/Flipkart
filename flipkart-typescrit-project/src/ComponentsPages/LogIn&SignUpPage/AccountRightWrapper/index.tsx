@@ -1,9 +1,5 @@
 import React from "react";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import {
-  loginVerification,
-  signUpVerification,
-} from "../../../API Functions/LogIn&SignInAPI";
+import { useQueryClient } from "@tanstack/react-query";
 import { formRightWrapperType } from "../../../Types";
 import FormInputField from "../../../CommonUsedComponents/FormInputField";
 import ButtonFiled from "../../../CommonUsedComponents/ButtonField";
@@ -11,6 +7,7 @@ import { userDataVerication } from "../../../CommonFunctions/FormValidation";
 import { observer } from "mobx-react-lite";
 import formContent from "../../../Utils_/helpers/user.json";
 import { singleUserDataType } from "../../../Types/UserAccontType";
+import UserVerificationMutation from "../../../APIQueryFunction/UserVerificationQuery/UserVerificationMutation";
 
 const AccountRightWrapper = ({
   InputErrorValues,
@@ -102,21 +99,15 @@ const AccountRightWrapper = ({
     isVerified && loginVerificationMutation.mutate();
   };
 
-  const loginVerificationMutation = useMutation({
-    mutationFn: () => {
-      const responseData = isNewUser
-        ? signUpVerification(inputData)
-        : loginVerification(inputData);
-      responseData.then((response) => {
-        handleLoginVerification(response);
-      });
-      return responseData;
-    },
-    onSuccess: () =>
-      queryClient.invalidateQueries({
-        queryKey: ["getSpecificIdWishListProduct"],
-      }),
-  });
+  const loginVerificationMutationData = {
+    isNewUser,
+    inputData,
+    handleLoginVerification,
+  };
+
+  const loginVerificationMutation = UserVerificationMutation(
+    loginVerificationMutationData
+  );
 
   return (
     <form onSubmit={submitLoginVerification} className="user-form">

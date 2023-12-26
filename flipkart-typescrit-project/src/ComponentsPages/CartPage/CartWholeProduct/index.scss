@@ -28,7 +28,7 @@
   }
 
   &-action-container {
-    @include displayFlexProperty(center, start, 1rem);
+    @include displayFlexProperty(center, start, 1.5rem);
     color: $darkGreen;
     font-weight: 550;
   }
@@ -57,7 +57,7 @@
   position: sticky;
   bottom: 0rem;
   box-shadow: rgba(9, 9, 14, 0.1) 0px 0px 16px;
-  
+
   .Place-order-button {
     @include buttonStyle(2.9rem, 30%, 0.5rem, 0.2rem, $darkOrange, $whiteColor);
     font-size: 1.1rem;
@@ -67,4 +67,8 @@
 }
 .cart-price-right-price {
   letter-spacing: 0.5px;
+}
+
+.cart-product-action:hover {
+  color: $mediumGreeen;
 }

@@ -28,6 +28,7 @@ const Product = ({ data }: orderSummaryMapType) => {
     ratingCount,
     reviewCount,
   };
+  
 
   return (
     <div className="saveforlater">
@@ -49,7 +50,7 @@ const Product = ({ data }: orderSummaryMapType) => {
         <div className="quantity-container">
           <ProductCount product={product} />
         </div>
-        <span className="action-button">Save For Later</span>
+        <span className="action-button">MOVE TO CART</span>
         <span className="action-button">Remove</span>
       </div>
     </div>

@@ -1,9 +1,5 @@
 import "./index.scss";
 import HomeHeader from "../HomeHeader";
-import {
-  getAllProduct,
-  getAllTagImages,
-} from "../../../API Functions/HomePageAPI";
 import { useQuery } from "@tanstack/react-query";
 import { Product, SingleProduct, keywordTypes } from "../../../Types";
 import TopOfferTagsImage from "../TopOfferTagsImage";
@@ -12,11 +8,13 @@ import ImageField from "../../../CommonUsedComponents/ImageField";
 import { HomeSingleProduct } from "../Product";
 import { useStore } from "../../../ContextHooks/UseStore";
 import ScrollingIamges from "../ScrollingImages";
-import { getSpecificWhishListProduct } from "../../../API Functions/WishListAPI";
-import { useEffect, useState } from "react";
-import { toJS } from "mobx";
+import { useState } from "react";
+import TagImagesQuery from "../../../APIQueryFunction/HomePageQuery/TagImagesQuery";
+import SpecificWishListQuery from "../../../APIQueryFunction/WishListQuery/SpecificWishListQuery";
+import ProductQuery from "../../../APIQueryFunction/HomePageQuery/GetProductQuery";
+import { observer } from "mobx-react-lite";
 
-const Home = () => {
+const Home = observer(() => {
   const [searchInput, setSearchInput] = useState<string>("");
   const handleSetFunction = (value: string) => {
     setSearchInput(value);
@@ -29,33 +27,17 @@ const Home = () => {
     data: tagImagesData,
     error: tagImagesError,
     isLoading: tagImagesLoading,
-  } = useQuery({
-    queryKey: ["getAllTagImages"],
-    queryFn: () => getAllTagImages(),
-  });
+    refetch: tagImagesRefetch,
+  } = TagImagesQuery();
 
   const {
     data: getAllProductData,
-    error: getAllProductError,
+    error: productError,
     isLoading: getAllProductLoading,
-  } = useQuery({
-    queryKey: ["getAllProduct"],
-    queryFn: () => getAllProduct(),
-  });
+    refetch: getAllProductRefetch,
+  } = ProductQuery();
 
-  const {
-    data: getSpecificWishListData,
-    error: wishListProductError,
-    isLoading: wishListProductLoading,
-  } = useQuery({
-    queryKey: ["getSpecificIdWishListProduct"],
-    queryFn: () => getSpecificWhishListProduct(userStore.email),
-  });
-  useEffect(() => {
-    wishListStore.setFunctionSpecifcProduct(getSpecificWishListData || []);
-  }, [getSpecificWishListData]);
-
-
+  const { data, error, isLoading } = SpecificWishListQuery(userStore.email);
 
   const filterData =
     searchInput !== ""
@@ -67,10 +49,8 @@ const Home = () => {
       : getAllProductData;
 
   if (tagImagesLoading || getAllProductLoading) return <p>Loading...</p>;
-  if (tagImagesError && getAllProductError)
-    return (
-      <p>Error: {tagImagesError?.message || getAllProductError?.message}</p>
-    );
+  if (tagImagesError && productError)
+    return <p>Error: {tagImagesError?.message || productError?.message}</p>;
 
   return (
     <>
@@ -87,15 +67,11 @@ const Home = () => {
       <ImageField src={offerCard} alt="card Offer" className="offer-card-img" />
       <div className="product-container">
         {filterData?.map((product: SingleProduct, index: number) => (
-          <HomeSingleProduct
-            product={product}
-            key={index}
-            getSpecificWishListData={getSpecificWishListData}
-          />
+          <HomeSingleProduct product={product} key={index} />
         ))}
       </div>
     </>
   );
-};
+});
 
 export default Home;

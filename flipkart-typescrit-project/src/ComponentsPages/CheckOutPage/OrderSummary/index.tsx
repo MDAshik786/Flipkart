@@ -6,9 +6,7 @@ import UnVerifiedContainer from "../UnVerifiedContainer";
 import VerifiedContainer from "../VerifiedContainer";
 import SingleProduct from "./SingleProduct";
 import { CartSingleProducts } from "../../../Types";
-import { useQuery } from "@tanstack/react-query";
-import { getAllCheckoutDataAPI } from "../../../API Functions/CheckoutAPI";
-import { useEffect } from "react";
+import AllProductQuery from "../../../APIQueryFunction/CheckoutQuery/AllProductQuery";
 
 const OrderSummary = observer(() => {
   const {
@@ -25,18 +23,10 @@ const OrderSummary = observer(() => {
 
   const {
     data: allChechoutData,
-    isLoading,
     error,
-    refetch
-  } = useQuery({
-    queryKey: ["getAllCheckoutData"],
-    queryFn: () => getAllCheckoutDataAPI(userStore?.email),
-  });
-
-  useEffect(() => {
-    setCheckoutData(allChechoutData);
-    refetch();
-  }, [allChechoutData]);
+    isLoading,
+    refetch,
+  } = AllProductQuery();
 
   const unVerifiedData = {
     number: 3,

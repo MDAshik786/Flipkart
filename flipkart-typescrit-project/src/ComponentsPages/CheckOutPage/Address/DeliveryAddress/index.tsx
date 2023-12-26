@@ -1,17 +1,12 @@
+import "./index.scss";
 import { observer } from "mobx-react-lite";
 import { useStore } from "../../../../ContextHooks/UseStore";
 import UnVerifiedContainer from "../../UnVerifiedContainer";
 import VerifiedContainer from "../../VerifiedContainer";
 import SingleAddress from "../SingleAddress";
-import "./index.scss";
-import { useQuery } from "@tanstack/react-query";
-import { getAllAddressAPI } from "../../../../API Functions/AddressAPI";
+import GetAllAddressQuery from "../../../../APIQueryFunction/AddressQuery/GetAllAddressQuery";
 
-const verifiedContainerData = {
-  number: 2,
-  name: "DELIVERY ADDRESS",
-  content: ["Moahmed Ashik", "9122581422"],
-};
+
 
 const DeliveryAddress = observer(() => {
   const {
@@ -31,10 +26,7 @@ const DeliveryAddress = observer(() => {
     onclick: changeDeliveryAddressFunction,
   };
 
-  const { data, error, isLoading } = useQuery({
-    queryKey: ["getAllDeliveryAddress"],
-    queryFn: () => getAllAddressAPI(userStore?.email),
-  });
+  const { data, error, isLoading, refetch } = GetAllAddressQuery();
 
   return (
     <>

@@ -1,12 +1,6 @@
-import ImageField from "../../../CommonUsedComponents/ImageField";
 import { CartSingleProductProps } from "../../../Types";
-import { BiSolidStar } from "react-icons/bi";
 import ProductCount from "../../HomePage/ProductCount";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import {
-  deleteAProduct,
-  updateAProduct,
-} from "../../../API Functions/CartPageAPI";
 import { useStore } from "../../../ContextHooks/UseStore";
 import { useState } from "react";
 import { handleUpdateChange } from "../../../CommonFunctions/HandleFunction";
@@ -15,6 +9,9 @@ import RatingContainer from "../../../CommonUsedComponents/Product/RatingContain
 import PriceContainer from "../../../CommonUsedComponents/Product/PriceContainer";
 import ImageConatiner from "../../../CommonUsedComponents/Product/ImageContainer";
 import { useNavigate } from "react-router-dom";
+import DeleteCartProductMutation from "../../../APIQueryFunction/CartQuery/DeleteCartProductMutation";
+import AddToSaveForLaterMutaion from "../../../APIQueryFunction/SaveForLaterQuery/AddToSaveForLaterMutaion";
+import UpdateCartProductMutation from "../../../APIQueryFunction/CartQuery/UpdateCartProductMutation";
 
 const CartSingleProduct = observer(
   ({
@@ -27,41 +24,23 @@ const CartSingleProduct = observer(
       rootStore: { productCounterStore, userStore },
     } = useStore();
 
-    const { product } = products;
+    const { product, color, quantity } = products;
 
     const queryClient = useQueryClient();
     const navigate = useNavigate();
 
     const [updateState, setUpdateState] = useState<boolean>(false);
 
-    const updateMutation = useMutation({
-      mutationFn: (quantity: number) =>
-        updateAProduct(product.id, quantity, userStore?.email),
-      onSuccess: () => {
-        queryClient.invalidateQueries({
-          queryKey: ["getAllCartData"],
-        });
-      },
-    });
-
-    const deleteMutation = useMutation({
-      mutationFn: () => deleteAProduct(products?.id, userStore.email),
-      onSuccess: () => {
-        queryClient.invalidateQueries({
-          queryKey: ["getAllCartData"],
-        });
-      },
-    });
-
     const handleSinglePage = () => {
       navigate("single", { state: product });
     };
+    const { ratingCount, ratingStar, reviewCount } = product;
 
     const ratingData = {
-      ratingStar: product.ratingStar,
+      ratingStar,
       content: "New Arrival",
-      ratingCount: product.ratingCount,
-      reviewCount: product.reviewCount,
+      ratingCount,
+      reviewCount,
     };
 
     const imageData = {
@@ -87,6 +66,32 @@ const CartSingleProduct = observer(
 
     const handleOnDragOver = (event: React.DragEvent<HTMLDivElement>) => {
       event.preventDefault();
+    };
+
+    const deleteProductMutation = DeleteCartProductMutation(
+      products.id,
+      userStore.email
+    );
+
+    const updateAProductMutation = UpdateCartProductMutation(
+      product.id,
+      productCounterStore.getProductCounter[product.id]
+    );
+
+    const addToSaveForLaterData = {
+      email: userStore.email,
+      productId: product.id,
+      quantity,
+      defaultValue: 1,
+      color,
+    };
+    const addToSaveForLaterFunction = AddToSaveForLaterMutaion(
+      addToSaveForLaterData
+    );
+
+    const handleSaveForLaterFunction = () => {
+      addToSaveForLaterFunction.mutateAsync();
+      deleteProductMutation.mutateAsync();
     };
 
     return (
@@ -120,16 +125,20 @@ const CartSingleProduct = observer(
           <div className="cart-product-action-container">
             <h4
               className="cart-product-action"
+              onClick={handleSaveForLaterFunction}
+            >
+              SAVE FOR LATER
+            </h4>
+            <h4
+              className="cart-product-action"
               onClick={() =>
                 !updateState
                   ? handleUpdateChange(updateState, setUpdateState)
-                  : (updateMutation.mutate(
-                      productCounterStore.getProductCounter[product?.id]
-                    ),
+                  : (updateAProductMutation.mutateAsync(),
                     handleUpdateChange(updateState, setUpdateState))
               }
             >
-              {!updateState ? "Update" : "Save"}
+              {!updateState ? "UPDATE" : "SAVE"}
             </h4>
 
             <h4
@@ -137,10 +146,10 @@ const CartSingleProduct = observer(
               onClick={() =>
                 updateState
                   ? handleUpdateChange(updateState, setUpdateState)
-                  : deleteMutation.mutate()
+                  : deleteProductMutation.mutateAsync()
               }
             >
-              {!updateState ? "Delete" : "Cancel"}
+              {!updateState ? "DELETE" : "CANCEL"}
             </h4>
           </div>
         </div>

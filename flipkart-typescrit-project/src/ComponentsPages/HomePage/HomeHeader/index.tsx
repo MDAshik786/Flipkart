@@ -13,14 +13,17 @@ import { useNavigate } from "react-router-dom";
 import { useStore } from "../../../ContextHooks/UseStore";
 import { observer } from "mobx-react-lite";
 import { homeHeaderType } from "../../../Types";
+import AllCartProductQuery from "../../../APIQueryFunction/CartQuery/AllCartProductQuery";
 
 const HomeHeader = observer(
   ({ searchInput, handleSetFunction }: homeHeaderType) => {
     const navigate = useNavigate();
 
     const {
-      rootStore: { userStore, wishListStore },
+      rootStore: { userStore, wishListStore, cartStore },
     } = useStore();
+    const { allCartProducts } = cartStore;
+    const { data: getAllCartDatas, error, isLoading } = AllCartProductQuery();
 
     const isLoginOrNot = (e: React.MouseEvent<HTMLDivElement>) => {
       if (!userStore.isUserLoginOrNot) handleNavigate(e, navigate, "login");
@@ -68,10 +71,13 @@ const HomeHeader = observer(
             <p>{userStore.isUserLoginOrNot ? "Sign Out" : "Sign In"}</p>
           </div>
           <div
-            className="head-nav-container"
+            className="head-nav-container cart-home-header"
             onClick={(e) => handleNavigate(e, navigate, "cart")}
           >
             <ImageField src={cart} alt="" /> <p>Cart</p>
+            <span className="quantity-count">
+              {allCartProducts?.cartItems?.length || 0}
+            </span>
           </div>
         </div>
       </header>

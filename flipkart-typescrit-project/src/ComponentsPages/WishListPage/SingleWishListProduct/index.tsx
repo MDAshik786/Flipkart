@@ -3,30 +3,19 @@ import ImageField from "../../../CommonUsedComponents/ImageField";
 import { SingleWishListProductType } from "../../../Types";
 import { IoTrashBin } from "react-icons/io5";
 import fkAssured from "../../../Asserts/Images/fk-assured.png";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { deleteFromWishList } from "../../../API Functions/WishListAPI";
-import { useStore } from "../../../ContextHooks/UseStore";
 import ImageConatiner from "../../../CommonUsedComponents/Product/ImageContainer";
 import { useNavigate } from "react-router-dom";
 import RatingContainer from "../../../CommonUsedComponents/Product/RatingContainer";
 import PriceContainer from "../../../CommonUsedComponents/Product/PriceContainer";
+import DeleteWishListMutation from "../../../APIQueryFunction/WishListQuery/DeleteWishListMutation";
 
 const SingleWishListProduct = ({ data }: SingleWishListProductType) => {
-  const queryClient = useQueryClient();
   const { color } = data;
   const product = data.productDTO;
 
-  const {
-    rootStore: { userStore },
-  } = useStore();
-
   const navigate = useNavigate();
 
-  const deleteFromWishListMutation = useMutation({
-    mutationFn: () => deleteFromWishList(product?.id, userStore?.email),
-    onSuccess: () =>
-      queryClient.invalidateQueries({ queryKey: ["wishlistAllProduct"] }),
-  });
+  const deleteFromWishListMutation = DeleteWishListMutation(product.id);
 
   const handleSinglePage = () => {
     navigate("single", { state: product });
@@ -61,7 +50,7 @@ const SingleWishListProduct = ({ data }: SingleWishListProductType) => {
       </div>
       <IoTrashBin
         className="trash-icons"
-        onClick={() => deleteFromWishListMutation.mutate()}
+        onClick={() => deleteFromWishListMutation.mutateAsync()}
       />
     </div>
   );

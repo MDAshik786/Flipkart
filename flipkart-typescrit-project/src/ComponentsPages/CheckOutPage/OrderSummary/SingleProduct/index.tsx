@@ -6,12 +6,10 @@ import RatingContainer from "../../../../CommonUsedComponents/Product/RatingCont
 import PriceContainer from "../../../../CommonUsedComponents/Product/PriceContainer";
 import ProductCount from "../../../HomePage/ProductCount";
 import { QueryClient, useMutation, useQueryClient } from "@tanstack/react-query";
-import {
-  deleteCheckoutAPI,
-  updateCheckoutAPI,
-} from "../../../../API Functions/CheckoutAPI";
 import { useStore } from "../../../../ContextHooks/UseStore";
 import { observer } from "mobx-react-lite";
+import UpdateProductQuery from "../../../../APIQueryFunction/CheckoutQuery/UpdateProductQuery";
+import DeleteProductQuery from "../../../../APIQueryFunction/CheckoutQuery/DeleteProductQuery";
 
 const SingleProduct = observer(({ data }: orderSummaryMapType) => {
   const { product, color } = data;
@@ -24,32 +22,11 @@ const SingleProduct = observer(({ data }: orderSummaryMapType) => {
     navigate("/single");
   };
 
-  const queryClient = useQueryClient();
 
-  type updateCheckoutMutationType = {
-    id: number;
-    quantity: number;
-  };
 
-  const updateCheckoutMutation = useMutation({
-    mutationFn: ({ id, quantity }: updateCheckoutMutationType) =>
-      updateCheckoutAPI(userStore.email, id, quantity),
-      onSuccess: () => {
-        queryClient.invalidateQueries({
-          queryKey: ["getAllCheckoutData"],
-        });
-      },
-    onError : () => console.log("first error")
-  });
+  const updateCheckoutMutation = UpdateProductQuery()
 
-  const delteCheckoutMutation = useMutation({
-    mutationFn: (id: number) => deleteCheckoutAPI(userStore.email, id),
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: ["getAllCheckoutData"],
-      });
-    },
-  });
+  const deleteCheckoutMutation = DeleteProductQuery()
 
   const imageData = {
     product,

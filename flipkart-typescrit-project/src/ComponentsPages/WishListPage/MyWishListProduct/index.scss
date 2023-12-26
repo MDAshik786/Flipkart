@@ -1,6 +1,10 @@
 @import "../../../SCSSFile/ColorVariable/index.scss";
 @import "../../../SCSSFile/SCSSFunctions/index.scss";
 
+.allwishlist{
+   width: 100%;
+}
+
 .my-wishlist-product {
     width: 55rem;
     background-color: $whiteColor;

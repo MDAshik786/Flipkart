@@ -69,11 +69,6 @@ export type productTypeData = {
   color: string;
 };
 
-export type SingleProductProps2 = {
-  product: SingleProduct;
-  getSpecificWishListData: any;
-};
-
 export type CartSingleProducts = {
   id: number;
   quantity: number;
@@ -119,7 +114,6 @@ export type CartSingleProductProps = {
   data: number | null;
   handleSetStateOnChange: (value: number) => void;
 };
-
 
 export type SingleProduct = {
   id: number;
@@ -271,4 +265,12 @@ export type dataType = {
 
 export type unverifiedDataType = {
   data: dataType;
+};
+
+export type PostSaveForLaterDataTye = {
+  email: string;
+  productId: number;
+  quantity: number;
+  defaultValue: number;
+  color : string
 };

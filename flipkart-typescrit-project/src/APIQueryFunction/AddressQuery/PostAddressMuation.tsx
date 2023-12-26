@@ -1,5 +1,7 @@
 import axios from "axios";
 import { addressAPIUrl } from "../../Utils_/APIUrls";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useStore } from "../../ContextHooks/UseStore";
 import { checkoutStateDataType } from "../../Types";
 
 //Address POST API
@@ -48,12 +50,19 @@ export const postAddressAPI = async (
   }
 };
 
-export const getAllAddressAPI = async (email: string) => {
-  try {
-    const response = await axios.get(`${addressAPIUrl}/${email}`);
-    // console.log(response.data, "getAllAddressAPI");
-    return response.data;
-  } catch (e) {
-    console.log(e, "getAllAddressAPI");
-  }
+const PostAddressMuation = (inputData: checkoutStateDataType) => {
+  const {
+    rootStore: { userStore },
+  } = useStore();
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: () => postAddressAPI(inputData, userStore?.email),
+    onSuccess: () =>
+      queryClient.invalidateQueries({
+        queryKey: ["getAllDeliveryAddress"],
+      }),
+  });
 };
+
+export default PostAddressMuation;

@@ -10,11 +10,11 @@ import ButtonFiled from "../../../../CommonUsedComponents/ButtonField";
 import { useStore } from "../../../../ContextHooks/UseStore";
 import { observer } from "mobx-react-lite";
 import { useMutation } from "@tanstack/react-query";
-import { postAddressAPI } from "../../../../API Functions/AddressAPI";
 import {
   checkoutStateDataType,
   errorCheckoutStateDataType,
 } from "../../../../Types";
+import PostAddressMuation from "../../../../APIQueryFunction/AddressQuery/PostAddressMuation";
 const NewAddress = observer(() => {
   const [inputData, setInputData] = useState<checkoutStateDataType>({
     name: "",
@@ -176,13 +176,11 @@ const NewAddress = observer(() => {
   } = useStore();
   const { checkoutData, checkoutVerification, addANewAddress } = checkoutStore;
 
-  const postAddressMutation = useMutation({
-    mutationFn: () => postAddressAPI(inputData, userStore?.email),
-  });
+  const postAddressMutation = PostAddressMuation(inputData);
 
   const handleOnSubmitFunction = (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
-    postAddressMutation.mutate();
+    postAddressMutation.mutateAsync();
   };
 
   return (
