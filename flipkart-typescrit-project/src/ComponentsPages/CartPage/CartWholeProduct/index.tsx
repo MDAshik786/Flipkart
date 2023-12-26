@@ -1,45 +1,54 @@
 import "./index.scss";
 import { CartSingleProducts } from "../../../Types";
 import CartSingleProduct from "../CartSingleProduct";
-import { useQuery } from "@tanstack/react-query";
+import { QueryClient, useMutation, useQuery } from "@tanstack/react-query";
 import { getAllCartDataFunction } from "../../../API Functions/CartPageAPI";
 import { useStore } from "../../../ContextHooks/UseStore";
 import { observer } from "mobx-react-lite";
 import { useEffect, useState } from "react";
 import ButtonFiled from "../../../CommonUsedComponents/ButtonField";
 import { useNavigate } from "react-router-dom";
+import { postAllcheckoutDataAPI } from "../../../API Functions/CheckoutAPI";
+import { toJS } from "mobx";
 const CartwholeProduct = observer(() => {
+  const navigate = useNavigate();
   const {
-    rootStore: { userStore, checkoutStore, cartStore },
+    rootStore: { userStore, cartStore },
   } = useStore();
 
-  const navigate = useNavigate();
+  const {
+    data: getAllCartDatas,
+    error: errorOnCartData,
+    isLoading: cartDataLoading,
+  } = useQuery({
+    queryKey: ["getAllCartData"],
+    queryFn: () => getAllCartDataFunction(userStore?.email),
+  });
+
+  useEffect(() => {
+    cartStore.setAllCartProducts(getAllCartDatas);
+  }, [getAllCartDatas]);
+
   const [data, setData] = useState<number | null>(null);
 
   const handleSetStateOnChange = (value: number) => {
     setData(value);
   };
 
-  const {
-    data: getAllCartDatas,
-    error: errorOfCartData,
-    isLoading: errorOnCartData,
-  } = useQuery({
-    queryKey: ["getAllCartData"],
-    queryFn: () => getAllCartDataFunction(userStore?.email),
-  });
-  useEffect(() => {
-    cartStore.allCartProducts = getAllCartDatas;
-  }, [getAllCartDatas]);
-
   let cartItems: [] = [],
     totalCost: number = 0;
   getAllCartDatas && ({ cartItems, totalCost } = getAllCartDatas);
 
-  const handlePlaceOrder = () => {
-    checkoutStore.checkoutProduct = cartItems;
+  const addToCheckOutMutation = useMutation({
+    mutationFn: () =>
+      postAllcheckoutDataAPI(cartStore.allCartProducts, userStore.email),
+  });
+
+  const handlePlaceOrder = async () => {
+    await addToCheckOutMutation.mutateAsync();
     navigate("/checkout");
   };
+  if (cartDataLoading) return <>Loading</>;
 
   return (
     <div>

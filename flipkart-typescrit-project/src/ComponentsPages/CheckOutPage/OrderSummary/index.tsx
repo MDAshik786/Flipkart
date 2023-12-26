@@ -6,18 +6,37 @@ import UnVerifiedContainer from "../UnVerifiedContainer";
 import VerifiedContainer from "../VerifiedContainer";
 import SingleProduct from "./SingleProduct";
 import { CartSingleProducts } from "../../../Types";
+import { useQuery } from "@tanstack/react-query";
+import { getAllCheckoutDataAPI } from "../../../API Functions/CheckoutAPI";
+import { useEffect } from "react";
 
 const OrderSummary = observer(() => {
   const {
-    rootStore: { checkoutStore },
+    rootStore: { checkoutStore, userStore },
   } = useStore();
   const {
     checkoutData,
     checkoutVerification,
     checkoutProduct,
+    setCheckoutData,
     verificationFunction,
     changeOrderSummary,
   } = checkoutStore;
+
+  const {
+    data: allChechoutData,
+    isLoading,
+    error,
+    refetch
+  } = useQuery({
+    queryKey: ["getAllCheckoutData"],
+    queryFn: () => getAllCheckoutDataAPI(userStore?.email),
+  });
+
+  useEffect(() => {
+    setCheckoutData(allChechoutData);
+    refetch();
+  }, [allChechoutData]);
 
   const unVerifiedData = {
     number: 3,
@@ -26,9 +45,13 @@ const OrderSummary = observer(() => {
   const verifiedContainerData = {
     number: 3,
     name: "ORDER SUMMARY",
-    content: [`9 items`],
+    content: [`${checkoutProduct?.cartItems?.length || "0"} items`],
     onclick: changeOrderSummary,
   };
+
+  if (isLoading) {
+    return <>Loading</>;
+  }
 
   return (
     <>
@@ -44,9 +67,11 @@ const OrderSummary = observer(() => {
               <p>
                 You can continue to place order with following avaliable items.
               </p>
-              {checkoutProduct.map((data: CartSingleProducts, index) => (
-                <SingleProduct key={index} data={data} />
-              ))}
+              {checkoutProduct?.cartItems?.map(
+                (data: CartSingleProducts, index: number) => (
+                  <SingleProduct key={index} data={data} />
+                )
+              )}
             </div>
             <div className="email-container">
               <p className="email-details">

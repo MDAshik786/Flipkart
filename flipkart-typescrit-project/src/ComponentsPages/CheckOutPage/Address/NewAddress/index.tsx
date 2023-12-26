@@ -9,25 +9,13 @@ import { statesData } from "../../../../Datas/States";
 import ButtonFiled from "../../../../CommonUsedComponents/ButtonField";
 import { useStore } from "../../../../ContextHooks/UseStore";
 import { observer } from "mobx-react-lite";
+import { useMutation } from "@tanstack/react-query";
+import { postAddressAPI } from "../../../../API Functions/AddressAPI";
+import {
+  checkoutStateDataType,
+  errorCheckoutStateDataType,
+} from "../../../../Types";
 const NewAddress = observer(() => {
-  type checkoutStateDataType = {
-    name: string;
-    phone: string;
-    pincode: string;
-    locality: string;
-    address: string;
-    cityDistrict: string;
-    landmark: string;
-    alternativePhone: string;
-    chooseAddress: string;
-    state: string;
-    defaultAddress: boolean;
-  };
-
-  type errorCheckoutStateDataType = {
-    [key: string]: string;
-  };
-
   const [inputData, setInputData] = useState<checkoutStateDataType>({
     name: "",
     phone: "",
@@ -184,65 +172,78 @@ const NewAddress = observer(() => {
   ];
 
   const {
-    rootStore: { checkoutStore },
+    rootStore: { checkoutStore, userStore },
   } = useStore();
-  const { checkoutData,checkoutVerification, addANewAddress } = checkoutStore;
+  const { checkoutData, checkoutVerification, addANewAddress } = checkoutStore;
+
+  const postAddressMutation = useMutation({
+    mutationFn: () => postAddressAPI(inputData, userStore?.email),
+  });
+
+  const handleOnSubmitFunction = (e: React.ChangeEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    postAddressMutation.mutate();
+  };
 
   return (
     <>
-      {!checkoutVerification.DeliveryAddress && checkoutData.DeliveryAddress && !checkoutData.newAddress && (
-        <div className="add-new-address" onClick={() => addANewAddress(true)}>
-          <div>
-            <ImageField src={plusImage} alt="add" className="add-new-img" />
+      {!checkoutVerification.DeliveryAddress &&
+        checkoutData.DeliveryAddress &&
+        !checkoutData.newAddress && (
+          <div className="add-new-address" onClick={() => addANewAddress(true)}>
+            <div>
+              <ImageField src={plusImage} alt="add" className="add-new-img" />
+            </div>
+            <h4 className="add-new-name">ADD A NEW ADDRESS</h4>
           </div>
-          <p className="add-new-name">Add a new address</p>
-        </div>
-      )}
+        )}
 
-      {checkoutData.DeliveryAddress && checkoutData.newAddress && (
-        <form className="checkbox-form">
-          <div className="add-new-address-radio radio-content">
-            <InputFiled className="radio-type" type="radio" />
-            <p className="add-new-name">ADD A NEW ADDRESS</p>
-          </div>
-          <div className="checkout-form grid-container">
-            <FormInputField userData={checkoutFormData} />
-            <textarea
-              name="address"
-              className="item4 input-type-name"
-              placeholder="Address ( Area and Street)"
-              value={inputData.address}
-              onChange={handleOnChange}
+      {!checkoutVerification.DeliveryAddress &&
+        checkoutData.DeliveryAddress &&
+        checkoutData.newAddress && (
+          <form className="checkbox-form" onSubmit={handleOnSubmitFunction}>
+            <div className="add-new-address-radio radio-content">
+              <InputFiled className="radio-type" type="radio" />
+              <h4 className="add-new-name">ADD A NEW ADDRESS</h4>
+            </div>
+            <div className="checkout-form grid-container">
+              <FormInputField userData={checkoutFormData} />
+              <textarea
+                name="address"
+                className="item4 input-type-name"
+                placeholder="Address ( Area and Street)"
+                value={inputData.address}
+                onChange={handleOnChange}
+              />
+
+              <select
+                name="state"
+                id="select-state"
+                className="selected-field item6"
+                value={inputData.state}
+                onChange={handleOnChange}
+              >
+                {inputData.state === "" ? (
+                  <option value="" disabled>
+                    Select State
+                  </option>
+                ) : null}
+                {statesData.map((state: string, index: number) => (
+                  <option value={state} key={index}>
+                    {state}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <ButtonFiled
+              content="SAVE AND DELIVER HERE"
+              className="save-address"
             />
-
-            <select
-              name="state"
-              id="select-state"
-              className="selected-field item6"
-              value={inputData.state}
-              onChange={handleOnChange}
-            >
-              {inputData.state === "" ? (
-                <option value="" disabled>
-                  Select State
-                </option>
-              ) : null}
-              {statesData.map((state: string, index: number) => (
-                <option value={state} key={index}>
-                  {state}
-                </option>
-              ))}
-            </select>
-          </div>
-          <ButtonFiled
-            content="SAVE AND DELIVER HERE"
-            className="save-address"
-          />
-          <span className="calcel-text" onClick={() => addANewAddress(false)}>
-            CANCEL
-          </span>
-        </form>
-      )}
+            <span className="calcel-text" onClick={() => addANewAddress(false)}>
+              CANCEL
+            </span>
+          </form>
+        )}
     </>
   );
 });

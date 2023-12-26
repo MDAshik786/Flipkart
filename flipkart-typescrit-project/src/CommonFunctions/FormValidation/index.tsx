@@ -36,6 +36,5 @@ export const userDataVerication = ({
       }
     }
   });
-  console.log(isVerified, "isVerified");
   return isVerified;
 };

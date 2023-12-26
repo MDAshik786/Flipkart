@@ -6,8 +6,9 @@ import NewAddress from "../Address/NewAddress";
 import OrderSummary from "../OrderSummary";
 import Payment from "../Payment";
 import DeliveryAddress from "../Address/DeliveryAddress";
+import { observer } from "mobx-react-lite";
 
-const Checkout = () => {
+const Checkout = observer(() => {
   return (
     <>
       <CartHeader />
@@ -25,6 +26,6 @@ const Checkout = () => {
       </div>
     </>
   );
-};
+});
 
 export default Checkout;

@@ -16,7 +16,6 @@ import { observer } from "mobx-react-lite";
 import PriceContainer from "../../../CommonUsedComponents/Product/PriceContainer";
 import RatingContainer from "../../../CommonUsedComponents/Product/RatingContainer";
 import ImageConatiner from "../../../CommonUsedComponents/Product/ImageContainer";
-import GetSingleDataQuery from "../../../UseQuery/GetSingleData";
 import { getSingleProductData } from "../../../API Functions/SinglePageAPI";
 
 export const HomeSingleProduct = observer(
@@ -137,10 +136,16 @@ export const HomeSingleProduct = observer(
           <ProductCount product={product} />
         </div>
         <ButtonFiled
-          content={addToCartMutation.isPending ?"Added" : "Add To Cart"}
-          className="single-addToCart-button"
+          content={addToCartMutation.isPending ? "Added" : "Add To Cart"}
+          className={
+            addToCartMutation.isPending
+              ? "added-color-button"
+              : "single-addToCart-button"
+          }
           onClick={() =>
-            handleLoginVerification(navigate, () => addToCartMutation.mutate())
+            handleLoginVerification(navigate, () =>
+              addToCartMutation.mutateAsync()
+            )
           }
           disabled={addToCartMutation.isPending}
         />

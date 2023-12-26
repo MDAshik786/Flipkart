@@ -23,7 +23,8 @@ const Payment = observer(() => {
   const {
     rootStore: { checkoutStore },
   } = useStore();
-  const { checkoutData, checkoutVerification, changePaymentOption } = checkoutStore;
+  const { checkoutData, checkoutVerification, changePaymentOption } =
+    checkoutStore;
 
   const unverifiedData = {
     number: 4,
@@ -33,14 +34,13 @@ const Payment = observer(() => {
     number: 1,
     name: "PAYMENT OPTION",
     content: ["Moahmed Ashik", "9122581422"],
-    onclick : changePaymentOption 
+    onclick: changePaymentOption,
   };
-
 
   return (
     <>
       {checkoutVerification.paymentOption ? (
-        <VerifiedContainer data={verifiedContainerData}/>
+        <VerifiedContainer data={verifiedContainerData} />
       ) : !checkoutData.paymentOption ? (
         <UnVerifiedContainer data={unverifiedData} />
       ) : (

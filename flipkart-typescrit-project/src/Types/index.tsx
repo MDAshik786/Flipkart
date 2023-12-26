@@ -83,17 +83,35 @@ export type CartSingleProducts = {
 };
 
 export type orderSummaryMapType = {
-  data : CartSingleProducts
-}
+  data: CartSingleProducts;
+};
 
 export type VerifiedContainerPropsType = {
-  data : {
-    number : number,
-    name : string,
-    content : string[],
-    onclick : () => void
-  }
-}
+  data: {
+    number: number;
+    name: string;
+    content: string[];
+    onclick: () => void;
+  };
+};
+
+export type checkoutStateDataType = {
+  name: string;
+  phone: string;
+  pincode: string;
+  locality: string;
+  address: string;
+  cityDistrict: string;
+  landmark: string;
+  alternativePhone: string;
+  chooseAddress: string;
+  state: string;
+  defaultAddress: boolean;
+};
+
+export type errorCheckoutStateDataType = {
+  [key: string]: string;
+};
 
 export type CartSingleProductProps = {
   products: CartSingleProducts;
@@ -101,6 +119,7 @@ export type CartSingleProductProps = {
   data: number | null;
   handleSetStateOnChange: (value: number) => void;
 };
+
 
 export type SingleProduct = {
   id: number;
@@ -151,6 +170,8 @@ export type keywordTypes = {
 export type ProductCountProps = {
   product: SingleProduct;
   quantity?: number;
+  quantityApiFunction?: any;
+  id?: number;
 };
 
 export type setStateType = React.Dispatch<React.SetStateAction<boolean>>;
@@ -166,7 +187,7 @@ export type ratingContainerProps = {
 
 export type ratingDataType = {
   ratingStar: number;
-  content: String;
+  content: string;
   ratingCount: number;
   reviewCount: number;
 };

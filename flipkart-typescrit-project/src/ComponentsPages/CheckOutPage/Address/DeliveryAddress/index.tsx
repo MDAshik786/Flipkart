@@ -4,7 +4,8 @@ import UnVerifiedContainer from "../../UnVerifiedContainer";
 import VerifiedContainer from "../../VerifiedContainer";
 import SingleAddress from "../SingleAddress";
 import "./index.scss";
-
+import { useQuery } from "@tanstack/react-query";
+import { getAllAddressAPI } from "../../../../API Functions/AddressAPI";
 
 const verifiedContainerData = {
   number: 2,
@@ -14,7 +15,7 @@ const verifiedContainerData = {
 
 const DeliveryAddress = observer(() => {
   const {
-    rootStore: { checkoutStore },
+    rootStore: { checkoutStore, userStore },
   } = useStore();
   const { checkoutData, checkoutVerification, changeDeliveryAddressFunction } =
     checkoutStore;
@@ -29,6 +30,11 @@ const DeliveryAddress = observer(() => {
     content: ["16", "Pallivasal Strret", "Periyakalayam Puthur", "Palani"],
     onclick: changeDeliveryAddressFunction,
   };
+
+  const { data, error, isLoading } = useQuery({
+    queryKey: ["getAllDeliveryAddress"],
+    queryFn: () => getAllAddressAPI(userStore?.email),
+  });
 
   return (
     <>

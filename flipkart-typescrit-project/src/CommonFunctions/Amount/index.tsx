@@ -1,3 +1,3 @@
 export const formatNumberWithComma = (number : number) => {
-    return number.toLocaleString();
+    return number?.toLocaleString();
   };

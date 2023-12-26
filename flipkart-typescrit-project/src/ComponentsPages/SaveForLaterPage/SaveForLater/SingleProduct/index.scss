@@ -1,0 +1,47 @@
+@import "../../../../SCSSFile/ColorVariable/index.scss";
+@import "../../../../SCSSFile/SCSSFunctions/index.scss";
+
+.saveforlater {
+  @include displayFlexColumnProperty(center, center, 1rem);
+  background-color: $whiteColor;
+  padding: 1rem;
+  font-size: 1.1rem;
+  border-bottom: 1px solid $borderLightGray;
+
+  .button-container {
+    @include displayFlexProperty(center, start, 1.1rem);
+    font-size: 1rem;
+    width: 100%;
+    & :hover {
+      color: $blueColor;
+    }
+
+    .quantity-container {
+      @include displayFlexProperty(center, center, 1rem);
+      width: 30%;
+    }
+    .action-button {
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+    }
+  }
+}
+.saveforlater-product {
+  @include displayFlexProperty(center, start, 1rem);
+
+  .left {
+    @include displayFlexColumnProperty(center, center, 1rem);
+    width: 30%;
+
+    img {
+      @include imgProperty(100%, 1, none);
+    }
+  }
+  .right {
+    @include displayFlexColumnProperty(start, center, 1rem);
+  }
+  .about-container {
+    @include displayFlexColumnProperty(start, center, 0.6rem);
+  }
+}

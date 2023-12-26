@@ -32,7 +32,7 @@ export const handleLoginVerifications = ({
   email,
   password,
 }: handleLoginVerificationsType ) => {
-  console.log(response, email, password, "sep fun", user);
+
   if (response === "verified") {
     user({ emailInput: email, passwordInput: password });
     navigate("/");

@@ -6,6 +6,7 @@ import WishList from "../ComponentsPages/WishListPage/WishList";
 import AccountForm from "../ComponentsPages/LogIn&SignUpPage/AccountForm";
 import SingleView from "../ComponentsPages/SingleViewPage/SingleView";
 import Checkout from "../ComponentsPages/CheckOutPage/Checkout";
+import SaveForLater from "../ComponentsPages/SaveForLaterPage/SaveForLater";
 
 const Router = () => {
   return (
@@ -16,6 +17,7 @@ const Router = () => {
       <Route path="/wishlist" element={<WishList />} />
       <Route path="/single" element={<SingleView />} />
       <Route path="/checkout" element={<Checkout />} />
+      <Route path="/saveforlater" element={<SaveForLater />} />
     </Routes>
   );
 };

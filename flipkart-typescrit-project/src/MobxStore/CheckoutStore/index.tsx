@@ -1,7 +1,7 @@
 import { action, makeObservable, observable } from "mobx";
 import { makePersistable } from "mobx-persist-store";
 import { IRootStore } from "../RootStore";
-import { checkOutStoreType } from "../../Types/StoreType";
+import { cartStoreType, checkOutStoreType } from "../../Types/StoreType";
 
 export class CheckoutStore {
   checkoutData: checkOutStoreType = {
@@ -18,7 +18,7 @@ export class CheckoutStore {
     orderSummary: false,
     paymentOption: false,
   };
-  checkoutProduct: [] = [];
+  checkoutProduct:  cartStoreType = {} as cartStoreType;
   rootStore: IRootStore;
 
   constructor(rootStore: IRootStore) {
@@ -27,14 +27,25 @@ export class CheckoutStore {
       checkoutVerification: observable,
       checkoutProduct: observable,
       verificationFunction: action,
+      addANewAddress : action,
+      changeLoginFunction : action,
+      changeDeliveryAddressFunction : action,
+      changeOrderSummary : action,
+      changePaymentOption : action,
+      setCheckoutData : action
+
     });
 
     makePersistable(this, {
       name: "checkoutData",
-      properties: ["checkoutData", "checkoutVerification", "checkoutProduct"],
+      properties: ["checkoutData", "checkoutVerification"],
       storage: window.localStorage,
     });
     this.rootStore = rootStore;
+  }
+
+  setCheckoutData = (value : cartStoreType) => {
+    this.checkoutProduct = value
   }
 
   verificationFunction = (value: string, nextValue?: string) => {

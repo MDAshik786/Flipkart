@@ -1,0 +1,13 @@
+@import "../../../SCSSFile/ColorVariable/index.scss";
+@import "../../../SCSSFile/SCSSFunctions/index.scss";
+
+.saveforlater-container {
+  background-color: $whiteColor;
+
+  .heading {
+    border-bottom: 1px solid $borderLightGray;
+    padding: 1.3rem;
+    color: $blackColor;
+    letter-spacing: 0.7px;
+  }
+}

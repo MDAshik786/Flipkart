@@ -36,7 +36,6 @@ export class WishListStore {
     return this.allWishListProduct;
   }
   clearAllWishListData = () => {
-    console.log("clearAllWishListData");
     this.allWishListProduct = [];
     this.specificWishListProduct = [];
   };

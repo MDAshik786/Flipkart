@@ -43,28 +43,6 @@ const Home = () => {
     queryFn: () => getAllProduct(),
   });
 
-  // const {
-  //   data: getAllProductData,
-  //   error: getAllProductError,
-  //   isLoading: getAllProductLoading,
-  // } = getAllProductQuery();
-
-  // import { useQuery } from "@tanstack/react-query";
-  // import { getAllProduct } from "../../API Functions/HomePageAPI";
-
-  // export const getAllProductQuery = () => {
-  //      const {
-  //         data,
-  //         error,
-  //         isLoading,
-  //       } = useQuery({
-  //         queryKey: ["getAllProduct"],
-  //         queryFn: () => getAllProduct(),
-
-  //     });
-  //         return {data, error, isLoading}
-  // }
-
   const {
     data: getSpecificWishListData,
     error: wishListProductError,

@@ -58,7 +58,8 @@
   @include displayFlexProperty(center, start, 0.5rem);
 }
 
-.single-addToCart-button {
+.single-addToCart-button,
+.added-color-button {
   @include buttonStyle(2.1rem, 100%, none, 0.5rem, $orangPeel, $whiteColor);
   @include displayFlexProperty(center, center, 0.5rem);
   text-transform: uppercase;
@@ -153,4 +154,7 @@
     font-size: 0.9rem;
     color: $darkGray;
   }
+}
+.added-color-button {
+  background-color: $greenColor;
 }

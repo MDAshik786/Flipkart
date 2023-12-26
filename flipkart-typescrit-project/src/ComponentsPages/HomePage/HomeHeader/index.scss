@@ -21,7 +21,7 @@
 
     &:hover {
       border: 1px solid $borderLightGray;
-      background-color:$whitesmoke; 
+      background-color: $whitesmoke;
     }
 
     & img {
@@ -88,16 +88,15 @@
   cursor: pointer;
   border: 1px solid $whiteColor;
 
-  &:hover{
+  &:hover {
     border: 1px solid $borderLightGray;
-    background-color:$whitesmoke; 
+    background-color: $whitesmoke;
   }
 
   & img {
     width: 2rem;
   }
 }
-
 
 .head-search-icons {
   @include heightWidthProperty(1.5rem, 1.5rem);
